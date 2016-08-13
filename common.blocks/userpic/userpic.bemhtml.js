@@ -1,0 +1,3 @@
+block('userpic')(
+    tag()('img')
+)

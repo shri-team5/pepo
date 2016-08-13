@@ -1,10 +1,17 @@
 block('tweet').content()(function() {
+    //var data = ...;
     return [
         {
-            block: 'avatar'
+            block: 'userpic',
+            attrs: {
+                src: 'asdlkasjklsaj',
+                alt: 'this.data.login'
+            },
+            mix: { block: 'tweet', elem: 'userpic' }
         },
         {
-            block: 'name'
+            block: 'username',
+            mix: { block: 'tweet', elem: 'username' }
         }
     ];
 });

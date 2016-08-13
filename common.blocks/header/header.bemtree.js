@@ -1,7 +1,8 @@
 block('header').content()(function() {
     return [
         {
-            block: 'logo'
+            block: 'logo',
+            mix: { block: 'header', elem: 'logo' }
         }
     ];
 });
