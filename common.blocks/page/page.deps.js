@@ -1,10 +1,11 @@
 ({
     shouldDeps: [
         {
-            mods: { view: ['404'] }
+            mods: { view: ['404', 'feed'] }
         },
         'header',
         'body',
-        'footer'
+        'footer',
+        'tweet'
     ]
 })

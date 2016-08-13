@@ -1,5 +1,3 @@
 block('body').content()(function() {
-    return [
-        'body content'
-    ];
+    return {tag: 'strong', content: applyNext()};
 });
