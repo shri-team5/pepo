@@ -57,8 +57,9 @@ app.get('/ping/', function(req, res) {
 
 app.get('/', function(req, res) {
     render(req, res, {
-        view: 'index',
+        view: 'feed',
         title: 'Main page',
+        tweets: ['123', '456'],
         meta: {
             description: 'Page description',
             og: {

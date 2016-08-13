@@ -4,7 +4,21 @@ block('page').content()(function() {
             block: 'header'
         },
         {
-            block: 'body'
+            block: 'body',
+            content: [
+                {
+                    block: 'header',
+                    content: {
+                        block : 'bla'
+                    }
+                },
+                {
+                    block: 'header'
+                }
+            ]
+        },
+        {
+            block : 'tweet'
         },
         {
             block: 'footer'
