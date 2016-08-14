@@ -1,3 +1,3 @@
 block('username')(
-    tag()('span')
+    tag()('p')
 )

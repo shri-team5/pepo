@@ -1,4 +1,14 @@
 .tweet {
-    width: 320px;
-    background: green;
+    width: 100%;
+    display:flex;
+    padding: 10px;
+    border: 1px solid #eee;
+}
+
+.tweet__userpic{
+    margin: 0 10px 0 0;
+}
+
+.tweet__username{
+    margin: 0 0 10px 0;
 }
