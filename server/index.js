@@ -16,7 +16,7 @@ var fs = require('fs'),
 
     config = require('./config'),
     staticFolder = config.staticFolder,
-
+    http = require('http'),
     Render = require('./render'),
     render = Render.render,
     dropCache = Render.dropCache,
@@ -56,18 +56,30 @@ app.get('/ping/', function(req, res) {
 });
 
 app.get('/', function(req, res) {
-    render(req, res, {
-        view: 'feed',
-        title: 'Main page',
-        tweets: ['123', '456'],
-        meta: {
-            description: 'Page description',
-            og: {
-                url: 'https://site.com',
-                siteName: 'Site name'
-            }
-        }
-    })
+
+    http.get({ host: '188.166.17.158', port:8080, path: '/tweets'}, function(response) {
+        response.on("data", function(chunk){
+            render(req, res, {
+                view: 'feed',
+                title: 'Main page',
+                tweets: JSON.parse(chunk),
+                meta: {
+                    description: 'Page description',
+                    og: {
+                        url: 'https://site.com',
+                        siteName: 'Site name'
+                    }
+                }
+            })
+        });
+
+
+
+    }).on('error', function(e) {
+        console.log("Got error: " + e.message);
+    });
+
+
 });
 
 app.get('*', function(req, res) {

@@ -6,6 +6,6 @@
         'header',
         'body',
         'footer',
-        'tweet'
+        'feed'
     ]
 })
