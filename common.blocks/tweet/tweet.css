@@ -1,5 +1,4 @@
 .tweet {
-    width: 100%;
     display:flex;
     padding: 10px;
     border: 1px solid #eee;
@@ -11,4 +10,11 @@
 
 .tweet__username{
     margin: 0 0 10px 0;
+}
+.tweet__content{
+    width:100%;
+}
+.tweet__head{
+    display: flex;
+    justify-content: space-between;
 }
