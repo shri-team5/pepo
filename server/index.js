@@ -34,8 +34,8 @@ app
     .use(cookieParser())
     .use(bodyParser.urlencoded({ extended: true }))
     .use(expressSession({
-        resave: true,
-        saveUninitialized: true,
+      resave: 'true',
+    	saveUninitialized: "true",
         secret: config.sessionSecret
     }))
     .use(passport.initialize())
@@ -52,15 +52,15 @@ passport.deserializeUser(function(user, done) {
 });
 
 app.get('/ping/', function(req, res) {
-    res.send('ok');
-});
+    res.send('ok')
+})
 
 app.get('/', function(req, res) {
     render(req, res, {
         view: 'feed',
         title: 'Main page',
         tweets: ['123', '456'],
-        meta: {
+    		meta: {
             description: 'Page description',
             og: {
                 url: 'https://site.com',
@@ -77,7 +77,7 @@ app.get('*', function(req, res) {
 
 if (isDev) {
     app.get('/error/', function() {
-        throw new Error('Uncaught exception from /error');
+        throw new Error('Uncaught exception froasdsadad ass da d as d a da sd a d a d as d adm /error');
     });
 
     app.use(require('errorhandler')());
