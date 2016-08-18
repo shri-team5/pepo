@@ -1,7 +1,5 @@
 block('tweet').content()(function() {
 
-    var moment = require('moment');
-    moment.locale('ru');
     return [
         {
             block: 'userpic',
@@ -29,6 +27,9 @@ block('tweet').content()(function() {
                             }
                         }
                     ]
+                },
+                {
+                    elem:'delitemer'
                 },
                 {
                     elem: 'text',
