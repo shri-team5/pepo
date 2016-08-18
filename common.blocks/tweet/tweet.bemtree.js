@@ -1,5 +1,5 @@
 block('tweet').content()(function() {
-    var data = this.ctx.tweetData;
+
     var moment = require('moment');
     moment.locale('ru');
     return [
@@ -22,8 +22,11 @@ block('tweet').content()(function() {
                         },
                         {
                             elem: 'created',
-                            content: moment(this.ctx.created_at).fromNow()
-                            // content: moment(this.ctx.created_at).format('DD-MM-YYYY hh:mm:ss')
+                            content: {
+                                block:'time',
+                                time: this.ctx.created_at,
+                                relative: true
+                            }
                         }
                     ]
                 },
