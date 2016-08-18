@@ -1,6 +1,6 @@
 block('tweet').content()(function() {
     var data = this.ctx.tweetData;
-
+    var moment = require('moment')
     return [
         {
             block: 'userpic',
@@ -21,7 +21,7 @@ block('tweet').content()(function() {
                         },
                         {
                             elem: 'created',
-                            content: (new Date(data.created_at)).toString()
+                            content: moment(data.created_at).format('MMMM Do YYYY, hh:mm:ss')
                         }
                     ]
                 },
