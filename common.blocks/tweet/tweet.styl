@@ -1,18 +1,21 @@
 .tweet {
     display:flex;
-    border: 1px solid #cbcbcb;
+    border: 1px solid #f0f0f0;
 
     font-family: Arial;
+    border-radius: 2px;
 }
 
 .tweet__userpic{
     margin: 0 0 0 0;
     padding: 10px;
-    border-right: 1px solid #cbcbcb;
+    /*border-right: 1px solid #cbcbcb;*/
 }
 
 .tweet__username{
     margin: 0 0 0 0;
+        color: #33c;
+    font-size: 13px;
 }
 .tweet__content{
     width:100%;
@@ -20,6 +23,7 @@
 }
 .tweet__text{
     padding: 10px;
+    font-size: 13px;
 }
 .tweet__head{
     display: flex;
@@ -29,7 +33,12 @@
 
 .tweet__delitemer{
 	margin: 5px 0;
-    background: linear-gradient(to right,rgba(0,0,0,.15) 20%,#fff 100%);
+    background: linear-gradient(to right,#f0f0f0 20%,#fff 100%);
     height: 1px;
     padding: 0;
+}
+
+.tweet__created{
+	font-size: 11px;
+	color: gray;
 }
