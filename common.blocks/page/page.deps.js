@@ -6,6 +6,7 @@
         'header',
         'body',
         'footer',
-        'tweet'
+        'feed',
+        'aside'
     ]
 })
