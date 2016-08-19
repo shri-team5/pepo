@@ -1,26 +1,26 @@
 block('login').content()(function () {
 
-    return[
+    return [
         {
-            elem:'title',
-            content:"Авторизация"
+            elem: 'title',
+            content: "Авторизация"
         },
         {
-            elem:'soc-networks',
-            content:[
+            elem: 'soc-networks',
+            content: [
                 {
-                    elem:'vk',
-                    mix:{elem:'soc'},
-                    attrs:{
-                        href:"https://vk.com"
+                    elem: 'vk',
+                    mix: {elem: 'soc'},
+                    attrs: {
+                        href: "https://vk.com"
                     }
 
                 },
                 {
-                    elem:'fb',
-                    mix:{elem:'soc'},
-                    attrs:{
-                        href:"https://facebook.com"
+                    elem: 'fb',
+                    mix: {elem: 'soc'},
+                    attrs: {
+                        href: "https://facebook.com"
                     }
 
                 }

@@ -1,11 +1,11 @@
-block('page').mod('view', 'login').content()(function() {
+block('page').mod('view', 'login').content()(function () {
     return [
         {
             elem: 'content-wrapper',
             content: [
                 {
-                    elem:'login',
-                    content:{
+                    elem: 'login',
+                    content: {
                         block: 'login'
                     }
                 }

@@ -1,9 +1,9 @@
-block('aside').content()(function(){
+block('aside').content()(function () {
     return [
         {
-            block : 'menu',
-            mods : { theme : 'islands', size:'xl'},
-            content : [
+            block: 'menu',
+            mods: {theme: 'islands', size: 'xl'},
+            content: [
                 {
                     block: 'menu-item',
                     mods: {type: 'link'},
