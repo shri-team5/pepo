@@ -8,7 +8,8 @@ block('page').mod('view', 'feed').content()(function() {
             elem: 'content-wrapper',
             content: [
                 {
-                    block: 'aside'
+                    block: 'aside',
+                    js:true
                 },
                 {
                     block: 'main',

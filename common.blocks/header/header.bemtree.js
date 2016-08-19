@@ -1,9 +1,13 @@
 block('header').content()(function() {
     return [
         {
-            elem: 'left-block',
+            elem: 'column',
+            elemMods:{
+                align:'right'
+            },
             content: {
-                block:'burger'
+                block:'burger',
+                js: true
             }
         }
     ];
