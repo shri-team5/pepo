@@ -5,19 +5,22 @@ block('aside').content()(function(){
             mods : { theme : 'islands', size:'xl'},
             content : [
                 {
-                    block : 'menu-item',
-                    val : 1,
-                    content : 'Профиль'
+                    block: 'menu-item',
+                    mods: {type: 'link'},
+                    content: {
+                        block: 'link',
+                        url: '/profile',
+                        content: 'Профиль'
+                    }
                 },
                 {
-                    block : 'menu-item',
-                    val : 3,
-                    content : 'Настройки'
-                },
-                {
-                    block : 'menu-item',
-                    val : 4,
-                    content : 'Выход'
+                    block: 'menu-item',
+                    mods: {type: 'link'},
+                    content: {
+                        block: 'link',
+                        url: '/login',
+                        content: 'Выход'
+                    }
                 }
             ]
         }

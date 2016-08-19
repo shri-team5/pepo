@@ -82,6 +82,40 @@ app.get('/', function(req, res) {
 
 });
 
+
+app.get('/profile', function(req, res) {
+
+    render(req, res, {
+        view: 'profile',
+        title: 'Profile page',
+        meta: {
+            description: 'Page description',
+            og: {
+                url: 'https://site.com',
+                siteName: 'Site name'
+            }
+        }
+    })
+
+});
+
+
+app.get('/login', function(req, res) {
+
+    render(req, res, {
+        view: 'login',
+        title: 'Login page',
+        meta: {
+            description: 'Page description',
+            og: {
+                url: 'https://site.com',
+                siteName: 'Site name'
+            }
+        }
+    })
+
+});
+
 app.get('*', function(req, res) {
     res.status(404);
     return render(req, res, { view: '404' });
