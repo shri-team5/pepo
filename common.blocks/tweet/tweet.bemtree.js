@@ -1,10 +1,11 @@
 block('tweet').content()(function() {
+    const data = this.ctx.data;
 
     return [
         {
             block: 'userpic',
-            src: '//'+this.ctx.user_avatar,
-            alt: this.ctx.user_login,
+            src: '//' + data.user.avatar,
+            alt: data.user.login,
             mix: { block: 'tweet', elem: 'userpic' }
         },
         {
@@ -15,14 +16,14 @@ block('tweet').content()(function() {
                     content:[
                         {
                             block: 'username',
-                            content: this.ctx.user_name,
+                            content: data.user.name,
                             mix: { block: 'tweet', elem: 'username' }
                         },
                         {
                             elem: 'created',
                             content: {
                                 block:'time',
-                                time: this.ctx.created_at,
+                                time: data.created_at,
                                 relative: true
                             }
                         }
@@ -33,7 +34,7 @@ block('tweet').content()(function() {
                 },
                 {
                     elem: 'text',
-                    content: this.ctx.text
+                    content: data.text
                 }
             ]
         }

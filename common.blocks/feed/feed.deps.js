@@ -1,5 +1,5 @@
 ({
     shouldDeps: [
-        'tweet'
+        'tweet-wrapper'
     ]
 })

@@ -1,0 +1,6 @@
+({
+    shouldDeps: [
+        'tweet',
+        'toolbar'
+    ]
+})
