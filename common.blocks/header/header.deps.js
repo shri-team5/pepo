@@ -1,3 +1,3 @@
 ({
-    shouldDeps: ['logo','burger']
+    shouldDeps: ['logo', 'burger', { elems: ['plus'] }]
 })

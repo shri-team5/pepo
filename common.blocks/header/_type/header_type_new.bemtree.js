@@ -1,20 +1,19 @@
-block('header').content()(function() {
+block('header').mod('type', 'new').content()(function() {
     return [
         {
             elem: 'column',
             elemMods: { align:'left' },
             content: {
-                elem: 'plus',
-                content: '+'
+                elem: 'back',
+                content: '<'
             }
         },
         {
             elem: 'column',
-            elemMods:{
-                align:'right'
-            },
+            elemMods: { align: 'right' },
             content: {
-                block:'burger'
+                elem: 'submit',
+                content: 'V'
             }
         }
     ];
