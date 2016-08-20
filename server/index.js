@@ -51,36 +51,16 @@ passport.deserializeUser(function (user, done) {
     done(null, JSON.parse(user));
 });
 
+
+const tweetsRouter = require('./routers/tweets');
+
+
 app.get('/ping/', function (req, res) {
     res.send('ok');
 });
 
-app.get('/', function (req, res) {
-
-    http.get({host: '188.166.17.158', port: 8080, path: '/tweets'}, function (response) {
-        response.on("data", function (chunk) {
-            render(req, res, {
-                view: 'feed',
-                title: 'Main page',
-                tweets: JSON.parse(chunk),
-                meta: {
-                    description: 'Page description',
-                    og: {
-                        url: 'https://site.com',
-                        siteName: 'Site name'
-                    }
-                }
-            })
-        });
-
-
-    }).on('error', function (e) {
-        console.log("Got error: " + e.message);
-    });
-
-
-});
-
+app.get('/', tweetsRouter);
+app.use('/tweets', tweetsRouter);
 
 app.get('/profile', function (req, res) {
 
@@ -97,7 +77,6 @@ app.get('/profile', function (req, res) {
     })
 
 });
-
 
 app.get('/login', function (req, res) {
 
