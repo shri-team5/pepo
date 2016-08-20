@@ -38,7 +38,7 @@ block('toolbar').content()(function() {
         }
     ];
 
-    (data.user.login === currentUser.login) && toolbar.push({
+    (data.author.username === currentUser.login) && toolbar.push({
         block: 'icon',
         mods: { type: 'delete' },
         mix: { block: 'toolbar', elem: 'delete' }

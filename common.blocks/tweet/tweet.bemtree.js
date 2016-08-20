@@ -4,8 +4,8 @@ block('tweet').content()(function() {
     return [
         {
             block: 'userpic',
-            src: '//' + data.user.avatar,
-            alt: data.user.login,
+            src: data.author.avatarPath,
+            alt: data.author.username,
             mix: { block: 'tweet', elem: 'userpic' }
         },
         {
@@ -16,14 +16,14 @@ block('tweet').content()(function() {
                     content:[
                         {
                             block: 'username',
-                            content: data.user.name,
+                            content: data.author.fullName,
                             mix: { block: 'tweet', elem: 'username' }
                         },
                         {
                             elem: 'created',
                             content: {
                                 block:'time',
-                                time: data.created_at,
+                                time: data.createdAt,
                                 relative: true
                             }
                         }
