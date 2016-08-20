@@ -13,8 +13,14 @@ const isDev = process.env.NODE_ENV === 'development';
 
 const instance = axios.create({
     baseURL: "http://" + config.backendHost + ':' + config.backendPort,
-    timeout: config.backendTimeout
+    timeout: config.backendTimeout,
+    headers:{
+        post:{
+            'Content-Type':'application/json'
+        }
+    }
 });
+// instance.defaults.headers.post['Content-Type'] = 'application/json';
 
 const get = (req, res) => {
 
@@ -22,7 +28,7 @@ const get = (req, res) => {
         userId: req.get('userId')
     };
     if(isDev){
-        params['userId'] = '57b86709eb4b20a0550e09a4';
+        params['userId'] = "57b86709eb4b20a0550e09a4";
     }
 
 
@@ -33,7 +39,8 @@ const get = (req, res) => {
             render(req, res, feedPage(response.data));
         })
         .catch(e => {
-            res.send("Got error: " + e.message);
+            console.log('Gor error: '+e.message);
+            render(req, res, feedPage([]));
         });
 
 };
@@ -45,11 +52,11 @@ const post = (req, res) => {
     let request = {
         text,
         type: 'text',
-        author: req.get('userId')
+        userId: req.get('userId')
     };
 
     if(isDev){
-        request['author'] = '1'
+        request['userId'] = '57b86709eb4b20a0550e09a4'
     }
 
     instance.post('/tweets', request)
