@@ -6,8 +6,7 @@ block('header').content()(function() {
                 align:'right'
             },
             content: {
-                block:'burger',
-                js: true
+                block:'burger'
             }
         }
     ];
