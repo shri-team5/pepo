@@ -1,8 +1,13 @@
 block('header').content()(function() {
     return [
         {
-            block: 'logo',
-            mix: { block: 'header', elem: 'logo' }
+            elem: 'column',
+            elemMods:{
+                align:'right'
+            },
+            content: {
+                block:'burger'
+            }
         }
     ];
 });

@@ -1,4 +1,4 @@
-block('page').mod('view', 'feed').content()(function() {
+block('page').mod('view', 'profile').content()(function() {
     return [
         {
             block: 'header',
@@ -14,9 +14,7 @@ block('page').mod('view', 'feed').content()(function() {
                 {
                     block: 'main',
                     mix:{block:'page', elem:'main'},
-                    content:{
-                        block: 'feed'
-                    }
+                    content:"Profile"
                 }
             ]
         }
