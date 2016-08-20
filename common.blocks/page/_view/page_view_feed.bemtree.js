@@ -17,6 +17,9 @@ block('page').mod('view', 'feed').content()(function() {
                     content:{
                         block: 'feed'
                     }
+                },
+                {
+                    block : 'new-tweet'
                 }
             ]
         }

@@ -3,7 +3,7 @@ modules.define('new-tweet', ['i-bem__dom'], function (provide, BEMDOM) {
         BEMDOM.decl(this.name, {
             onSetMod: {
                 js: function () {
-                    this.on('new-tweet', console.log('emit happened'););
+                    this.on('new-tweet', console.log('emit happened'));
                 }
             },
             _onNewTweetClick: function () {

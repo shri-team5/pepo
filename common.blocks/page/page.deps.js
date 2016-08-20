@@ -10,6 +10,7 @@
         'aside',
         'login',
         'userinfo',
-        'profile-edit'
+        'profile-edit',
+        'new-tweet'
     ]
 })
