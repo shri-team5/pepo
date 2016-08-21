@@ -1,20 +1,27 @@
-block('page').mod('view', 'profile').content()(function() {
+block('page').mod('view', 'profile').content()(function () {
     return [
         {
             block: 'header',
-            mix:{block:'page', elem:'header'}
+            mix: {block: 'page', elem: 'header'}
         },
         {
             elem: 'content-wrapper',
             content: [
                 {
                     block: 'aside',
-                    js:true
+                    js: true
                 },
                 {
                     block: 'main',
-                    mix:{block:'page', elem:'main'},
-                    content:"Profile"
+                    mix: {block: 'page', elem: 'main'},
+                    content: [
+                        {
+                            block: 'userinfo'
+                        },
+                        {
+                            block: 'feed'
+                        }
+                    ]
                 }
             ]
         }

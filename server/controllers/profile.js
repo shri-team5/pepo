@@ -5,9 +5,11 @@ const Render = require('../render'),
     render = Render.render;
 
 const feedPage = require('../pages/feed');
+const profilePage = require('../pages/profile');
 
 
 const isDev = process.env.NODE_ENV === 'development';
+
 
 const instance = axios.create({
     baseURL: "http://" + config.backendHost + ':' + config.backendPort,
@@ -33,38 +35,17 @@ const get = (req, res) => {
         params: params
     })
         .then(response => {
-            render(req, res, feedPage(response.data));
+            render(req, res, profilePage(response.data));
         })
         .catch(e => {
             console.log('Gor error: ' + e.message);
-            render(req, res, feedPage([]));
+            render(req, res, profilePage([]));
         });
 
 };
 
 const post = (req, res) => {
-
-    const {text} = req.body;
-
-    let request = {
-        text,
-        type: 'text',
-        userId: req.get('userId')
-    };
-
-    if (isDev) {
-        request['userId'] = '57b86709eb4b20a0550e09a4'
-    }
-
-    instance.post('/tweets', request)
-        .then(() => {
-            get(req, res);
-        })
-        .catch((e)=> {
-            res.send("Got error: " + e.message);
-        });
-
-
+    res.send('Got post /profile')
 };
 
 module.exports = {

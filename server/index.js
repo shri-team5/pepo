@@ -53,6 +53,7 @@ passport.deserializeUser(function (user, done) {
 
 
 const tweetsRouter = require('./routers/tweets');
+const profileRouter = require('./routers/profile');
 
 
 app.get('/ping/', function (req, res) {
@@ -61,22 +62,8 @@ app.get('/ping/', function (req, res) {
 
 app.get('/', tweetsRouter);
 app.use('/tweets', tweetsRouter);
+app.use('/profile', profileRouter);
 
-app.get('/profile', function (req, res) {
-
-    render(req, res, {
-        view: 'profile',
-        title: 'Profile page',
-        meta: {
-            description: 'Page description',
-            og: {
-                url: 'https://site.com',
-                siteName: 'Site name'
-            }
-        }
-    })
-
-});
 
 app.get('/login', function (req, res) {
 
