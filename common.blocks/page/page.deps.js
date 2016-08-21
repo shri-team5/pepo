@@ -8,6 +8,7 @@
         'footer',
         'feed',
         'aside',
-        'login'
+        'login',
+        'userinfo'
     ]
 })
