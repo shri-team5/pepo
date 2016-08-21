@@ -2,6 +2,7 @@
     shouldDeps: [
         'userpic',
         'username',
-        'time'
+        'time',
+        'delimiter'
     ]
 })
