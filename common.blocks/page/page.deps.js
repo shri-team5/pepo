@@ -3,6 +3,7 @@
         {
             mods: { view: ['404', 'feed', 'profile', 'login', 'settings'] }
         },
+        'app',
         'header',
         'body',
         'footer',
