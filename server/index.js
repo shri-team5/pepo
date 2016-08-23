@@ -81,6 +81,22 @@ app.get('/login', function (req, res) {
 
 });
 
+app.get('/settings', function (req, res) {
+
+    render(req, res, {
+        view: 'settings',
+        title: 'Settings',
+        meta: {
+            description: 'Page description',
+            og: {
+                url: 'https://site.com',
+                siteName: 'Site name'
+            }
+        }
+    })
+
+});
+
 app.get('*', function (req, res) {
     res.status(404);
     return render(req, res, {view: '404'});
