@@ -12,7 +12,11 @@ block('header').content()(function() {
                 {
                     elem: 'back',
                     elemMods: { visible: false },
-                    content: '<'
+                    content: {
+                        block: 'icon',
+                        mix : [ { block : 'header', elem: 'icon' } ],
+                        mods : { type : 'back1' },
+                    }
                 }
             ]
         },
@@ -30,7 +34,11 @@ block('header').content()(function() {
                 {
                     elem: 'submit',
                     elemMods: { visible: false },
-                    content: 'V'
+                    content: {
+                        block: 'icon',
+                        mix : [ { block : 'header', elem: 'icon' } ],
+                        mods : { type : 'send2' },
+                    }
                 }
             ]
         }
