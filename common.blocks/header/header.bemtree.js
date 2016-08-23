@@ -2,7 +2,7 @@ block('header').content()(function() {
     return [
         {
             elem: 'column',
-            elemMods: { align:'left' },
+            elemMods: { align: 'left' },
             content: [
                 {
                     elem: 'plus',
@@ -14,15 +14,15 @@ block('header').content()(function() {
                     elemMods: { visible: false },
                     content: {
                         block: 'icon',
-                        mix : [ { block : 'header', elem: 'icon' } ],
-                        mods : { type : 'back1' },
+                        mix: [ { block: 'header', elem: 'icon' } ],
+                        mods: { type: 'back1' }
                     }
                 }
             ]
         },
         {
             elem: 'column',
-            elemMods: { align:'right' },
+            elemMods: { align: 'right' },
             content: [
                 {
                     elem: 'burger',
@@ -36,8 +36,8 @@ block('header').content()(function() {
                     elemMods: { visible: false },
                     content: {
                         block: 'icon',
-                        mix : [ { block : 'header', elem: 'icon' } ],
-                        mods : { type : 'send2' },
+                        mix: [ { block: 'header', elem: 'icon' } ],
+                        mods: { type: 'send2' }
                     }
                 }
             ]

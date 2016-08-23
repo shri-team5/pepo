@@ -5,21 +5,21 @@ block('page').mod('view', 'feed').content()(function() {
             content: [
                 {
                     block: 'header',
-                    mix:{block:'page', elem:'header'}
+                    mix: { block:'page', elem:'header' }
                 },
                 {
                     elem: 'content-wrapper',
                     content: [
                         {
                             block: 'aside',
-                            js:true
+                            js: true
                         },
                         {
                             block: 'main',
-                            mix:{block:'page', elem:'main'},
-                            content:{
+                            mix: { block:'page', elem:'main' },
+                            content: {
                                 block: 'feed',
-                                mods : { visible: true },
+                                mods : { visible: true }
                             }
                         },
                         {
