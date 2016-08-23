@@ -21,7 +21,7 @@ provide(BEMDOM.decl(this.name, {
     },
 
     _onHeaderNewTweetEvent: function () {
-        ['new-tweet', 'feed'].map(function (block) {
+        ['new-tweet', 'main'].map(function (block) {
             this.findBlockInside(block).toggleMod('visible');
         }, this);
     },

@@ -1,23 +1,12 @@
-const axios = require('axios');
-const config = require('../config');
-
 const Render = require('../render'),
     render = Render.render;
 
 const feedPage = require('../pages/feed');
 
+const Api = require('../api');
+const Server = require('../api/server');
 
 const isDev = process.env.NODE_ENV === 'development';
-
-const instance = axios.create({
-    baseURL: "http://" + config.backendHost + ':' + config.backendPort,
-    timeout: config.backendTimeout,
-    headers: {
-        post: {
-            'Content-Type': 'application/json'
-        }
-    }
-});
 
 const get = (req, res) => {
 
@@ -28,18 +17,16 @@ const get = (req, res) => {
         params['userId'] = "57b86709eb4b20a0550e09a4";
     }
 
-
-    instance.get('/tweets', {
-        params: params
-    })
-        .then(response => {
-            render(req, res, feedPage(response.data));
-        })
+    Server.fetch(Api.getTweets(params))
+        .then(
+            response => {
+                render(req, res, feedPage(response));
+            }
+        )
         .catch(e => {
-            console.log('Gor error: ' + e.message);
-            render(req, res, feedPage([]));
+            console.log('Got error: ' + e.message); // eslint-disavle-line no-console
+            render(req, res, feedPage({error: e.message}));
         });
-
 };
 
 const post = (req, res) => {
@@ -56,14 +43,18 @@ const post = (req, res) => {
         request['userId'] = '57b86709eb4b20a0550e09a4'
     }
 
-    instance.post('/tweets', request)
-        .then(() => {
-            get(req, res);
+    Server.fetch(Api.postTweet(request))
+        .then((response) => {
+            if (response.error) {
+                res.send("Got error: " + response.error);
+            } else {
+                get(req, res);
+            }
+
         })
         .catch((e)=> {
             res.send("Got error: " + e.message);
         });
-
 
 };
 

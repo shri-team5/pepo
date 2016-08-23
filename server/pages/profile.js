@@ -1,8 +1,9 @@
-const profile = (tweets) => {
+const profile = (profile, tweets) => {
 
     return {
         view: 'profile',
         title: 'Profile page',
+        profile:profile,
         tweets:tweets,
         meta: {
             description: 'Page description',
