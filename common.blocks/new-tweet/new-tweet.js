@@ -5,11 +5,6 @@ modules.define('new-tweet', ['i-bem__dom'], function (provide, BEMDOM) {
                 js: function () {
                     this.on('new-tweet', console.log('emit happened'));
                 }
-            },
-            _onNewTweetClick: function () {
-                console.log('emit');
-                this.emit('new-tweet');
-                this.setMod('type', 'new');
             }
         })
     )
