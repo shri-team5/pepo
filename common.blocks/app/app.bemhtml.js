@@ -1,3 +1,3 @@
-block('header')(
+block('app')(
     js()(true)
 );

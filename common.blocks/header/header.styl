@@ -1,14 +1,33 @@
-.header{
-  display: flex
-  &__column{
-    display: flex
-    align-items: center
-    margin: 0 15px
-    flex: 1
-    &_align{
-      &_right{
-        justify-content: flex-end
-      }
+.header {
+    display: flex;
+
+    &__column {
+        display: flex;
+        align-items: center;
+        margin: 0 15px;
+        flex: 1
+
+        &_align {
+            &_right {
+                justify-content: flex-end;
+            }
+        }
     }
-  }
+
+    &__plus,
+    &__back,
+    &__burger,
+    &__submit {
+        display: none;
+
+        &_visible {
+            display: inherit;
+            font-size: 2.5rem;
+        }
+    }
+
+    &__icon {
+        width: 32px;
+        height: 32px;
+    }
 }

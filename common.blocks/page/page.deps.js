@@ -3,6 +3,7 @@
         {
             mods: { view: ['404', 'feed', 'profile', 'login', 'settings'] }
         },
+        'app',
         'header',
         'body',
         'footer',
@@ -10,6 +11,7 @@
         'aside',
         'login',
         'userinfo',
-        'profile-edit'
+        'profile-edit',
+        'new-tweet'
     ]
 })
