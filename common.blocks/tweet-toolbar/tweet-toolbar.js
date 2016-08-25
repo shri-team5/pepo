@@ -1,4 +1,4 @@
-modules.define('toolbar', ['i-bem__dom'], function (provide, BEMDOM) {
+modules.define('tweet-toolbar', ['i-bem__dom'], function (provide, BEMDOM) {
 
 provide(BEMDOM.decl(this.name,
     {

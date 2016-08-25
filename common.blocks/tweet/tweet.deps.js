@@ -1,8 +1,6 @@
 ({
     shouldDeps: [
-        'userpic',
-        'username',
-        'time',
-        'delimiter'
+        'tweet-item',
+        'tweet-toolbar'
     ]
 })
