@@ -1,4 +1,4 @@
-block('tweet-wrapper').content()(function() {
+block('tweet').content()(function() {
     return [
         {
             block: 'tweet-item',
