@@ -1,3 +1,3 @@
-block('tweet')(
+block('tweet-item')(
     elem('name').tag()('p')
 )

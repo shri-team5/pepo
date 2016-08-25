@@ -1,7 +1,7 @@
 block('tweet-wrapper').content()(function() {
     return [
         {
-            block: 'tweet',
+            block: 'tweet-item',
             data: this.ctx.data
         },
         {

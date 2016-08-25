@@ -18,7 +18,7 @@ block('page').content()(function() {
             ]
         },
         {
-            block : 'tweet'
+            block : 'tweet-item'
         },
         {
             block: 'footer'

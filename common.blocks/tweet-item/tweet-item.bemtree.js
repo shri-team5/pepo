@@ -1,4 +1,4 @@
-block('tweet').content()(function () {
+block('tweet-item').content()(function () {
     const data = this.ctx.data;
 
     return [
@@ -6,7 +6,7 @@ block('tweet').content()(function () {
             block: 'userpic',
             src: data.author.avatarPath,
             alt: data.author.username,
-            mix: {block: 'tweet', elem: 'userpic'}
+            mix: {block: 'tweet-item', elem: 'userpic'}
         },
         {
             elem: 'content',
@@ -17,7 +17,7 @@ block('tweet').content()(function () {
                         {
                             block: 'username',
                             content: data.author.fullName,
-                            mix: {block: 'tweet', elem: 'username'}
+                            mix: {block: 'tweet-item', elem: 'username'}
                         },
                         {
                             elem: 'created',
