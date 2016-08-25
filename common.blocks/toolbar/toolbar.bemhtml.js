@@ -1,3 +1,0 @@
-block('toolbar')(
-    js()(true)
-);

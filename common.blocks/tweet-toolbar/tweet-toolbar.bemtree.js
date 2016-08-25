@@ -1,4 +1,4 @@
-block('toolbar').content()(function() {
+block('tweet-toolbar').content()(function() {
     var data = this.ctx.data;
     var currentUser = this.ctx.user || { login: 'nobody' };
 
@@ -9,7 +9,7 @@ block('toolbar').content()(function() {
                 {
                     block: 'icon',
                     mods: { type: 'like' },
-                    mix: { block: 'toolbar', elem: 'like' }
+                    mix: { block: 'tweet-toolbar', elem: 'like' }
                 },
                 {
                     elem: 'count',
@@ -20,7 +20,7 @@ block('toolbar').content()(function() {
         {
             block: 'icon',
             mods: { type: 'reply' },
-            mix: { block: 'toolbar', elem: 'reply' }
+            mix: { block: 'tweet-toolbar', elem: 'reply' }
         },
         {
             block: 'retweet',
@@ -28,7 +28,7 @@ block('toolbar').content()(function() {
                 {
                     block: 'icon',
                     mods: { type: 'retweet' },
-                    mix: { block: 'toolbar', elem: 'retweet' }
+                    mix: { block: 'tweet-toolbar', elem: 'retweet' }
                 },
                 {
                     elem: 'count',
@@ -41,7 +41,7 @@ block('toolbar').content()(function() {
     (data.author.username === currentUser.login) && toolbar.push({
         block: 'icon',
         mods: { type: 'delete' },
-        mix: { block: 'toolbar', elem: 'delete' }
+        mix: { block: 'tweet-toolbar', elem: 'delete' }
     });
 
     return toolbar;

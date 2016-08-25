@@ -5,7 +5,7 @@ block('tweet-wrapper').content()(function() {
             data: this.ctx.data
         },
         {
-            block: 'toolbar',
+            block: 'tweet-toolbar',
             data: this.ctx.data
         }
     ];

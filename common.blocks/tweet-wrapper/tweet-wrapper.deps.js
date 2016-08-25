@@ -1,6 +1,6 @@
 ({
     shouldDeps: [
         'tweet-item',
-        'toolbar'
+        'tweet-toolbar'
     ]
 })
