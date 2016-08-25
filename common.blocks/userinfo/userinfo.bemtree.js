@@ -1,29 +1,44 @@
-block('userinfo').content()(()=>{
+block('userinfo').content()(function() { // eslint-disable-line no-undef
 
-    return [
-        {
-            block: 'userpic',
-            src: "http://placehold.it/96x96",
-            alt: "avatar",
-            mix: { block: 'userinfo', elem: 'userpic' }
-        },
-        {
+    const profile = this.data.profile;
+
+    if(profile.error){
+        return {
             elem: 'info',
             content:[
                 {
-                    elem:'fullname',
-                    content: "Вася Пупкин"
-                },
-                {
-                    elem:'username',
-                    content: "@superuser"
-                },
-                {
                     elem:'description',
-                    content: "Я программист"
+                    content: "Something going wrong :("
                 }
             ]
-        }
-    ]
+        };
+    }else{
+        return [
+            {
+                block: 'userpic',
+                src: profile.avatarPath,
+                alt: profile.username,
+                mix: { block: 'userinfo', elem: 'userpic' }
+            },
+            {
+                elem: 'info',
+                content:[
+                    {
+                        elem:'fullname',
+                        content: profile.fullName
+                    },
+                    {
+                        elem:'username',
+                        content: "@"+profile.username
+                    },
+                    {
+                        elem:'description',
+                        content: profile.description
+                    }
+                ]
+            }
+        ]
+    }
+
 
 });

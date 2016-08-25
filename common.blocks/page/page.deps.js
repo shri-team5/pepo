@@ -12,6 +12,7 @@
         'login',
         'userinfo',
         'profile-edit',
-        'new-tweet'
+        'new-tweet',
+        'main'
     ]
 })

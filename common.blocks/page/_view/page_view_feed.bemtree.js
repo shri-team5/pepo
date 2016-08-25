@@ -16,10 +16,10 @@ block('page').mod('view', 'feed').content()(function() {
                         },
                         {
                             block: 'main',
+                            mods : { visible: true },
                             mix: { block:'page', elem:'main' },
                             content: {
-                                block: 'feed',
-                                mods : { visible: true }
+                                block: 'feed'
                             }
                         },
                         {

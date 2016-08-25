@@ -1,27 +1,18 @@
-const axios = require('axios');
-const config = require('../config');
-
 const Render = require('../render'),
     render = Render.render;
 
-const feedPage = require('../pages/feed');
 const profilePage = require('../pages/profile');
+
+const Api = require('../api');
+const Server = require('../api/server');
 
 
 const isDev = process.env.NODE_ENV === 'development';
 
 
-const instance = axios.create({
-    baseURL: "http://" + config.backendHost + ':' + config.backendPort,
-    timeout: config.backendTimeout,
-    headers: {
-        post: {
-            'Content-Type': 'application/json'
-        }
-    }
-});
-
 const get = (req, res) => {
+
+    let {id} = req.params;
 
     let params = {
         userId: req.get('userId')
@@ -30,16 +21,15 @@ const get = (req, res) => {
         params['userId'] = "57b86709eb4b20a0550e09a4";
     }
 
-
-    instance.get('/tweets', {
-        params: params
-    })
-        .then(response => {
-            render(req, res, profilePage(response.data));
-        })
+    Server.fetchAsync([Api.getUserProfile(id, params), Api.getTweets(params)])
+        .then(
+            responses => {
+                render(req, res, profilePage(responses[0], responses[1]));
+            }
+        )
         .catch(e => {
             console.log('Gor error: ' + e.message);
-            render(req, res, profilePage([]));
+            render(req, res, profilePage({error: e.message}, {error: e.message}));
         });
 
 };
