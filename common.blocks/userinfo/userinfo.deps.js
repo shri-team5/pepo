@@ -1,6 +1,7 @@
 ({
     shouldDeps:[
         'userpic',
-        'username'
+        'username',
+        'counter'
     ]
 })

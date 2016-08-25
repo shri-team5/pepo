@@ -29,9 +29,9 @@ block('tweet-item').content()(function () {
                         }
                     ]
                 },
-                {
-                    block: 'delimiter'
-                },
+                // {
+                //     block: 'delimiter'
+                // },
                 {
                     elem: 'text',
                     content: data.text

@@ -1,8 +1,13 @@
-.main{
-  display: none;
+.main {
+  //display: none;
+  max-height calc(100vh - 90px);
+  overflow: hidden;
 
-  &_visible{
+  &_visible {
+    max-height: auto;
     display: block;
+    overflow: auto;
+
   }
 
 }

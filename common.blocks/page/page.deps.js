@@ -1,7 +1,7 @@
 ({
     shouldDeps: [
         {
-            mods: { view: ['404', 'feed', 'profile', 'login', 'settings'] }
+            mods: {view: ['404', 'feed', 'profile', 'login', 'settings', 'tweet']}
         },
         'app',
         'header',
@@ -13,6 +13,7 @@
         'userinfo',
         'profile-edit',
         'new-tweet',
-        'main'
+        'main',
+        'navigation'
     ]
 })

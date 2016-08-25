@@ -18,7 +18,7 @@ modules.define('header', ['i-bem__dom'], function (provide, BEMDOM) {
                 this.toggleMod(this.elem('back'), 'visible');
                 this.setMod(this.elem('plus'), 'visible', true);
 
-                this.setMod(this.elem('burger'), 'visible', true);
+                // this.setMod(this.elem('burger'), 'visible', true);
                 this.setMod(this.elem('submit'), 'visible', false);
             },
 
@@ -27,7 +27,7 @@ modules.define('header', ['i-bem__dom'], function (provide, BEMDOM) {
                 this.setMod(this.elem('back'), 'visible', true);
                 this.setMod(this.elem('plus'), 'visible', false);
 
-                this.setMod(this.elem('burger'), 'visible', false);
+                // this.setMod(this.elem('burger'), 'visible', false);
                 this.setMod(this.elem('submit'), 'visible', true);
             }
         })

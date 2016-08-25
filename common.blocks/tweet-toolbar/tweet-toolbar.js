@@ -8,9 +8,9 @@ provide(BEMDOM.decl(this.name,
                 var like = this.findBlockInside('like'),
                     retweet = this.findBlockInside('retweet');
 
-                like.bindTo('click', function (e) {
-                    console.log('like');
-                });
+                // like.bindTo('click', function (e) {
+                //     console.log('like');
+                // });
 
                 retweet.bindTo('click', function (e) {
                     console.log('retweet');
