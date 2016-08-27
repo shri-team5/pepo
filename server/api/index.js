@@ -17,6 +17,17 @@ const getUserProfile = (id, params) => {
     });
 };
 
+
+const getUserProfileForAuth = (id, provider, params) => {
+    return instance.get('/users/' + provider + '/' + id, {
+        params: params
+    });
+};
+
+const postUserProfile = (request) => {
+    return instance.post('/users/', request)
+};
+
 const getTweets = (params) => {
     return instance.get('/tweets', {
         params: params
@@ -30,5 +41,7 @@ const postTweet = (request) => {
 module.exports = {
     getTweets,
     postTweet,
-    getUserProfile
+    getUserProfile,
+    getUserProfileForAuth,
+    postUserProfile
 };

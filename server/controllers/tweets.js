@@ -12,11 +12,8 @@ const isDev = process.env.NODE_ENV === 'development';
 const get = (req, res) => {
 
     let params = {
-        userId: req.get('userId')
+        userId: req.user._id
     };
-    if (isDev) {
-        params['userId'] = "57b86709eb4b20a0550e09a4";
-    }
 
     Server.fetch(Api.getTweets(params))
         .then(
@@ -32,11 +29,8 @@ const get = (req, res) => {
 const getTweet = (req, res) => {
 
     let params = {
-        userId: req.get('userId')
+        userId: req.user._id
     };
-    if (isDev) {
-        params['userId'] = "57b86709eb4b20a0550e09a4";
-    }
 
     Server.fetch(Api.getTweets(params))
         .then(
@@ -79,12 +73,8 @@ const post = (req, res) => {
     let request = {
         text,
         type: 'text',
-        userId: req.get('userId')
+        userId: req.user._id
     };
-
-    if (isDev) {
-        request['userId'] = '57b86709eb4b20a0550e09a4'
-    }
 
     Server.fetch(Api.postTweet(request))
         .then((response) => {
