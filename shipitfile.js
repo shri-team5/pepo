@@ -23,7 +23,7 @@ module.exports = function(shipit) {
     });
 
     shipit.task('start', function() {
-        return shipit.remote(`cd ${deployToCurentPath} && npm install && npm run make && PORT=80 npm start`);
+        return shipit.remote(`cd ${deployToCurentPath} && npm install && npm run make && NODE_ENV=production npm start`);
     });
 
     shipit.task('stop', function() {
