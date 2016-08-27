@@ -1,12 +1,18 @@
 block('tweet').content()(function() {
+
     return [
         {
-            block: 'tweet-item',
-            data: this.ctx.data
-        },
-        {
-            block: 'tweet-toolbar',
-            data: this.ctx.data
+            elem:'item',
+            content:[
+                {
+                    block: 'tweet-item',
+                    data: this.ctx.data
+                },
+                {
+                    block: 'tweet-toolbar',
+                    data: this.ctx.data
+                }
+            ]
         }
     ];
 });

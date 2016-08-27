@@ -14,6 +14,10 @@ block('root').replace()(function() {
             {
                 elem: 'css',
                 url: '/index.min.css'
+            },
+            {
+                elem: 'css',
+                url: 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700&subset=cyrillic,cyrillic-ext'
             }
         ],
         scripts: [

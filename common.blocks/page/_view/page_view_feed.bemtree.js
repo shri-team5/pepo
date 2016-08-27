@@ -10,10 +10,10 @@ block('page').mod('view', 'feed').content()(function() {
                 {
                     elem: 'content-wrapper',
                     content: [
-                        {
-                            block: 'aside',
-                            js: true
-                        },
+                        // {
+                        //     block: 'aside',
+                        //     js: true
+                        // },
                         {
                             block: 'main',
                             mods : { visible: true },
@@ -24,6 +24,9 @@ block('page').mod('view', 'feed').content()(function() {
                         },
                         {
                             block : 'new-tweet'
+                        },
+                        {
+                            block: 'navigation'
                         }
                     ]
                 }

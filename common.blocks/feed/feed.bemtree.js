@@ -1,8 +1,11 @@
 block('feed').content()(function() {
-    if (this.data.tweets.error) {
+
+    const {tweets} = this.data;
+
+    if (tweets.error) {
         return 'Something going wrong :(';
     } else {
-        return this.data.tweets.data.map(item => ({
+        return tweets.data.map(item => ({
             block: 'tweet',
             data: item
         }));

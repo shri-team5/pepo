@@ -3,36 +3,36 @@ block('tweet-toolbar').content()(function() {
     var currentUser = this.ctx.user || { login: 'nobody' };
 
     var toolbar = [
+        // {
+        //     block: 'like',
+        //     content: [
+        //         {
+        //             block: 'icon',
+        //             mods: { type: 'like' },
+        //             mix: { block: 'tweet-toolbar', elem: 'like' }
+        //         },
+        //         {
+        //             elem: 'count',
+        //             content: data.likes || ''
+        //         }
+        //     ]
+        // },
+        // {
+        //     block: 'icon',
+        //     mods: { type: 'reply' },
+        //     mix: { block: 'tweet-toolbar', elem: 'reply' }
+        // },
         {
-            block: 'like',
+            block: 'reply',
             content: [
                 {
                     block: 'icon',
-                    mods: { type: 'like' },
-                    mix: { block: 'tweet-toolbar', elem: 'like' }
+                    mods: { type: 'reply' },
+                    mix: { block: 'tweet-toolbar', elem: 'reply' }
                 },
                 {
                     elem: 'count',
-                    content: data.likes || ''
-                }
-            ]
-        },
-        {
-            block: 'icon',
-            mods: { type: 'reply' },
-            mix: { block: 'tweet-toolbar', elem: 'reply' }
-        },
-        {
-            block: 'retweet',
-            content: [
-                {
-                    block: 'icon',
-                    mods: { type: 'retweet' },
-                    mix: { block: 'tweet-toolbar', elem: 'retweet' }
-                },
-                {
-                    elem: 'count',
-                    content: data.retweets || ''
+                    content: data.reply || ''
                 }
             ]
         }

@@ -1,8 +1,11 @@
-block('page').mod('view', 'profile').content()(function () {
+block('page').mod('view', 'tweet').content()(function () { // eslint-disable-line no-undef
+
+    const {parentTweet} = this.data;
+
     return [
         {
-            block:'app',
-            content:[
+            block: 'app',
+            content: [
                 {
                     block: 'header',
                     mix: {block: 'page', elem: 'header'}
@@ -10,17 +13,15 @@ block('page').mod('view', 'profile').content()(function () {
                 {
                     elem: 'content-wrapper',
                     content: [
-                        // {
-                        //     block: 'aside',
-                        //     js: true
-                        // },
                         {
                             block: 'main',
-                            mods : { visible: true },
+                            mods: {visible: true},
                             mix: {block: 'page', elem: 'main'},
                             content: [
                                 {
-                                    block: 'userinfo'
+                                    block: 'tweet',
+                                    data: parentTweet,
+                                    mods: {parent: true}
                                 },
                                 {
                                     block: 'feed'
@@ -28,7 +29,7 @@ block('page').mod('view', 'profile').content()(function () {
                             ]
                         },
                         {
-                            block : 'new-tweet'
+                            block: 'new-tweet'
                         },
                         {
                             block: 'navigation'

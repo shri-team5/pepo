@@ -24,13 +24,13 @@ block('header').content()(function() {
             elem: 'column',
             elemMods: { align: 'right' },
             content: [
-                {
-                    elem: 'burger',
-                    elemMods: { visible: true },
-                    content: {
-                        block: 'burger'
-                    }
-                },
+                // {
+                //     elem: 'burger',
+                //     elemMods: { visible: true },
+                //     content: {
+                //         block: 'burger'
+                //     }
+                // },
                 {
                     elem: 'submit',
                     elemMods: { visible: false },

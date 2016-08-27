@@ -17,9 +17,12 @@ const get = (req, res) => {
     let params = {
         userId: req.get('userId')
     };
+    if(!id) id = req.get('userId');
     if (isDev) {
         params['userId'] = "57b86709eb4b20a0550e09a4";
+        if(!id) id = "57b86709eb4b20a0550e09a4";
     }
+
 
     Server.fetchAsync([Api.getUserProfile(id, params), Api.getTweets(params)])
         .then(

@@ -1,19 +1,22 @@
 .new-tweet {
-    display: none;
+  //display: none;
+  position: absolute;
+  left: -100vw;
+  right: 0;
+  bottom: 0;
+  top: 47px;
+  width: 100vw;
+  height: calc(100vh - 50px);
+  background: white;
 
-    &_visible {
-        display: block;
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        top: 47px;
-        width: 100vw;
-        height: calc(100vh - 46px);
-        background: white;
-    }
+  transition: left 0.3s 0s;
+  z-index: 100;
+  &_visible {
+    //display: block;
+    left: 0;
+  }
 
-    &__input {
-        height: 100%;
-    }
+  &__input {
+    height: 100%;
+  }
 }
