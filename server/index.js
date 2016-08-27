@@ -12,7 +12,6 @@ var fs = require('fs'),
     expressSession = require('express-session'),
     slashes = require('connect-slashes'),
     passport = require('passport'),
-    LocalStrategy = require('passport-local').Strategy,
 
     config = require('./config'),
     staticFolder = config.staticFolder,
@@ -24,6 +23,9 @@ var fs = require('fs'),
     port = process.env.PORT || config.defaultPort,
     isSocket = isNaN(port),
     isDev = process.env.NODE_ENV === 'development';
+
+
+require('./passport')(passport);
 
 app
     .disable('x-powered-by')
@@ -43,45 +45,24 @@ app
     .use(slashes());
 // TODO: csrf, gzip
 
-passport.serializeUser(function (user, done) {
-    done(null, JSON.stringify(user));
-});
-
-passport.deserializeUser(function (user, done) {
-    done(null, JSON.parse(user));
-});
-
-
+// routers import
+const authRouter = require('./routers/auth.js');
 const tweetsRouter = require('./routers/tweets');
 const profileRouter = require('./routers/profile');
+const registrationRouter = require('./routers/registration');
+
+// middleware import
+const isLoggedIn = require('./middleware').isLoggedIn;
+const isRegisteredIn = require('./middleware').isRegisteredIn;
 
 
-app.get('/ping/', function (req, res) {
-    res.send('ok');
-});
 
-app.get('/', tweetsRouter);
-app.use('/tweets', tweetsRouter);
-app.use('/profile', profileRouter);
-
-
-app.get('/login', function (req, res) {
-
-    render(req, res, {
-        view: 'login',
-        title: 'Login page',
-        meta: {
-            description: 'Page description',
-            og: {
-                url: 'https://site.com',
-                siteName: 'Site name'
-            }
-        }
-    })
-
-});
-
-app.get('/settings', function (req, res) {
+authRouter(app, passport);
+app.get('/', isLoggedIn, isRegisteredIn, tweetsRouter);
+app.use('/registration', isLoggedIn, registrationRouter);
+app.use('/tweets',isLoggedIn,isRegisteredIn,  tweetsRouter);
+app.use('/profile',isLoggedIn,isRegisteredIn, profileRouter);
+app.get('/settings',isLoggedIn,isRegisteredIn, function (req, res) {
 
     render(req, res, {
         view: 'settings',
@@ -109,8 +90,6 @@ if (isDev) {
 
     app.use(require('errorhandler')());
 }
-
-isSocket && fs.existsSync(port) && fs.unlinkSync(port);
 
 app.listen(port, function () {
     isSocket && fs.chmod(port, '0777');

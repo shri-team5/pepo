@@ -12,7 +12,7 @@ block('login').content()(function () {
                     elem: 'vk',
                     mix: {elem: 'soc'},
                     attrs: {
-                        href: "https://vk.com"
+                        href: "/auth/vkontakte"
                     }
 
                 },
@@ -20,7 +20,7 @@ block('login').content()(function () {
                     elem: 'fb',
                     mix: {elem: 'soc'},
                     attrs: {
-                        href: "https://facebook.com"
+                        href: "/auth/facebook"
                     }
 
                 }
