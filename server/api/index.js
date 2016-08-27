@@ -33,6 +33,11 @@ const getTweets = (params) => {
         params: params
     });
 };
+const searchTweets = (params) => {
+    return instance.get('/tweets/world', {
+        params: params
+    });
+};
 
 const postTweet = (request) => {
     return instance.post('/tweets', request)
@@ -43,5 +48,6 @@ module.exports = {
     postTweet,
     getUserProfile,
     getUserProfileForAuth,
-    postUserProfile
+    postUserProfile,
+    searchTweets
 };

@@ -7,8 +7,6 @@ const tweetPage = require('../pages/tweet');
 const Api = require('../api');
 const Server = require('../api/server');
 
-const isDev = process.env.NODE_ENV === 'development';
-
 const get = (req, res) => {
 
     let params = {
@@ -81,7 +79,7 @@ const post = (req, res) => {
             if (response.error) {
                 res.send("Got error: " + response.error);
             } else {
-                get(req, res);
+                res.redirect('/');
             }
 
         })

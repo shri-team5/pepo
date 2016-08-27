@@ -15,7 +15,7 @@ block('navigation').content()(function () {// eslint-disable-line no-undef
         {
             elem:'item',
             attrs:{
-                href:'/'
+                href:'/search'
             },
             content:{
                 block: 'icon',

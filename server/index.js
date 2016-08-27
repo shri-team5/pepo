@@ -48,6 +48,7 @@ app
 // routers import
 const authRouter = require('./routers/auth.js');
 const tweetsRouter = require('./routers/tweets');
+const searchRouter = require('./routers/search');
 const profileRouter = require('./routers/profile');
 const registrationRouter = require('./routers/registration');
 
@@ -61,6 +62,7 @@ authRouter(app, passport);
 app.get('/', isLoggedIn, isRegisteredIn, tweetsRouter);
 app.use('/registration', isLoggedIn, registrationRouter);
 app.use('/tweets',isLoggedIn,isRegisteredIn,  tweetsRouter);
+app.use('/search',isLoggedIn,isRegisteredIn,  searchRouter);
 app.use('/profile',isLoggedIn,isRegisteredIn, profileRouter);
 app.get('/settings',isLoggedIn,isRegisteredIn, function (req, res) {
 
