@@ -1,0 +1,7 @@
+.menu-item_theme_islands.menu-item_type_link .link {
+  font-family: 'Open Sans', sans-serif;
+}
+.menu-item_theme_islands.menu-item_hovered {
+  cursor: pointer;
+  background-color: #fdaccf;
+}

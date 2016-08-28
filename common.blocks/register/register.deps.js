@@ -6,11 +6,6 @@
                 theme: 'islands'
             }
         },
-        {
-            block: 'button',
-            mods: {
-                theme: 'islands'
-            }
-        }
+        'logo'
     ]
 })
