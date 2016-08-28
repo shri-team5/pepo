@@ -18,7 +18,9 @@ block('root').replace()(function() {
             {
                 elem: 'css',
                 url: 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700&subset=cyrillic,cyrillic-ext'
-            }
+            },
+            { elem : 'css', url : '/icon_128.png' , attrs : { rel : 'icon' } },
+            { elem : 'css', url : '/icon_200.png' , attrs : { rel : 'apple-touch-icon' } }
         ],
         scripts: [
             {
@@ -36,6 +38,7 @@ block('root').replace()(function() {
             { elem: 'meta', attrs: { property: 'og:locale', content: og.locale || 'en_US' } },
             { elem: 'meta', attrs: { property: 'og:type', content: 'website' } },
             { elem : 'meta', attrs : { name : 'viewport', content : 'width=device-width, initial-scale=1' } }
+
         ],
         mods: {
             theme: 'islands',

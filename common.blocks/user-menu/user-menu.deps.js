@@ -21,6 +21,7 @@
                 theme: 'islands'
             }
         },
-        'menu-item'
+        'menu-item',
+        'link'
     ]
 })
