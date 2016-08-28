@@ -1,4 +1,7 @@
 
+const config = require('./config'),
+    isDev = process.env.NODE_ENV === 'development';
+
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {
 
@@ -6,7 +9,15 @@ function isLoggedIn(req, res, next) {
     if (req.isAuthenticated())
         return next();
 
-    res.redirect('/auth/');
+    if(isDev){
+        req.login(config.testUser, function(err) {
+            if (err) return next(err);
+            return next();
+        });
+    }else{
+        res.redirect('/auth/');
+    }
+
 }
 
 function isRegisteredIn(req, res, next) {
