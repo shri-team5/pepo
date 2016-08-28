@@ -27,6 +27,8 @@ block('root').replace()(function() {
             }
         ],
         head: [
+            { elem: 'meta', attrs: { name: 'mobile-web-app-capable', content: 'yes' } },
+            { elem: 'meta', attrs: { name: 'apple-mobile-web-app-capable', content: 'yes' } },
             { elem: 'meta', attrs: { name: 'description', content: meta.description } },
             { elem: 'meta', attrs: { property: 'og:title', content: og.title || data.title } },
             { elem: 'meta', attrs: { property: 'og:url', content: og.url } },

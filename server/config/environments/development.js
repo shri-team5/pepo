@@ -8,6 +8,11 @@ module.exports = {
     backendPort: 8080,
     backendTimeout: 1000,
 
+    testUser:{
+        _id: '57c29a59a4e9e10e147b6c66',
+        username: 'grimfri'
+    },
+
     auth:{
         facebookAuth : {
             clientID      : 1733169776932912, // your App ID

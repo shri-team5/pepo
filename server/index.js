@@ -56,8 +56,6 @@ const registrationRouter = require('./routers/registration');
 const isLoggedIn = require('./middleware').isLoggedIn;
 const isRegisteredIn = require('./middleware').isRegisteredIn;
 
-
-
 authRouter(app, passport);
 app.get('/', isLoggedIn, isRegisteredIn, tweetsRouter);
 app.use('/registration', isLoggedIn, registrationRouter);
