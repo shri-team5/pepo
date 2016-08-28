@@ -1,4 +1,4 @@
-modules.define('app', ['i-bem__dom'], function (provide, BEMDOM) {
+modules.define('app', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) {
 
     provide(BEMDOM.decl(this.name, {
         onSetMod: {
@@ -16,6 +16,9 @@ modules.define('app', ['i-bem__dom'], function (provide, BEMDOM) {
                         this._onHeaderSubmit,
                         this
                     );
+
+                    // Навеситься на событие скрола ленты (блок main)
+                    this.findBlockInside('main').on('getMoreTweets', this._onGetMoreTweets, this)
                 }
             }
         },
@@ -28,6 +31,42 @@ modules.define('app', ['i-bem__dom'], function (provide, BEMDOM) {
 
         _onHeaderSubmit: function () {
             this.findBlockInside('new-tweet').domElem.submit();
+        },
+
+        _getMoreTweets: function () {
+            return new Promise(function (resolve, reject) {
+                $.ajax({
+                    url: '/',
+                    type: 'get'
+                    data: {
+                        offset: 0,
+                        count: 2
+                    }
+                }).done(function (data) {
+                    resolve(data);
+                }).fail(reject(err));
+            });
+        },
+
+        _onGetMoreTweets: function () {
+            // Выставляем модификатор на блок, чтобы не триггерить его много раз
+            this.findBlockInside('feed').toggleMod('loading');
+
+            // Получаем твиты и аппендим к ленте
+            console.log('Getting more tweets');
+            this._getMoreTweets().then(function (tweets) {
+                console.log(tweets);
+                BEMDOM.append(
+                    this.findBlockInside('feed'),
+                    '<div class="tweet">data</div>'
+                );
+            }.bind(this));
+
+            // Аппендим к ленте
+            console.log('Appending to feed');
+
+            // Снимаем модификатор loading
+            this.findBlockInside('feed').toggleMod('loading');
         }
     }));
 
