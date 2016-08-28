@@ -37,14 +37,15 @@ modules.define('app', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) {
             return new Promise(function (resolve, reject) {
                 $.ajax({
                     url: '/',
-                    type: 'get'
+                    type: 'get',
                     data: {
-                        offset: 0,
-                        count: 2
+                        offset: 2,
+                        count: 5
+                    },
+                    success: function (response) {
+                        resolve(response);
                     }
-                }).done(function (data) {
-                    resolve(data);
-                }).fail(reject(err));
+                });
             });
         },
 
@@ -55,6 +56,7 @@ modules.define('app', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) {
             // Получаем твиты и аппендим к ленте
             console.log('Getting more tweets');
             this._getMoreTweets().then(function (tweets) {
+                console.log('Promise has done');
                 console.log(tweets);
                 BEMDOM.append(
                     this.findBlockInside('feed'),
