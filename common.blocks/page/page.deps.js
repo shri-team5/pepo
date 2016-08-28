@@ -1,7 +1,7 @@
 ({
     shouldDeps: [
         {
-            mods: {view: ['404', 'feed', 'profile', 'login', 'settings', 'tweet', 'registration']}
+            mods: {view: ['404', 'feed', 'profile', 'login', 'settings', 'tweet', 'registration', 'search']}
         },
         'app',
         'header',
