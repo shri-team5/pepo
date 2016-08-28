@@ -1,13 +1,20 @@
 block('register').content()(function () {
     return [
         {
+            block:'logo'
+        },
+        {
+            elem:'title',
+            content: 'Придумайте логин'
+        },
+        {
             elem:'field',
             content:[
                 {
                     block: 'input',
                     mods: {theme: 'islands', size: 'l'},
                     name:'username',
-                    placeholder: 'Введите логин ',
+                    placeholder: '',
                     mix: {block: 'profile-edit', elem: 'input'}
                 }
             ]
@@ -16,12 +23,10 @@ block('register').content()(function () {
             elem:'actions',
             content:[
                 {
-                    elem: 'button',
-                    content: {
-                        block: 'button',
-                        mods: {theme: 'islands', size: 'l', type: 'submit'},
-                        text: 'Сохранить'
-                    }
+                    block: 'button',
+                    attrs: {type: 'submit'},
+                    text: '&#10003;',
+                    mix:{block:'register', elem: 'button'}
                 }
             ]
         }
