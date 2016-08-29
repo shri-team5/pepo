@@ -17,6 +17,8 @@ block('tweet-item').content()(function () {
                         {
                             block: 'username',
                             content: data.author.fullName,
+                            href: "/profile/" + data.author._id,
+                            title: '@' + data.author.username,
                             mix: {block: 'tweet-item', elem: 'username'}
                         },
                         {

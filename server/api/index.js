@@ -17,6 +17,12 @@ const getUserProfile = (id, params) => {
     });
 };
 
+const getUserProfileByUsername = (username, params) => {
+    return instance.get('/users/username/' + username, {
+        params: params
+    });
+};
+
 
 const getUserProfileForAuth = (id, provider, params) => {
     return instance.get('/users/' + provider + '/' + id, {
@@ -47,6 +53,7 @@ module.exports = {
     getTweets,
     postTweet,
     getUserProfile,
+    getUserProfileByUsername,
     getUserProfileForAuth,
     postUserProfile,
     searchTweets

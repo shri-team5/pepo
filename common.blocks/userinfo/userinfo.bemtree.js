@@ -2,18 +2,18 @@ block('userinfo').content()(function () { // eslint-disable-line no-undef
 
     const profile = this.data.profile;
 
-    if(profile.error){
+    if (profile.error) {
 
         return {
             elem: 'info',
-            content:[
+            content: [
                 {
-                    elem:'description',
+                    elem: 'description',
                     content: "Something going wrong :("
                 }
             ]
         };
-    }else{
+    } else {
         return [
             {
                 elem: 'row',
@@ -22,28 +22,31 @@ block('userinfo').content()(function () { // eslint-disable-line no-undef
                         block: 'userpic',
                         src: profile.data.avatarPath,
                         alt: profile.data.username,
-                        mix: { block: 'userinfo', elem: 'userpic' }
+                        mix: {block: 'userinfo', elem: 'userpic'}
                     },
                     {
                         elem: 'info',
-                        content:[
+                        content: [
                             {
-                                elem:'fullname',
+                                elem: 'fullname',
+                                attrs: {
+                                    href: "/profile/" + profile.data._id
+                                },
                                 content: profile.data.fullName
                             },
                             {
-                                elem:'username',
-                                content: "@"+profile.data.username
+                                elem: 'username',
+                                content: "@" + profile.data.username
                             },
                             {
-                                elem:'description',
+                                elem: 'description',
                                 content: profile.data.description
                             }
                         ]
                     },
                     {
                         block: 'user-menu',
-                        mix: { block: 'userinfo', elem: 'user-menu' }
+                        mix: {block: 'userinfo', elem: 'user-menu'}
                     }
                 ]
             },
@@ -64,7 +67,7 @@ block('userinfo').content()(function () { // eslint-disable-line no-undef
                             {
                                 block: 'counter',
                                 data: {
-                                    number: '53',
+                                    number: profile.data.subscriptions.length,
                                     text: 'читает'
                                 },
                                 mix: {block: 'userinfo', elem: 'counter'}
