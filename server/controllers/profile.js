@@ -7,17 +7,12 @@ const Api = require('../api');
 const Server = require('../api/server');
 
 const get = (req, res) => {
-
     let {id} = req.params;
-
-
     if (!id) id = req.user._id;
-
     let params = {
         userId: id
-    };
-
-
+    }; 
+    
     Server.fetchAsync([Api.getUserProfile(id, params), Api.getTweets(params)])
         .then(
             responses => {
@@ -56,13 +51,8 @@ const getByUsername = (req, res) => {
 
 };
 
-const post = (req, res) => {
-    res.send('Got post /profile')
-};
-
 module.exports = {
     get,
-    getByUsername,
-    post
+    getByUsername
 };
 

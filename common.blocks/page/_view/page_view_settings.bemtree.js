@@ -7,16 +7,13 @@ block('page').mod('view', 'settings').content()(function() {
         {
             elem: 'content-wrapper',
             content: [
-                // {
-                //     block: 'aside',
-                //     js:true
-                // },
                 {
                     block: 'main',
                     mods : { visible: true },
                     mix:{block:'page', elem:'main'},
                     content:{
-                        block:'profile-edit'
+                        block:'profile-edit',
+                        data: this.data
                     }
                 },
                 {

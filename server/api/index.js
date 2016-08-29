@@ -34,6 +34,10 @@ const postUserProfile = (request) => {
     return instance.post('/users/', request)
 };
 
+const updateUserProfile = (id, request) => {
+    return instance.put('/users/'+id, request)
+};
+
 const getTweets = (params) => {
     return instance.get('/tweets', {
         params: params
@@ -56,5 +60,6 @@ module.exports = {
     getUserProfileByUsername,
     getUserProfileForAuth,
     postUserProfile,
-    searchTweets
+    searchTweets,
+    updateUserProfile
 };

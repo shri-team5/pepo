@@ -51,6 +51,7 @@ const tweetsRouter = require('./routers/tweets');
 const searchRouter = require('./routers/search');
 const profileRouter = require('./routers/profile');
 const registrationRouter = require('./routers/registration');
+const settingsRouter = require('./routers/settings');
 
 // middleware import
 const isLoggedIn = require('./middleware').isLoggedIn;
@@ -62,21 +63,7 @@ app.use('/registration', isLoggedIn, registrationRouter);
 app.use('/tweets',isLoggedIn,isRegisteredIn,  tweetsRouter);
 app.use('/search',isLoggedIn,isRegisteredIn,  searchRouter);
 app.use('/profile',isLoggedIn,isRegisteredIn, profileRouter);
-app.get('/settings',isLoggedIn,isRegisteredIn, function (req, res) {
-
-    render(req, res, {
-        view: 'settings',
-        title: 'Settings',
-        meta: {
-            description: 'Page description',
-            og: {
-                url: 'https://site.com',
-                siteName: 'Site name'
-            }
-        }
-    })
-
-});
+app.use('/settings',isLoggedIn,isRegisteredIn, settingsRouter);
 
 app.get('*', function (req, res) {
     res.status(404);
