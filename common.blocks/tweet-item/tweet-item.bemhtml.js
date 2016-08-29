@@ -1,3 +1,4 @@
 block('tweet-item')(
-    elem('name').tag()('p')
+    elem('name').tag()('p'),
+    elem('username').tag()('a')
 )
