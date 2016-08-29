@@ -5,15 +5,14 @@ block('page').mod('view', 'profile').content()(function () {
             content:[
                 {
                     block: 'header',
+                    mods:{
+                      type:'profile'
+                    },
                     mix: {block: 'page', elem: 'header'}
                 },
                 {
                     elem: 'content-wrapper',
                     content: [
-                        // {
-                        //     block: 'aside',
-                        //     js: true
-                        // },
                         {
                             block: 'main',
                             mods : { visible: true },

@@ -5,15 +5,10 @@ provide(BEMDOM.decl(this.name,
         // методы экземпляра
         onSetMod: {
             js: function () {
-                var like = this.findBlockInside('like'),
-                    retweet = this.findBlockInside('retweet');
+                var reply = this.findBlockInside('reply');
 
-                // like.bindTo('click', function (e) {
-                //     console.log('like');
-                // });
-
-                retweet.bindTo('click', function (e) {
-                    console.log('retweet');
+                reply.bindTo('click', function (e) {
+                    console.log('reply');
                 });
             }
         }

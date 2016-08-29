@@ -43,11 +43,7 @@ block('userinfo').content()(function () { // eslint-disable-line no-undef
                                 content: profile.data.description
                             }
                         ]
-                    },
-                    {
-                        block: 'user-menu',
-                        mix: {block: 'userinfo', elem: 'user-menu'}
-                    }
+                    }                    
                 ]
             },
             {

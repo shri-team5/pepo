@@ -1,3 +1,4 @@
 block('header')(
-    js()(true)
+    js()(true),
+    elem('link').tag()('a')
 );

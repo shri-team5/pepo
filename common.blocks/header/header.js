@@ -15,20 +15,15 @@ modules.define('header', ['i-bem__dom'], function (provide, BEMDOM) {
 
             _onBackClick: function () {
                 this.emit('header-back');
-                this.toggleMod(this.elem('back'), 'visible');
-                this.setMod(this.elem('plus'), 'visible', true);
+                this.toggleMod(this.elem('standard'), 'visible');
+                this.toggleMod(this.elem('newTweet'), 'visible');
 
-                // this.setMod(this.elem('burger'), 'visible', true);
-                this.setMod(this.elem('submit'), 'visible', false);
             },
 
             _onNewTweetClick: function () {
                 this.emit('header-new-tweet');
-                this.setMod(this.elem('back'), 'visible', true);
-                this.setMod(this.elem('plus'), 'visible', false);
-
-                // this.setMod(this.elem('burger'), 'visible', false);
-                this.setMod(this.elem('submit'), 'visible', true);
+                this.toggleMod(this.elem('standard'), 'visible');
+                this.toggleMod(this.elem('newTweet'), 'visible');
             }
         })
     )
