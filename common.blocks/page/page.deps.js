@@ -3,8 +3,11 @@
         {
             mods: {view: ['404', 'feed', 'profile', 'login', 'settings', 'tweet', 'registration', 'search']}
         },
+        {
+          block:'header',
+            mods: { type: ['profile', 'settings']}
+        },
         'app',
-        'header',
         'body',
         'footer',
         'feed',

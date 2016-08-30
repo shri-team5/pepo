@@ -1,36 +1,48 @@
 .header {
+  display: flex;
+
+  background: linear-gradient(to right, #944a71, #d95d92);
+
+  &__column {
     display: flex;
+    align-items: center;
+    margin: 0 15px;
+    flex: 1
 
-    background: linear-gradient(to right, #944a71,#d95d92);
-
-    &__column {
-        display: flex;
-        align-items: center;
-        margin: 0 15px;
-        flex: 1
-
-        &_align {
-            &_right {
-                justify-content: flex-end;
-            }
-        }
+    &_align {
+      &_right {
+        justify-content: flex-end;
+      }
     }
+  }
 
-    &__plus,
-    &__back,
-    &__burger,
-    &__submit {
-        display: none;
-        color: #fff;
+  &__plus,
+  &__back,
+  &__burger,
+  &__submit {
+    //display: none;
+    color: #fff;
+    font-size: 2.5rem;
+    display: flex;
+    align-items: center
 
-        &_visible {
-            display: inherit;
-            font-size: 2.5rem;
-        }
+  }
+
+  &__icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  &__standard {
+    display: none;
+    &_visible {
+      display: inherit;
     }
-
-    &__icon {
-        width: 22px;
-        height: 22px;
+  }
+  &__newTweet {
+    display: none;
+    &_visible {
+      display: inherit;
     }
+  }
 }

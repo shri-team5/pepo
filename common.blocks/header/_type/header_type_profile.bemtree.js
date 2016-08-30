@@ -1,4 +1,4 @@
-block('header').content()(function () {
+block('header').mod('type', 'profile').content()(function () {
     return [
         {
             elem: 'column',
@@ -36,7 +36,11 @@ block('header').content()(function () {
                 {
                     elem: 'standard',
                     elemMods: {visible: true},
-                    content: []
+                    content: [
+                        {
+                            block: 'user-menu'
+                        }
+                    ]
                 },
                 {
                     elem: 'newTweet',
