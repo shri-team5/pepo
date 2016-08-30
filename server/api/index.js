@@ -35,7 +35,7 @@ const postUserProfile = (request) => {
 };
 
 const updateUserProfile = (id, request) => {
-    return instance.put('/users/'+id, request)
+    return instance.put('/users/' + id, request)
 };
 
 const getTweets = (params) => {
@@ -53,6 +53,13 @@ const postTweet = (request) => {
     return instance.post('/tweets', request)
 };
 
+const subscribe = (id, request) => {
+    return instance.post('/users/subscribe/' + id, request)
+};
+const unsubscribe = (id, request) => {
+    return instance.post('/users/unsubscribe/' + id, request)
+};
+
 module.exports = {
     getTweets,
     postTweet,
@@ -61,5 +68,7 @@ module.exports = {
     getUserProfileForAuth,
     postUserProfile,
     searchTweets,
-    updateUserProfile
+    updateUserProfile,
+    subscribe,
+    unsubscribe
 };

@@ -1,7 +1,11 @@
 ({
-    shouldDeps:[
+    shouldDeps: [
         'userpic',
         'username',
-        'counter'
+        'counter',
+        {
+            block: 'subscribe',
+            mods: ['subscribed']
+        }
     ]
 })
