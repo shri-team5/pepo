@@ -13,7 +13,8 @@ block('page').mod('view', 'settings').content()(function() {
                     mods : { visible: true },
                     mix:{block:'page', elem:'main'},
                     content:{
-                        block:'profile-edit'
+                        block:'profile-edit',
+                        data: this.data
                     }
                 },
                 {
