@@ -1,6 +1,6 @@
 block('userinfo').content()(function () { // eslint-disable-line no-undef
 
-    const profile = this.data.profile;
+    const {profile, user} = this.data;
 
     if (profile.error) {
 
@@ -43,7 +43,7 @@ block('userinfo').content()(function () { // eslint-disable-line no-undef
                                 content: profile.data.description
                             }
                         ]
-                    }                    
+                    }
                 ]
             },
             {
@@ -77,6 +77,24 @@ block('userinfo').content()(function () { // eslint-disable-line no-undef
                                 mix: {block: 'userinfo', elem: 'counter'}
                             }
                         ]
+                    }
+                ]
+            },
+            {
+                elem: 'row',
+                content: [
+                    {
+                        elem: 'subscribe',
+                        content: {
+                            block: 'subscribe',
+                            mods: {
+                                subscribed: user.data.subscriptions.indexOf(profile.data._id) >= 0,
+                                hidden: user.data._id == profile.data._id
+                            },
+                            attrs: {
+                                "data-user_id": profile.data._id
+                            }
+                        }
                     }
                 ]
             }
