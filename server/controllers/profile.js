@@ -33,7 +33,7 @@ const get = (req, res) => {
                         { block: 'tweet', data: item }
                     )));
                 } else {
-                    render(req, res, profilePage(responses[0], responses[1]));
+                    render(req, res, profilePage(responses[0], responses[1], responses[2]));
                 }
             }
         )

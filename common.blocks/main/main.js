@@ -12,10 +12,10 @@ modules.define('main', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) {
                             offset = scroll + view,
                             feedHeight = feed.domElem.height();
 
-                        console.log(offset, feedHeight, this.hasMod('loading'));
+                        // console.log(offset, feedHeight, this.hasMod('loading'));
                         // Если всё ок, то эмитим БЭМ-событие
                         if ((offset > feedHeight) && (!this.hasMod('loading'))) {
-                            console.log('emit loading more tweets');
+                            // console.log('emit loading more tweets');
                             this.emit('getMoreTweets');
                         }
                     });
