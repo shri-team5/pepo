@@ -6,21 +6,39 @@ const profilePage = require('../pages/profile');
 const Api = require('../api');
 const Server = require('../api/server');
 
+const config = require('./config');
+
+const isDev = process.env.NODE_ENV === 'development';
+
 const get = (req, res) => {
+
     let {id} = req.params;
     if (!id) id = req.user._id;
     let params = {
-        userId: id
+        userId: id,
+        count: config.initialCount
     };
+    const isQueryParamsExist = req.query.offset || req.query.count;
+
+    if (isQueryParamsExist) {
+        params.offset = req.query.offset;
+        params.count = req.query.count;
+    }
 
     Server.fetchAsync([Api.getUserProfile(id, params), Api.getTweets(params), Api.getUserProfile(req.user._id, params)])
         .then(
             responses => {
-                render(req, res, profilePage(responses[0], responses[1], responses[2]));
+                if (isQueryParamsExist) {
+                    render(req, res, null, responses[1].data.map(item => (
+                        { block: 'tweet', data: item }
+                    )));
+                } else {
+                    render(req, res, profilePage(responses[0], responses[1]));
+                }
             }
         )
         .catch(e => {
-            console.log('Gor error: ' + e.message);
+            console.log('Got error: ' + e.message);
             render(req, res, profilePage({error: e.message}, {error: e.message}));
         });
 
@@ -45,7 +63,7 @@ const getByUsername = (req, res) => {
             }
         )
         .catch(e => {
-            console.log('Gor error: ' + e.message);
+            console.log('Got error: ' + e.message);
             render(req, res, profilePage({error: e.message}, {error: e.message}));
         });
 
@@ -84,4 +102,3 @@ module.exports = {
     subscribe,
     unsubscribe
 };
-

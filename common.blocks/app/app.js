@@ -33,43 +33,46 @@ modules.define('app', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) {
             this.findBlockInside('new-tweet').domElem.submit();
         },
 
-        _getMoreTweets: function () {
+        _getMoreTweets: function (offset, count) {
             return new Promise(function (resolve, reject) {
                 $.ajax({
-                    url: '/',
+                    url: '',
+                    async: true,
                     type: 'get',
                     data: {
-                        offset: 2,
-                        count: 5
+                        offset: offset,
+                        count: count || 10
                     },
                     success: function (response) {
                         resolve(response);
+                    },
+                    error: function (xhr) {
+                        reject(xhr);
                     }
                 });
             });
         },
 
+        _getCurrentOffset: function () {
+            return document.querySelector('.feed').childElementCount;
+        },
+
         _onGetMoreTweets: function () {
-            // Выставляем модификатор на блок, чтобы не триггерить его много раз
-            this.findBlockInside('feed').toggleMod('loading');
+            // Выставляем модификатор на блок, чтобы не триггерить его до окончания подгрузки
+            this.findBlockInside('main').toggleMod('loading');
 
             // Получаем твиты и аппендим к ленте
-            console.log('Getting more tweets');
-            this._getMoreTweets().then(function (tweets) {
-                console.log('Promise has done');
-                console.log(tweets);
-                BEMDOM.append(
-                    this.findBlockInside('feed'),
-                    '<div class="tweet">data</div>'
-                );
-            }.bind(this));
-
-            // Аппендим к ленте
-            console.log('Appending to feed');
-
-            // Снимаем модификатор loading
-            this.findBlockInside('feed').toggleMod('loading');
+            this._getMoreTweets(this._getCurrentOffset())
+                .then(function (tweets) {
+                    BEMDOM.append(
+                        this.findBlockInside('feed').domElem,
+                        tweets
+                    );
+                    this.findBlockInside('main').toggleMod('loading');
+                }.bind(this))
+                .catch(function (err) {
+                    console.log(err);
+                });
         }
     }));
-
 });
