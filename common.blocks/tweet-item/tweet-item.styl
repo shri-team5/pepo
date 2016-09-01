@@ -2,6 +2,8 @@
   display: flex;
   font-family: 'Open Sans', sans-serif;
   align-items: flex-start;
+  position: relative;
+  padding: 10px;
   &__userpic {
     margin: 5px 10px 0 0;
     padding: 10px;
@@ -50,5 +52,29 @@
     font-size: 11px;
     color: gray;
     font-style: italic;
+  }
+  .tweet-item__reply {
+    display: none;
+    position: absolute;
+    top: 0
+    right:0
+    height: 1px;
+    width: 1px;
+    border-right: 30px solid #d95d92;
+    border-bottom: 30px solid transparent;
+    &:after{
+      content: '\21AA';
+      position: absolute;
+      top: -1px;
+      right: -26px;
+      color: #fff;
+      font-size: 13px;
+    }
+  }
+
+  &_reply {
+    .tweet-item__reply {
+      display: block
+    }
   }
 }

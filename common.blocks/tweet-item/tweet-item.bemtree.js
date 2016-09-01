@@ -28,6 +28,12 @@ block('tweet-item').content()(function () {
                                 time: data.createdAt,
                                 relative: true
                             }
+                        },
+                        {
+                            elem: 'reply',
+                            attrs:{
+                                href:'/tweets/'+data.parentTweet
+                            },
                         }
                     ]
                 },
