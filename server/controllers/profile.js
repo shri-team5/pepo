@@ -16,31 +16,38 @@ const get = (req, res) => {
     if (!id) id = req.user._id;
     let params = {
         userId: id,
-        count: config.initialCount
+        count: config.initialCount,
+        ownTweetsOnly: 'true'
     };
     const isQueryParamsExist = req.query.offset || req.query.count;
 
     if (isQueryParamsExist) {
         params.offset = req.query.offset;
         params.count = req.query.count;
-    }
 
-    Server.fetchAsync([Api.getUserProfile(id, params), Api.getTweets(params), Api.getUserProfile(req.user._id, params)])
-        .then(
-            responses => {
-                if (isQueryParamsExist) {
-                    render(req, res, null, responses[1].data.map(item => (
-                        { block: 'tweet', data: item }
-                    )));
-                } else {
+        Server.fetchAsync(Api.getTweets(params)
+            .then(response => {
+                render(req, res, null, response.data.map(item => (
+                    { block: 'tweet', data: item }
+                )));
+            })
+            .catch(e => {
+                console.log('Got error: ' + e.message);
+                render(req, res, profilePage({error: e.message}, {error: e.message}));
+            })
+        );
+    } else {
+        Server.fetchAsync([Api.getUserProfile(id, params), Api.getTweets(params), Api.getUserProfile(req.user._id, params)])
+            .then(
+                responses => {
                     render(req, res, profilePage(responses[0], responses[1], responses[2]));
                 }
-            }
-        )
-        .catch(e => {
-            console.log('Got error: ' + e.message);
-            render(req, res, profilePage({error: e.message}, {error: e.message}));
-        });
+            )
+            .catch(e => {
+                console.log('Got error: ' + e.message);
+                render(req, res, profilePage({error: e.message}, {error: e.message}));
+            });
+    }
 
 };
 const getByUsername = (req, res) => {
