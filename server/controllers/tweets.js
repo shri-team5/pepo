@@ -42,36 +42,16 @@ const get = (req, res) => {
         });
 };
 const getTweet = (req, res) => {
+    
+    const {id} = req.params;
 
-    let params = {
-        userId: req.user._id
-    };
-
-    Server.fetch(Api.getTweets(params))
+    let params = {};
+ 
+    Server.fetchAsync([Api.getTweet(id, params), Api.getTweetReplies(id, params)])
         .then(
-            response => {
-
-                const parentTweet = {
-                    _id: '57bf2a4aff3100353e28886d',
-                    updatedAt: '2016-08-25T17:26:34.467Z',
-                    createdAt: '2016-08-25T17:26:34.467Z',
-                    author: {
-                        _id: '57c1830e60e7c7466f271eaa',
-                        updatedAt: '2016-08-20T14:19:53.201Z',
-                        createdAt: '2016-08-20T14:19:53.201Z',
-                        description: 'Lorem Ipsum',
-                        username: 'superuser',
-                        avatarPath: 'http://placehold.it/96x96',
-                        fullName: 'Вася Пупкин',
-                        __v: 0,
-                        subscriptions: []
-                    },
-                    type: 'text',
-                    text: 'hhh',
-                    __v: 0
-                };
-
-                render(req, res, tweetPage(parentTweet, response));
+            responses => {
+                console.log(responses);
+                render(req, res, tweetPage(responses[0], responses[1]));
             }
         )
         .catch(e => {

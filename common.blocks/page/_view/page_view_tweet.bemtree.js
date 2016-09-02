@@ -20,7 +20,7 @@ block('page').mod('view', 'tweet').content()(function () { // eslint-disable-lin
                             content: [
                                 {
                                     block: 'tweet',
-                                    data: parentTweet,
+                                    data: parentTweet.data,
                                     mods: {parent: true}
                                 },
                                 {

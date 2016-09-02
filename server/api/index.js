@@ -43,6 +43,18 @@ const getTweets = (params) => {
         params: params
     });
 };
+
+const getTweetReplies = (id,params) => {
+    return instance.get('/tweets/' + id +'/replies', {
+        params: params
+    });
+};
+
+const getTweet = (id, params) => {
+    return instance.get('/tweets/' + id, {
+        params: params
+    });
+};
 const searchTweets = (params) => {
     return instance.get('/tweets/world', {
         params: params
@@ -70,5 +82,7 @@ module.exports = {
     searchTweets,
     updateUserProfile,
     subscribe,
-    unsubscribe
+    unsubscribe,
+    getTweetReplies,
+    getTweet
 };
