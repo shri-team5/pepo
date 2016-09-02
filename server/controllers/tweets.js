@@ -7,16 +7,33 @@ const tweetPage = require('../pages/tweet');
 const Api = require('../api');
 const Server = require('../api/server');
 
+const config = require('./config');
+
 const get = (req, res) => {
-    
+
     let params = {
-        userId: req.user._id
+        userId: req.user._id,
+        count: config.initialCount
     };
+
+    const { offset, count } = req.query,
+        isQueryParamsExist = offset || count;
+
+    if (isQueryParamsExist) {
+        params.offset = offset;
+        params.count = count;
+    }
 
     Server.fetch(Api.getTweets(params))
         .then(
             response => {
-                render(req, res, feedPage(response));
+                if (isQueryParamsExist) {
+                    render(req, res, null, response.data.map(item => (
+                        { block: 'tweet', data: item }
+                    )));
+                } else {
+                    render(req, res, feedPage(response));
+                }
             }
         )
         .catch(e => {
@@ -39,7 +56,7 @@ const getTweet = (req, res) => {
                     updatedAt: '2016-08-25T17:26:34.467Z',
                     createdAt: '2016-08-25T17:26:34.467Z',
                     author: {
-                        _id: '57b86709eb4b20a0550e09a4',
+                        _id: '57c1830e60e7c7466f271eaa',
                         updatedAt: '2016-08-20T14:19:53.201Z',
                         createdAt: '2016-08-20T14:19:53.201Z',
                         description: 'Lorem Ipsum',
@@ -94,4 +111,3 @@ module.exports = {
     getTweet,
     post
 };
-

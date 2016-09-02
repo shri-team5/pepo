@@ -1,4 +1,4 @@
-modules.define('app', ['i-bem__dom'], function (provide, BEMDOM) {
+modules.define('app', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) {
 
     provide(BEMDOM.decl(this.name, {
         onSetMod: {
@@ -16,6 +16,9 @@ modules.define('app', ['i-bem__dom'], function (provide, BEMDOM) {
                         this._onHeaderSubmit,
                         this
                     );
+
+                    // Навеситься на событие скрола ленты (блок main)
+                    this.findBlockInside('main').on('getMoreTweets', this._onGetMoreTweets, this)
                 }
             }
         },
@@ -28,7 +31,48 @@ modules.define('app', ['i-bem__dom'], function (provide, BEMDOM) {
 
         _onHeaderSubmit: function () {
             this.findBlockInside('new-tweet').domElem.submit();
+        },
+
+        _getMoreTweets: function (offset, count) {
+            return new Promise(function (resolve, reject) {
+                $.ajax({
+                    url: '',
+                    async: true,
+                    type: 'get',
+                    data: {
+                        offset: offset,
+                        count: count || 10
+                    },
+                    success: function (response) {
+                        resolve(response);
+                    },
+                    error: function (xhr) {
+                        reject(xhr);
+                    }
+                });
+            });
+        },
+
+        _getCurrentOffset: function () {
+            return document.querySelector('.feed').childElementCount;
+        },
+
+        _onGetMoreTweets: function () {
+            // Выставляем модификатор на блок, чтобы не триггерить его до окончания подгрузки
+            this.findBlockInside('main').toggleMod('loading');
+
+            // Получаем твиты и аппендим к ленте
+            this._getMoreTweets(this._getCurrentOffset())
+                .then(function (tweets) {
+                    BEMDOM.append(
+                        this.findBlockInside('feed').domElem,
+                        tweets
+                    );
+                    this.findBlockInside('main').toggleMod('loading');
+                }.bind(this))
+                .catch(function (err) {
+                    console.log(err);
+                });
         }
     }));
-
 });
