@@ -8,6 +8,7 @@ block('page').mod('view', 'tweet').content()(function () { // eslint-disable-lin
             content: [
                 {
                     block: 'header',
+                    mods:{type:'replies'},
                     mix: {block: 'page', elem: 'header'}
                 },
                 {
@@ -27,9 +28,6 @@ block('page').mod('view', 'tweet').content()(function () { // eslint-disable-lin
                                     block: 'feed'
                                 }
                             ]
-                        },
-                        {
-                            block: 'new-tweet'
                         },
                         {
                             block: 'navigation'

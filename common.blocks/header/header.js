@@ -6,6 +6,10 @@ modules.define('header', ['i-bem__dom'], function (provide, BEMDOM) {
                     this.elem('plus').on('click', this._onNewTweetClick.bind(this));
                     this.elem('back').on('click', this._onBackClick.bind(this));
                     this.elem('submit').on('click', this._onSubmitClick.bind(this));
+                    this.elem('history-back').on('click', function (e) {
+                        e.preventDefault();
+                        window.history.back();
+                    });
                 }
             },
 

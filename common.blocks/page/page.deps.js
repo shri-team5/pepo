@@ -5,7 +5,7 @@
         },
         {
           block:'header',
-            mods: { type: ['profile', 'settings']}
+            mods: { type: ['profile', 'settings', 'replies']}
         },
         'app',
         'body',
