@@ -13,6 +13,7 @@ block('tweet').content()(function() {
                 },
                 {
                     block: 'tweet-toolbar',
+                    js: { tweetid: this.ctx.data._id },
                     data: this.ctx.data
                 }
             ]

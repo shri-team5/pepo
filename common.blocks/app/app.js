@@ -1,4 +1,4 @@
-modules.define('app', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) {
+modules.define('app', ['i-bem__dom', 'jquery', 'tweet-toolbar'], function (provide, BEMDOM, $, Toolbar) {
 
     provide(BEMDOM.decl(this.name, {
         onSetMod: {
@@ -14,13 +14,24 @@ modules.define('app', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) {
                     this.findBlockInside('header').on(
                         'header-submit',
                         this._onHeaderSubmit,
-                        this
-                    );
+                        this);
 
                     // Навеситься на событие скрола ленты (блок main)
-                    this.findBlockInside('main').on('getMoreTweets', this._onGetMoreTweets, this)
+                    this.findBlockInside('main').on(
+                        'getMoreTweets',
+                        this._onGetMoreTweets,
+                        this);
+
+                    Toolbar.on('openReply', this._onOpenReply, this);
                 }
             }
+        },
+
+        _onOpenReply: function (data) {
+            var replyTo = data.target.params.tweetid;
+            this.findBlockInside('new-tweet-reply').domElem.val(replyTo);
+            this.findBlockInside('header')._onNewTweetClick();
+            // console.log(this.findBlockInside('new-tweet-reply').domElem.val());
         },
 
         _onHeaderNewTweetEvent: function () {

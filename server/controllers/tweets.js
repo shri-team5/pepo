@@ -83,12 +83,13 @@ const getTweet = (req, res) => {
 
 const post = (req, res) => {
 
-    const {text} = req.body;
+    const {text, parentTweet} = req.body;
 
     let request = {
         text,
         type: 'text',
-        userId: req.user._id
+        userId: req.user._id,
+        parentTweet
     };
 
     Server.fetch(Api.postTweet(request))

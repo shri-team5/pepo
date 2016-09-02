@@ -2,19 +2,22 @@ modules.define('tweet-toolbar', ['i-bem__dom'], function (provide, BEMDOM) {
 
 provide(BEMDOM.decl(this.name,
     {
-        // методы экземпляра
         onSetMod: {
-            js: function () {
-                var reply = this.findBlockInside('reply');
+            js: {
+                inited: function () {
 
-                reply.bindTo('click', function (e) {
-                    console.log('reply');
-                });
+                }
             }
+        },
+
+        _onReplyClick: function () {
+            this.emit('openReply');
         }
     },
     {
-        // статические методы
+        live: function () {
+            this.liveBindTo('reply', 'click', this.prototype._onReplyClick);
+        }
     }
 ));
 

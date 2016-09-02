@@ -3,25 +3,6 @@ block('tweet-toolbar').content()(function() {
     var currentUser = this.ctx.user || { login: 'nobody' };
 
     var toolbar = [
-        // {
-        //     block: 'like',
-        //     content: [
-        //         {
-        //             block: 'icon',
-        //             mods: { type: 'like' },
-        //             mix: { block: 'tweet-toolbar', elem: 'like' }
-        //         },
-        //         {
-        //             elem: 'count',
-        //             content: data.likes || ''
-        //         }
-        //     ]
-        // },
-        // {
-        //     block: 'icon',
-        //     mods: { type: 'reply' },
-        //     mix: { block: 'tweet-toolbar', elem: 'reply' }
-        // },
         {
             block: 'reply',
             content: [

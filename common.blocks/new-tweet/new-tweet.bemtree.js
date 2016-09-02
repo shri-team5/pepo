@@ -9,6 +9,11 @@ block('new-tweet').content()(function() {
         },
         {
             elem: 'counter'
+        },
+        {
+            block: 'new-tweet-reply',
+            tag: 'input',
+            attrs: { name: 'parentTweet', type: 'hidden' }
         }
     ];
 });
