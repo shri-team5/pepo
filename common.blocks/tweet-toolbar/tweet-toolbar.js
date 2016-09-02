@@ -11,8 +11,7 @@ provide(BEMDOM.decl(this.name,
         },
 
         _onReplyClick: function () {
-            
-            this.emit('openReply', this.params.tweetid);
+            this.emit('openReply');
         }
     },
     {

@@ -1,4 +1,4 @@
-modules.define('app', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) {
+modules.define('app', ['i-bem__dom', 'jquery', 'tweet-toolbar'], function (provide, BEMDOM, $, Toolbar) {
 
     provide(BEMDOM.decl(this.name, {
         onSetMod: {
@@ -22,18 +22,16 @@ modules.define('app', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) {
                         this._onGetMoreTweets,
                         this);
 
-                    // this.findBlocksInside('reply').map(function (item) {
-                    //     item.on(
-                    //         'openReply',
-                    //         this._onOpenReply,
-                    //         this);
-                    // }.bind(this));
+                    Toolbar.on('openReply', this._onOpenReply, this);
                 }
             }
         },
 
-        _onOpenReply: function () {
-            console.log('app sees the reply pressed');
+        _onOpenReply: function (data) {
+            var replyTo = data.target.params.tweetid;
+            this.findBlockInside('new-tweet-reply').domElem.val(replyTo);
+            this.findBlockInside('header')._onNewTweetClick();
+            // console.log(this.findBlockInside('new-tweet-reply').domElem.val());
         },
 
         _onHeaderNewTweetEvent: function () {
