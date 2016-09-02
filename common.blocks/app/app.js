@@ -14,13 +14,26 @@ modules.define('app', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) {
                     this.findBlockInside('header').on(
                         'header-submit',
                         this._onHeaderSubmit,
-                        this
-                    );
+                        this);
 
                     // Навеситься на событие скрола ленты (блок main)
-                    this.findBlockInside('main').on('getMoreTweets', this._onGetMoreTweets, this)
+                    this.findBlockInside('main').on(
+                        'getMoreTweets',
+                        this._onGetMoreTweets,
+                        this);
+
+                    // this.findBlocksInside('reply').map(function (item) {
+                    //     item.on(
+                    //         'openReply',
+                    //         this._onOpenReply,
+                    //         this);
+                    // }.bind(this));
                 }
             }
+        },
+
+        _onOpenReply: function () {
+            console.log('app sees the reply pressed');
         },
 
         _onHeaderNewTweetEvent: function () {
