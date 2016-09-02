@@ -34,6 +34,18 @@ module.exports = function(config) {
 
     config.setLanguages(langs);
 
+    config.includeConfig('enb-bem-specs');
+    var tests = config.module('enb-bem-specs').createConfigurator('specs');
+    tests.configure({
+        destPath: 'desktop.specs',
+        levels: ['common.blocks'],
+        sourceLevels: [
+            // { path: '../libs/bem-core/common.blocks', check: false },
+            // { path: '../libs/bem-pr/spec.blocks', check: false },
+            'common.blocks'
+        ]
+    });
+
     config.nodes('*.bundles/*', function(nodeConfig) {
         nodeConfig.addTechs([
             // essential

@@ -17,3 +17,5 @@ libs/
 !*bundles*/.bem/*
 
 *.sublime-workspace
+
+*specs/
