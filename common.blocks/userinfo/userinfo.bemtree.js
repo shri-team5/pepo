@@ -55,7 +55,7 @@ block('userinfo').content()(function () { // eslint-disable-line no-undef
                             {
                                 block: 'counter',
                                 data: {
-                                    number: '12',
+                                    number: profile.data.subscribersNumber || 0,
                                     text: 'читают'
                                 },
                                 mix: {block: 'userinfo', elem: 'counter'}
@@ -63,7 +63,7 @@ block('userinfo').content()(function () { // eslint-disable-line no-undef
                             {
                                 block: 'counter',
                                 data: {
-                                    number: profile.data.subscriptions.length,
+                                    number: profile.data.subscriptions.length || 0,
                                     text: 'читает'
                                 },
                                 mix: {block: 'userinfo', elem: 'counter'}
@@ -71,7 +71,7 @@ block('userinfo').content()(function () { // eslint-disable-line no-undef
                             {
                                 block: 'counter',
                                 data: {
-                                    number: '284',
+                                    number: profile.data.tweetsNumber || 0,
                                     text: 'написал'
                                 },
                                 mix: {block: 'userinfo', elem: 'counter'}

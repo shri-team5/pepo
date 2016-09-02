@@ -7,7 +7,6 @@ const Api = require('../api');
 const Server = require('../api/server');
 
 const get = (req, res) => {
-    
     let {id} = req.params;
     if (!id) id = req.user._id;
     let params = {
