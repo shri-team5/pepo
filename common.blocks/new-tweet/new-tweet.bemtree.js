@@ -4,6 +4,7 @@ block('new-tweet').content()(function() {
             block: 'textarea',
             mix: [ { block: 'new-tweet', elem: 'input' } ],
             name: 'text',
+            maxLength: 140,
             mods: { theme : 'islands', size : 'xl', width : 'available' },
             placeholder: 'Текст твита'
         },
