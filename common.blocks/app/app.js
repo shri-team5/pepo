@@ -22,11 +22,26 @@ modules.define('app', ['i-bem__dom', 'jquery', 'tweet-toolbar'], function (provi
                         this._onGetMoreTweets,
                         this);
 
+                    this.findBlockInside('new-tweet').on(
+                        'allowSubmitForm',
+                        this._tweetAllowSubmitForm,
+                        this);
+                    this.findBlockInside('new-tweet').on(
+                        'disallowSubmitForm',
+                        this._tweetDisallowSubmitForm,
+                        this);
+
                     Toolbar.on('openReply', this._onOpenReply, this);
                 }
             }
         },
+        _tweetAllowSubmitForm: function () {
+            this.findBlockInside('header').setMod('allowSubmit',true);
+        },
+        _tweetDisallowSubmitForm: function () {
+            this.findBlockInside('header').setMod('allowSubmit',false);
 
+        },
         _onOpenReply: function (data) {
             var replyTo = data.target.params.tweetid;
             this.findBlockInside('new-tweet-reply').domElem.val(replyTo);

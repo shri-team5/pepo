@@ -2,6 +2,14 @@
   display: flex;
 
   background: linear-gradient(to right, #944a71, #d95d92);
+  .header__submit{
+    display: none;
+  }
+  &_allowSubmit{
+    .header__submit{
+      display: inherit;
+    }
+  }
 
   &__column {
     display: flex;
