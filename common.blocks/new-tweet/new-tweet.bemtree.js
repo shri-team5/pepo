@@ -1,6 +1,15 @@
 block('new-tweet').content()(function() {
     return [
         {
+            block: 'attach',
+            mods: { theme: 'islands', size: 'm' },
+            name: 'image',
+            button: {
+                block: 'button',
+                text: 'Картинка'
+            }
+        },
+        {
             block: 'textarea',
             mix: [ { block: 'new-tweet', elem: 'input' } ],
             name: 'text',
