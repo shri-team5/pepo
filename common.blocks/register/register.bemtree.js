@@ -1,4 +1,7 @@
 block('register').content()(function () {
+
+    const {register} = this.data;
+
     return [
         {
             block:'logo'
@@ -15,9 +18,15 @@ block('register').content()(function () {
                     mods: {theme: 'islands', size: 'l'},
                     name:'username',
                     placeholder: '',
+                    val: register.login,
+                    attrs:{required: true},
                     mix: {block: 'profile-edit', elem: 'input'}
                 }
             ]
+        },
+        {
+            elem:"error",
+            content: register.error
         },
         {
             elem:'actions',

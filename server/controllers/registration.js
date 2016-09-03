@@ -6,7 +6,7 @@ const regPage = require('../pages/registration');
 const Api = require('../api');
 
 const get = (req, res) => {
-    render(req, res, regPage());
+    render(req, res, regPage({error:"", login:""}));
 };
 
 const post = (req, res) => {
@@ -24,7 +24,7 @@ const post = (req, res) => {
         )
         .catch(
             e => {
-                res.send(e.message);
+                render(req, res, regPage({error:"Логин уже используется", login:req.body.username}));
             }
         )
 };

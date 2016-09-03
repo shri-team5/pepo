@@ -1,8 +1,9 @@
-const registration = () => {
+const registration = (data) => {
 
     return {
         view: 'registration',
         title: 'Registration page',
+        register: data,
         meta: {
             description: 'Page description',
             og: {
