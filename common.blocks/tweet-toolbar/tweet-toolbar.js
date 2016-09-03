@@ -5,7 +5,7 @@ provide(BEMDOM.decl(this.name,
         onSetMod: {
             js: {
                 inited: function () {
-
+                    this.bindTo('reply', 'click', this._onReplyClick);
                 }
             }
         },
@@ -15,9 +15,9 @@ provide(BEMDOM.decl(this.name,
         }
     },
     {
-        live: function () {
+        /*live: function () {
             this.liveBindTo('reply', 'click', this.prototype._onReplyClick);
-        }
+        }*/
     }
 ));
 
