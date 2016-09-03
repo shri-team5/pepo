@@ -4,16 +4,19 @@ block('tweet-toolbar').content()(function() {
 
     var toolbar = [
         {
+            elem: 'replies-link',
+            attrs:{
+                href: '/tweets/'+ data._id
+            },
+            content: 'Ответы'
+        },
+        {
             block: 'reply',
             content: [
                 {
                     block: 'icon',
                     mods: { type: 'reply' },
                     mix: { block: 'tweet-toolbar', elem: 'reply' }
-                },
-                {
-                    elem: 'count',
-                    content: data.reply || ''
                 }
             ]
         }

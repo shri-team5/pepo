@@ -1,3 +1,6 @@
 block('tweet-toolbar')(
-    js()(true)
+    js()(true),
+    elem('replies-link')(
+        tag()('a')
+    )
 );
