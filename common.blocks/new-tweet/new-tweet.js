@@ -15,10 +15,10 @@ modules.define('new-tweet', ['i-bem__dom'], function (provide, BEMDOM) {
                         })
                     }
                 },
-
+                'visible': function () {
+                    this.elem('input').focus();
+                }
             }
-
         }
     ));
-
 });
