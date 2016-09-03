@@ -4,6 +4,7 @@ block('new-tweet')(
     attrs()(function () {
         return {
             method: 'post',
+            enctype: 'multipart/form-data',
             action: '/tweets',
             name: 'new-tweet'
         };
