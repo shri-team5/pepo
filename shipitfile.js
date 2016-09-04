@@ -11,7 +11,7 @@ module.exports = function(shipit) {
             repositoryUrl: 'https://github.com/shri-team5/pepo.git',
             ignores: ['.git', 'node_modules'],
             keepReleases: 3,
-            branch: 'master'
+            branch: 'production'
         },
         production: {
             servers: 'root@188.166.17.158'
