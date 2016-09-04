@@ -12,6 +12,7 @@ const configApi = require('../config');
 
 const formdata = require('form-data');
 
+var fs = require('fs');
 var http = require('http');
 
 const get = (req, res) => {
@@ -21,7 +22,7 @@ const get = (req, res) => {
         count: config.initialCount
     };
 
-    const { offset, count } = req.query,
+    const {offset, count} = req.query,
         isQueryParamsExist = offset || count;
 
     if (isQueryParamsExist) {
@@ -34,7 +35,7 @@ const get = (req, res) => {
             response => {
                 if (isQueryParamsExist) {
                     render(req, res, null, response.data.map(item => (
-                        { block: 'tweet', data: item }
+                    {block: 'tweet', data: item}
                     )));
                 } else {
                     render(req, res, feedPage(response));
@@ -61,30 +62,14 @@ const getTweet = (req, res) => {
         )
         .catch(e => {
             console.log('Got error: ' + e.message); // eslint-disable-line no-console
-            render(req, res, tweetPage({error:''},{error: e.message}));
+            render(req, res, tweetPage({error: ''}, {error: e.message}));
         });
 
 };
 
 const post = (req, res) => {
 
-    const {text, parentTweet} = req.body;
-
-    // let request = {
-    //     text,
-    //     type: 'text',
-    //     userId: req.user._id,
-    //     parentTweet
-    // };
-    //
-    console.log(req.file);
-
-    var request = http.request({
-      method: 'post',
-      host: "http://" + config.backendHost + ':' + config.backendPort,
-      path: '/tweets',
-      headers: form.getHeaders()
-    });
+    const {text, parentTweet} = req.body; 
 
     let form = new formdata();
 
@@ -92,36 +77,24 @@ const post = (req, res) => {
     form.append('type', 'text');
     form.append('userId', req.user._id);
     form.append('parentTweet', parentTweet);
-    form.append('image', req.file.buffer);
+    form.append('image', fs.createReadStream(req.file.path));
 
-    // form.submit("http://" + config.backendHost + ':' + config.backendPort + '/tweets', function(err, response) {
-    //  // res – response object (http.IncomingMessage)  //
-    //     res.send('ok');
-    //     console.log(response);
-    // });
+    var request = http.request({
+        method: 'post',
+        host: configApi.backendHost,
+        port: configApi.backendPort,
+        path: '/tweets',
+        headers: form.getHeaders()
+    });
 
     form.pipe(request);
 
-    request.on('response', function(res) {
-      console.log(res.statusCode);
+    request.on('response', function (response) {
+
+        console.log(response);
+        res.redirect('/');
     });
 
-    // console.log(req.file);
-
-    // res.send('ok');
-
-    // Server.fetch(Api.postTweet(request))
-    //     .then((response) => {
-    //         if (response.error) {
-    //             res.send("Got error: " + response.error);
-    //         } else {
-    //             res.redirect('/');
-    //         }
-    //
-    //     })
-    //     .catch((e)=> {
-    //         res.send("Got error: " + e.message);
-    //     });
 
 };
 
