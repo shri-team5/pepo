@@ -31,18 +31,22 @@ block('tweet-item').content()(function () {
                         },
                         {
                             elem: 'reply',
-                            attrs:{
-                                href:'/tweets/'+data.parentTweet
-                            },
+                            attrs: {
+                                href: '/tweets/' + data.parentTweet
+                            }
                         }
                     ]
                 },
-                // {
-                //     block: 'delimiter'
-                // },
                 {
                     elem: 'text',
                     content: data.text
+                },
+                data.image &&
+                {
+                    elem: 'image',
+                    attrs: {
+                        src: data.image
+                    }
                 }
             ]
         }
