@@ -6,6 +6,12 @@ const settingsPage = require('../pages/settings');
 const Api = require('../api');
 const Server = require('../api/server');
 
+const config = require('../config');
+const formdata = require('form-data');
+
+var fs = require('fs');
+var http = require('http');
+
 const get = (req, res) => {
 
     let params = {};
@@ -27,26 +33,28 @@ const get = (req, res) => {
 
 const put = (req, res) => {
     const {username, fullName, description} = req.body;
-
     const id = req.user._id;
-    let request = {
-        username,
-        fullName,
-        description
-    };
 
-    Server.fetch(Api.updateUserProfile(id, request))
-        .then((response) => {
-            if (response.error) {
-                res.send("Got error: " + response.error);
-            } else {
-                res.redirect('/settings/');
-            }
+    let form = new formdata();
+    form.append('username', username);
+    form.append('fullName', fullName);
+    form.append('description', description);
+    req.file && form.append('image', fs.createReadStream(req.file.path));
 
-        })
-        .catch((e)=> {
-            res.send("Got error: " + e.message);
-        });
+
+    var request = http.request({
+        method: 'put',
+        host: config.backendHost,
+        port: config.backendPort,
+        path: '/users/'+id,
+        headers: form.getHeaders()
+    });
+
+    form.pipe(request);
+
+    request.on('response', function (response) {
+        res.redirect('/settings/');
+    });
 };
 
 module.exports = {
