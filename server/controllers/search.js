@@ -6,12 +6,12 @@ const searchPage = require('../pages/search');
 const Api = require('../api');
 const Server = require('../api/server');
 
-const config = require('./config');
+const config = require('../config');
 
 const get = (req, res) => {
 
     let params = {
-        count: config.initialCount
+        count: config.tweets.initialCount
     };
     const isQueryParamsExist = req.query.offset || req.query.count;
 

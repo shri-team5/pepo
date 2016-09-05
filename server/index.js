@@ -22,8 +22,7 @@ var fs = require('fs'),
 
     port = process.env.PORT || config.defaultPort,
     isSocket = isNaN(port),
-    isDev = process.env.NODE_ENV === 'development';
-
+    isDev = process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'grimfri';
 
 require('./passport')(passport);
 

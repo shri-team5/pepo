@@ -51,7 +51,8 @@
   "scripts": {
     "start": "forever start server",
     "stop": "forever stop server",
-    "start:dev": "nodemon server",
+    "start:dev": "NODE_ENV=development nodemon server",
+    "start:grimfri": "NODE_ENV=grimfri nodemon server",
     "postinstall": "npm run deps",
     "deps": "bower i",
     "make": "enb make",

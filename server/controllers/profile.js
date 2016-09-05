@@ -6,9 +6,7 @@ const profilePage = require('../pages/profile');
 const Api = require('../api');
 const Server = require('../api/server');
 
-const config = require('./config');
-
-const isDev = process.env.NODE_ENV === 'development';
+const config = require('../config');
 
 const get = (req, res) => {
 
@@ -16,7 +14,7 @@ const get = (req, res) => {
     if (!id) id = req.user._id;
     let params = {
         userId: id,
-        count: config.initialCount,
+        count: config.tweets.initialCount,
         ownTweetsOnly: 'true'
     };
     const isQueryParamsExist = req.query.offset || req.query.count;

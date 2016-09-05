@@ -8,6 +8,10 @@ module.exports = {
     backendPort: 8080,
     backendTimeout: 1000,
 
+    tweets:{
+        initialCount: 15
+    },
+    
     testUser:{
         _id: '57c29a59a4e9e10e147b6c66',
         username: 'grimfri'

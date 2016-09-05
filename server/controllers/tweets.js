@@ -7,8 +7,7 @@ const tweetPage = require('../pages/tweet');
 const Api = require('../api');
 const Server = require('../api/server');
 
-const config = require('./config');
-const configApi = require('../config');
+const config = require('../config');
 
 const formdata = require('form-data');
 
@@ -19,7 +18,7 @@ const get = (req, res) => {
 
     let params = {
         userId: req.user._id,
-        count: config.initialCount
+        count: config.tweets.initialCount
     };
 
     const {offset, count} = req.query,
@@ -81,8 +80,8 @@ const post = (req, res) => {
 
     var request = http.request({
         method: 'post',
-        host: configApi.backendHost,
-        port: configApi.backendPort,
+        host: config.backendHost,
+        port: config.backendPort,
         path: '/tweets',
         headers: form.getHeaders()
     });
@@ -91,7 +90,6 @@ const post = (req, res) => {
 
     request.on('response', function (response) {
 
-        console.log(response);
         res.redirect('/');
     });
 

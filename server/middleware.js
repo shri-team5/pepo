@@ -1,6 +1,6 @@
 
 const config = require('./config'),
-    isDev = process.env.NODE_ENV === 'development';
+    isDev = process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'grimfri';
 
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {
