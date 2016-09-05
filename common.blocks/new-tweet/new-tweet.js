@@ -15,8 +15,13 @@ modules.define('new-tweet', ['i-bem__dom'], function (provide, BEMDOM) {
                         })
                     }
                 },
-                'visible': function () {
-                    this.elem('input').focus();
+                'visible': {
+                    true: function () {
+                        this.elem('input').focus();
+                    },
+                    false: function () {
+                        this.findBlockOutside('page').focus();
+                    }
                 }
             }
         }
