@@ -1,6 +1,7 @@
 block('profile-edit').content()(function(){
 
     let settings = this.ctx.data.profile.data;
+    const i18n = this.i18n;
 
     return [
         {
@@ -9,7 +10,7 @@ block('profile-edit').content()(function(){
                 {
                     block: 'userpic',
                     src: settings.avatarPath,
-                    alt: "avatar",
+                    alt: 'avatar',
                     mix: {block: 'profile-edit', elem: 'userpic'}
                 },
                 {
@@ -19,8 +20,8 @@ block('profile-edit').content()(function(){
                             block: 'attach',
                             mods: {theme: 'islands', size: 'l', focused: true},
                             name: 'avatar',
-                            button: 'Выберите файл',
-                            noFileText: 'Файл не выбран'
+                            button: i18n('profile-edit', 'userpic-attach-button'),
+                            noFileText: i18n('profile-edit', 'userpic-attach-no-file')
                         }
                     ]
                 },
@@ -30,7 +31,7 @@ block('profile-edit').content()(function(){
                 {
                     block: 'input',
                     mods: {theme: 'islands', size: 'l'},
-                    placeholder: 'Введите имя ',
+                    placeholder: i18n('profile-edit', 'fullName'),
                     name: 'fullName',
                     val: settings.fullName,
                     mix: {block: 'profile-edit', elem: 'input'}
@@ -38,7 +39,7 @@ block('profile-edit').content()(function(){
                 {
                     block: 'input',
                     mods: {theme: 'islands', size: 'l'},
-                    placeholder: 'Введите логин ',
+                    placeholder: i18n('profile-edit', 'login'),
                     name: 'username',
                     val: settings.username,
                     mix: {block: 'profile-edit', elem: 'input'}
@@ -50,7 +51,7 @@ block('profile-edit').content()(function(){
                         val: settings.description,
                         name: 'description',
                         mods: {theme: 'islands', width: 'available', size: 'l'},
-                        placeholder: 'Введите описание '
+                        placeholder: i18n('profile-edit', 'description')
                     }
                 },
                 {
@@ -58,7 +59,7 @@ block('profile-edit').content()(function(){
                     content: {
                         block: 'button',
                         mods: {theme: 'islands', size: 'l', type: 'submit'},
-                        text: 'Сохранить'
+                        text: i18n('profile-edit', 'save')
                     }
                 }
 

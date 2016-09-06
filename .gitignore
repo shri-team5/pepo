@@ -6,6 +6,7 @@ node_modules/
 npm-debug.log
 
 static/index.min.*
+static/index.*.min.js
 
 # bem
 .enb/tmp/
@@ -16,4 +17,3 @@ libs/
 !*bundles*/.bem/*
 
 *.sublime-workspace
-

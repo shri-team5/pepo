@@ -11,7 +11,9 @@ module.exports = {
     tweets:{
         initialCount: 15
     },
-    
+
+    langs: ['ru', 'en'],
+
     testUser:{
         _id: '57c29a59a4e9e10e147b6c66',
         username: 'grimfri'
