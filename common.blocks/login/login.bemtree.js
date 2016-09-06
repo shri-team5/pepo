@@ -1,4 +1,5 @@
 block('login').content()(function () {
+    var i18n = this.i18n;
 
     return [
         {
@@ -6,7 +7,7 @@ block('login').content()(function () {
         },
         {
             elem: 'title',
-            content: "Войти"
+            content: i18n('login', 'enter')
         },
         {
             elem: 'soc-networks',

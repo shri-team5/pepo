@@ -1,4 +1,4 @@
-modules.define('subscribe', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) {
+modules.define('subscribe', ['i-bem__dom', 'jquery', 'i18n'], function (provide, BEMDOM, $, i18n) {
 
     provide(BEMDOM.decl(this.name, {
         onSetMod: {
@@ -6,15 +6,15 @@ modules.define('subscribe', ['i-bem__dom', 'jquery'], function (provide, BEMDOM,
                 inited: function () {
                     this.bindTo('click', this._toggleSubscribe.bind(this));
 
-                    this.hasMod('subscribed') && this.domElem.text('Читаю');
+                    this.hasMod('subscribed') && this.domElem.text(i18n('subscribe', 'reading'));
                 }
             },
             subscribed: {
                 true: function () {
-                    this.domElem.text('Читаю');
+                    this.domElem.text(i18n('subscribe', 'reading'));
                 },
                 "": function () {
-                    this.domElem.text('Читать');
+                    this.domElem.text(i18n('subscribe', 'read'));
                 }
             }
         },
@@ -37,11 +37,11 @@ modules.define('subscribe', ['i-bem__dom', 'jquery'], function (provide, BEMDOM,
                     if (!response.error.length) {
                         self.toggleMod('subscribed')
                     } else {
-                        alert('Something going wrong :( ' + response.error);
+                        alert(i18n('feed', 'error') + response.error);
                     }
                 },
                 error: function (xhr) {
-                    alert('Something going wrong :(');
+                    alert(i18n('feed', 'error'));
                 }
             });
         }

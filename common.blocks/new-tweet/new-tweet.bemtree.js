@@ -1,4 +1,5 @@
 block('new-tweet').content()(function() {
+    var i18n = this.i18n;
     return [
         {
             block: 'attach',
@@ -6,7 +7,7 @@ block('new-tweet').content()(function() {
             name: 'image',
             button: {
                 block: 'button',
-                text: 'Картинка'
+                text: i18n('new-tweet', 'picture')
             }
         },
         {
@@ -15,7 +16,7 @@ block('new-tweet').content()(function() {
             name: 'text',
             maxLength: 140,
             mods: { theme : 'islands', size : 'xl', width : 'available' },
-            placeholder: 'Текст твита'
+            placeholder: i18n('new-tweet', 'text')
         },
         {
             elem: 'counter'

@@ -1,6 +1,7 @@
 block('tweet-toolbar').content()(function() {
     var data = this.ctx.data;
     var currentUser = this.ctx.user || { login: 'nobody' };
+    const i18n = this.i18n;
 
     var toolbar = [
         {
@@ -8,7 +9,7 @@ block('tweet-toolbar').content()(function() {
             attrs:{
                 href: '/tweets/'+ data._id
             },
-            content: 'Ответы'
+            content: i18n('tweet-toolbar', 'replies')
         },
         {
             block: 'reply',

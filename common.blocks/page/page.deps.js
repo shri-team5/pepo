@@ -1,4 +1,5 @@
 ({
+    mustDeps: 'i18n',
     shouldDeps: [
         {
             mods: {view: ['404', 'feed', 'profile', 'login', 'settings', 'tweet', 'registration', 'search']}

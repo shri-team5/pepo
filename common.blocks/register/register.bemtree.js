@@ -1,11 +1,13 @@
 block('register').content()(function () {
+    const i18n = this.i18n;
+
     return [
         {
             block:'logo'
         },
         {
             elem:'title',
-            content: 'Придумайте логин'
+            content: i18n('register', 'title')
         },
         {
             elem:'field',

@@ -1,4 +1,5 @@
 block('user-menu').content()(function () {
+    const i18n = this.i18n;
 
     return [
         {
@@ -19,7 +20,7 @@ block('user-menu').content()(function () {
                         content: {
                             block: 'link',
                             url: '/settings/',
-                            content: 'Настройки'
+                            content: i18n('user-menu', 'settings')
                         }
                     },
                     {
@@ -28,7 +29,7 @@ block('user-menu').content()(function () {
                         content: {
                             block: 'link',
                             url: '/logout/',
-                            content: 'Выход'
+                            content: i18n('user-menu', 'exit')
                         }
                     }
                 ]
