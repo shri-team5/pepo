@@ -1,8 +1,12 @@
 var path = require('path'),
     config = require('./config'),
+    langs = config.langs,
     bundleName = 'index',
     pathToBundle = path.resolve('desktop.bundles', bundleName),
-    BEMTREE = require(path.join(pathToBundle, bundleName + '.bemtree.js')).BEMTREE,
+    BEMTREE = langs.reduce(function(tmpls, lang) {
+        tmpls[lang] = require(path.join(pathToBundle, bundleName + '.bemtree.' + lang + '.js')).BEMTREE;
+        return tmpls;
+    }, {}),
     BEMHTML = require(path.join(pathToBundle, bundleName + '.bemhtml.js')).BEMHTML,
 
     isDev = process.env.NODE_ENV === 'development',
@@ -13,7 +17,8 @@ var path = require('path'),
 function render(req, res, data, context) {
     var query = req.query,
         user = req.user,
-        cacheKey = req.url + (context ? JSON.stringify(context) : '') + (user ? JSON.stringify(user) : ''),
+        lang = req.lang || 'ru',
+        cacheKey = req.url + req.lang + (context ? JSON.stringify(context) : '') + (user ? JSON.stringify(user) : ''),
         cached = cache[cacheKey];
 
     if (useCache && cached && (new Date() - cached.timestamp < cacheTTL)) {
@@ -32,7 +37,7 @@ function render(req, res, data, context) {
     };
 
     try {
-        var bemjson = BEMTREE.apply(bemtreeCtx);
+        var bemjson = BEMTREE[lang].apply(bemtreeCtx);
     } catch(err) {
         console.error('BEMTREE error', err.stack);
         console.trace('server stack');

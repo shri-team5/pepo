@@ -39,24 +39,13 @@ const updateUserProfile = (id, request) => {
 };
 
 const getTweets = (params) => {
-    return instance.get('/tweets', {
-        params: params
-    });
-};
-
-const getTweetReplies = (id,params) => {
-    return instance.get('/tweets/' + id +'/replies', {
+    return instance.get('/tweets/v2/', {
         params: params
     });
 };
 
 const getTweet = (id, params) => {
     return instance.get('/tweets/' + id, {
-        params: params
-    });
-};
-const searchTweets = (params) => {
-    return instance.get('/tweets/world', {
         params: params
     });
 };
@@ -73,16 +62,17 @@ const unsubscribe = (id, request) => {
 };
 
 module.exports = {
+
     getTweets,
+    getTweet,
     postTweet,
+
     getUserProfile,
     getUserProfileByUsername,
     getUserProfileForAuth,
     postUserProfile,
-    searchTweets,
     updateUserProfile,
+
     subscribe,
-    unsubscribe,
-    getTweetReplies,
-    getTweet
+    unsubscribe
 };

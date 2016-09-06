@@ -13,23 +13,11 @@ const get = (req, res) => {
     let params = {
         count: config.tweets.initialCount
     };
-    const isQueryParamsExist = req.query.offset || req.query.count;
 
-    if (isQueryParamsExist) {
-        params.offset = req.query.offset;
-        params.count = req.query.count;
-    }
-
-    Server.fetch(Api.searchTweets(params))
+    Server.fetch(Api.getTweets(params))
         .then(
             response => {
-                if (isQueryParamsExist) {
-                    render(req, res, null, response.data.map(item => (
-                        { block: 'tweet', data: item }
-                    )));
-                } else {
-                    render(req, res, searchPage(response));
-                }
+                render(req, res, searchPage(response));
             }
         )
         .catch(e => {

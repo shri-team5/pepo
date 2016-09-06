@@ -5,8 +5,13 @@ var techs = {
         borschik: require('enb-borschik/techs/borschik'),
         stylus: require('enb-stylus/techs/stylus'),
         browserJs: require('enb-js/techs/browser-js'),
-        bemtree: require('enb-bemxjst/techs/bemtree'),
-        bemhtml: require('enb-bemxjst/techs/bemhtml')
+        bemtree: require('enb-bemxjst-i18n/techs/bemtree-i18n'),
+        bemhtml: require('enb-bemxjst/techs/bemhtml'),
+        prependYm: require('enb-modules/techs/prepend-modules'),
+        nodeJs: require('enb-js/techs/node-js'),
+        // i18n
+        keysets: require('enb-bem-i18n/techs/keysets'),
+        i18n: require('enb-bem-i18n/techs/i18n')
     },
     enbBemTechs = require('enb-bem-techs'),
     levels = [
@@ -19,12 +24,16 @@ var techs = {
         { path: 'libs/bem-history/common.blocks', check: false },
         'common.blocks',
         'design/common.blocks'
-    ];
+    ],
+    langs = require('../server/config').langs;
 
 var isProd = process.env.YENV === 'production';
 isProd || levels.push('development.blocks');
 
 module.exports = function(config) {
+
+    config.setLanguages(langs);
+
     config.nodes('*.bundles/*', function(nodeConfig) {
         nodeConfig.addTechs([
             // essential
@@ -42,8 +51,18 @@ module.exports = function(config) {
                 }
             }],
 
+            // i18n
+            [techs.keysets, { lang: '{lang}' }],
+            [techs.i18n, {
+                exports: { ym: true },
+                lang: '{lang}'
+            }],
+
             // bemtree
-            [techs.bemtree, { sourceSuffixes: ['bemtree', 'bemtree.js'] }],
+            [techs.bemtree, {
+                lang: '{lang}',
+                sourceSuffixes: ['bemtree', 'bemtree.js']
+            }],
 
             // templates
             [techs.bemhtml, { sourceSuffixes: ['bemhtml', 'bemhtml.js'] }],
@@ -69,21 +88,29 @@ module.exports = function(config) {
                 sourceSuffixes: ['bemhtml', 'bemhtml.js']
             }],
 
+            // node.js
+            [techs.nodeJs, { includeYM: true }],
+
             // js
-            [techs.browserJs, { includeYM: true }],
+            [techs.browserJs],
             [techs.fileMerge, {
-                target: '?.js',
-                sources: ['?.browser.js', '?.browser.bemhtml.js']
+                target: '?.pre.{lang}.js',
+                sources: ['?.browser.js', '?.browser.bemhtml.js', '?.lang.{lang}.js'],
+                lang: '{lang}'
+            }],
+            [techs.prependYm, {
+                source: '?.pre.{lang}.js',
+                target: '?.{lang}.js'
             }],
 
             // borschik
-            [techs.borschik, { source: '?.js', target: '?.min.js', minify: isProd }],
+            [techs.borschik, { source: '?.{lang}.js', target: '?.{lang}.min.js', minify: isProd }],
             [techs.borschik, { source: '?.css', target: '?.min.css', minify: isProd }],
 
-            [techs.fileCopy, { source: '?.min.js', target: '../../static/?.min.js' }],
+            [techs.fileCopy, { source: '?.{lang}.min.js', target: '../../static/?.{lang}.min.js' }],
             [techs.fileCopy, { source: '?.min.css', target: '../../static/?.min.css' }]
         ]);
 
-        nodeConfig.addTargets(['?.bemtree.js', '?.bemhtml.js', '../../static/?.min.js', '../../static/?.min.css']);
+        nodeConfig.addTargets(['?.bemtree.{lang}.js', '?.bemhtml.js', '../../static/?.{lang}.min.js', '../../static/?.min.css']);
     });
 };

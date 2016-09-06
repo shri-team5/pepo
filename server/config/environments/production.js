@@ -12,6 +12,8 @@ module.exports = {
         initialCount: 15
     },
 
+    langs: ['ru', 'en'],
+
     auth:{
         facebookAuth : {
             clientID      : 1733169776932912, // your App ID

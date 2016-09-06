@@ -1,6 +1,7 @@
 block('userinfo').content()(function () { // eslint-disable-line no-undef
 
-    const {profile, user} = this.data;
+    const {profile, user} = this.data,
+        i18n = this.i18n;
 
     if (profile.error) {
 
@@ -9,7 +10,7 @@ block('userinfo').content()(function () { // eslint-disable-line no-undef
             content: [
                 {
                     elem: 'description',
-                    content: "Something going wrong :("
+                    content: i18n('userinfo', 'profile-error')
                 }
             ]
         };
@@ -56,7 +57,7 @@ block('userinfo').content()(function () { // eslint-disable-line no-undef
                                 block: 'counter',
                                 data: {
                                     number: profile.data.subscribersNumber || 0,
-                                    text: 'читают'
+                                    text: i18n('userinfo', 'followers')
                                 },
                                 mix: {block: 'userinfo', elem: 'counter'}
                             },
@@ -64,7 +65,7 @@ block('userinfo').content()(function () { // eslint-disable-line no-undef
                                 block: 'counter',
                                 data: {
                                     number: profile.data.subscriptions.length || 0,
-                                    text: 'читает'
+                                    text: i18n('userinfo', 'following')
                                 },
                                 mix: {block: 'userinfo', elem: 'counter'}
                             },
@@ -72,7 +73,7 @@ block('userinfo').content()(function () { // eslint-disable-line no-undef
                                 block: 'counter',
                                 data: {
                                     number: profile.data.tweetsNumber || 0,
-                                    text: 'написал'
+                                    text: i18n('userinfo', 'writes')
                                 },
                                 mix: {block: 'userinfo', elem: 'counter'}
                             }

@@ -3,17 +3,19 @@ module.exports = {
     defaultPort: 3000,
     cacheTTL: 100,
     sessionSecret: 'ASD',
-    
+
     backendHost: 'localhost',
     backendPort: 4000,
-    backendTimeout: 1000,
+    backendTimeout: 10000,
 
     tweets:{
         initialCount: 15
     },
-    
+
+    langs: ['ru', 'en'],
+
     testUser:{
-        _id: '57cdd70f9c4804231abfc86d',
+        _id: '57cf1a604193f1c7201d44bb',
         username: 'grimfri'
     },
 
