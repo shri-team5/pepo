@@ -25,7 +25,11 @@ block('page').mod('view', 'tweet').content()(function () { // eslint-disable-lin
                                     mods: {parent: true}
                                 },
                                 {
-                                    block: 'feed'
+                                    block: 'feed',
+                                    js:{
+                                        type:'tweet',
+                                        value: parentTweet.data._id
+                                    }
                                 }
                             ]
                         },

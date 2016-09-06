@@ -15,7 +15,8 @@ block('page').mod('view', 'search').content()(function() {
                             mods : { visible: true },
                             mix: { block:'page', elem:'main' },
                             content: {
-                                block: 'feed'
+                                block: 'feed',
+                                js:{}
                             }
                         },
                         {

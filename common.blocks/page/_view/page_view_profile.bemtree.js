@@ -1,4 +1,5 @@
 block('page').mod('view', 'profile').content()(function () {
+
     return [
         {
             block:'app',
@@ -22,7 +23,11 @@ block('page').mod('view', 'profile').content()(function () {
                                     block: 'userinfo'
                                 },
                                 {
-                                    block: 'feed'
+                                    block: 'feed',
+                                    js:{
+                                        type:'user',
+                                        value: this.data.profile.data._id
+                                    }
                                 }
                             ]
                         },

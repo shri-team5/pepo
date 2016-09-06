@@ -5,7 +5,9 @@ block('feed').content()(function() {
 
     if (tweets.error) {
         return i18n('feed', 'error');
-    } else {
+    } else if(tweets.data.length){
+        return i18n('feed', 'empty');
+    } else{
         return tweets.data.map(item => ({
             block: 'tweet',
             data: item

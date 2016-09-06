@@ -59,16 +59,16 @@ modules.define('app', ['i-bem__dom', 'jquery', 'tweet-toolbar'], function (provi
             this.findBlockInside('new-tweet').domElem.submit();
         },
 
-        _getMoreTweets: function (offset, count) {
+        _getMoreTweets: function (offset, count, query) {
             return new Promise(function (resolve, reject) {
+                query.offset = offset;
+                query.count = count || 10;
+
                 $.ajax({
-                    url: '',
+                    url: '/tweets/choose',
                     async: true,
                     type: 'get',
-                    data: {
-                        offset: offset,
-                        count: count || 10
-                    },
+                    data: query,
                     success: function (response) {
                         resolve(response);
                     },
@@ -83,18 +83,18 @@ modules.define('app', ['i-bem__dom', 'jquery', 'tweet-toolbar'], function (provi
             return document.querySelector('.feed').childElementCount;
         },
 
-        _onGetMoreTweets: function () {
+        _onGetMoreTweets: function (e, data) {
             // Выставляем модификатор на блок, чтобы не триггерить его до окончания подгрузки
             this.findBlockInside('main').toggleMod('loading');
 
             // Получаем твиты и аппендим к ленте
-            this._getMoreTweets(this._getCurrentOffset())
+            this._getMoreTweets(this._getCurrentOffset(),10, {[data.type]:data.value})
                 .then(function (tweets) {
                     BEMDOM.append(
                         this.findBlockInside('feed').domElem,
                         tweets
                     );
-                    this.findBlockInside('main').toggleMod('loading');
+                    setTimeout(()=>{this.findBlockInside('main').toggleMod('loading');},1000);
                 }.bind(this))
                 .catch(function (err) {
                     console.log(err);

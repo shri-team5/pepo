@@ -16,29 +16,18 @@ var http = require('http');
 
 const get = (req, res) => {
 
+    const {offset, count} = req.query;
+
     let params = {
-        userId: req.user._id,
-        count: config.tweets.initialCount
+        feed: req.user._id,
+        count: count ? count : config.tweets.initialCount
     };
-
-    const {offset, count} = req.query,
-        isQueryParamsExist = offset || count;
-
-    if (isQueryParamsExist) {
-        params.offset = offset;
-        params.count = count;
-    }
+    offset && (params.offset = offset);
 
     Server.fetch(Api.getTweets(params))
         .then(
             response => {
-                if (isQueryParamsExist) {
-                    render(req, res, null, response.data.map(item => (
-                    {block: 'tweet', data: item}
-                    )));
-                } else {
-                    render(req, res, feedPage(response));
-                }
+                render(req, res, feedPage(response));
             }
         )
         .catch(e => {
@@ -46,16 +35,15 @@ const get = (req, res) => {
             render(req, res, feedPage({error: e.message}));
         });
 };
+
 const getTweet = (req, res) => {
 
     const {id} = req.params;
-
     let params = {};
 
-    Server.fetchAsync([Api.getTweet(id, params), Api.getTweetReplies(id, params)])
+    Server.fetchAsync([Api.getTweet(id, params), Api.getTweets(id, {tweet:id})])
         .then(
             responses => {
-                console.log(responses);
                 render(req, res, tweetPage(responses[0], responses[1]));
             }
         )
@@ -89,15 +77,49 @@ const post = (req, res) => {
     form.pipe(request);
 
     request.on('response', function (response) {
-
         res.redirect('/');
     });
 
 
 };
 
+const choose = (req, res) =>{
+    const {offset, count, tweet, search} = req.query;
+    let {feed, user} = req.query;
+
+    let params = {
+        count: count ? count : config.tweets.initialCount
+    };
+
+    if(feed == 'self'){feed = req.user._id}
+    if(user == 'self'){user = req.user._id}
+
+    feed && (params.feed = feed);
+    user && (params.user = user);
+    tweet && (params.tweet = tweet);
+    search && (params.searh = search);
+    offset && (params.offset = offset);
+
+
+    Server.fetch(Api.getTweets(params))
+        .then(
+            response => {
+                render(req, res, null, response.data.map(
+                    item => ({block: 'tweet', data: item})
+                ));
+            }
+        )
+        .catch(e => {
+            console.log('Got error: ' + e.message); // eslint-disable-line no-console
+            // render(req, res, feedPage({error: e.message}));
+            res.send("Что-то пошло не так :-(");
+        });
+
+};
+
 module.exports = {
     get,
     getTweet,
-    post
+    post,
+    choose
 };

@@ -17,6 +17,7 @@ const upload = multer({
 });
 
 router.get('/', tweetsController.get);
+router.get('/choose', tweetsController.choose);
 router.get('/:id', tweetsController.getTweet);
 router.post('/', upload.single('image'), tweetsController.post);
 

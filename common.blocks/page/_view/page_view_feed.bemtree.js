@@ -10,16 +10,16 @@ block('page').mod('view', 'feed').content()(function() {
                 {
                     elem: 'content-wrapper',
                     content: [
-                        // {
-                        //     block: 'aside',
-                        //     js: true
-                        // },
                         {
                             block: 'main',
                             mods : { visible: true },
                             mix: { block:'page', elem:'main' },
                             content: {
-                                block: 'feed'
+                                block: 'feed',
+                                js: {
+                                    type:'feed',
+                                    value:'self'
+                                }
                             }
                         },
                         {
