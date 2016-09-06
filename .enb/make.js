@@ -38,7 +38,7 @@ module.exports = function(config) {
                 target: '?.css',
                 sourcemap: false,
                 autoprefixer: {
-                    browsers: ['ie >= 10', 'last 2 versions', 'opera 12.1', '> 2%']
+                    browsers: ['ie >= 10', 'last 2 versions', 'opera 12.1', '> 2%', 'iOS >= 7', 'Android >= 2']
                 }
             }],
 
