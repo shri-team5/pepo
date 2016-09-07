@@ -1,6 +1,7 @@
 module.exports = {
     subscribe: {
         read: 'Read',
-        reading: 'Reading'
+        reading: 'Reading',
+        error: 'Something went wrong :('
     }
 };
