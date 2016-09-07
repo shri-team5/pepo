@@ -14,7 +14,7 @@ module.exports = function (app, passport) {
                     siteName: 'Site name'
                 }
             }
-        })
+        });
 
     });
 

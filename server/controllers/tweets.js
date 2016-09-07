@@ -9,7 +9,7 @@ const Server = require('../api/server');
 
 const config = require('../config');
 
-const formdata = require('form-data');
+const FormData = require('form-data');
 
 var fs = require('fs');
 var http = require('http');
@@ -56,15 +56,20 @@ const getTweet = (req, res) => {
 
 const post = (req, res) => {
 
-    const {text, parentTweet, location, address} = req.body;
+    const {text, parentTweet, location, address, linkimage, linktitle, linkdesc} = req.body;
 
-    let form = new formdata();
+    let form = new FormData();
 
     form.append('text', text);
     form.append('type', 'text');
     form.append('userId', req.user._id);
     form.append('parentTweet', parentTweet);
     form.append('location', location);
+    if (linkimage || linktitle || linkdesc) {
+        form.append('linkimage', linkimage);
+        form.append('linktitle', linktitle);
+        form.append('linkdesc', linkdesc);
+    }
     req.file && form.append('image', fs.createReadStream(req.file.path));
 
     let request = http.request({

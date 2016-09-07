@@ -44,15 +44,22 @@ block('tweet-item').content()(function () {
                         }
                     ]
                 },
+
                 {
                     elem: 'text',
                     content: emojione.toImage(data.text.replace(/\n/g, '<br>'))
                 },
+
                 data.image && {
                     elem: 'image',
                     attrs: {
                         src: data.image
                     }
+                },
+
+                data.link && {
+                    block: 'link-preview',
+                    data: data.link
                 }
             ]
         }

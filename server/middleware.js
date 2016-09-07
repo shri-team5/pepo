@@ -29,7 +29,6 @@ function isRegisteredIn(req, res, next) {
 }
 
 
-
 module.exports = {
     isLoggedIn,
     isRegisteredIn
