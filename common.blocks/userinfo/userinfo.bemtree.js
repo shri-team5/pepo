@@ -55,6 +55,7 @@ block('userinfo').content()(function () { // eslint-disable-line no-undef
                         content: [
                             {
                                 block: 'counter',
+                                mods : { type : 'followers' },
                                 data: {
                                     number: profile.data.subscribersNumber || 0,
                                     text: i18n('userinfo', 'followers')
