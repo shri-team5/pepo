@@ -2,15 +2,6 @@ block('new-tweet').content()(function() {
     var i18n = this.i18n;
     return [
         {
-            block: 'attach',
-            mods: { theme: 'islands', size: 'm' },
-            name: 'image',
-            button: {
-                block: 'button',
-                text: i18n('new-tweet', 'picture')
-            }
-        },
-        {
             block: 'textarea',
             mix: [ { block: 'new-tweet', elem: 'input' } ],
             name: 'text',
@@ -20,6 +11,30 @@ block('new-tweet').content()(function() {
         },
         {
             elem: 'counter'
+        },
+        {
+            elem: 'actions',
+            content:[
+                {
+                    block: 'attach',
+                    mods: { theme: 'islands', size: 'm' },
+                    name: 'image',
+                    mix:{block:'new-tweet', elem:'attach'},
+                    button: {
+                        block: 'button',
+                        text: i18n('new-tweet', 'picture')
+                    }
+                }
+            ]
+        },
+        {
+            elem: 'actions',
+            content:[
+                {
+                    block: 'location',
+                    mix:{block:'new-tweet', elem:'location'}
+                }
+            ]
         },
         {
             block: 'new-tweet-reply',

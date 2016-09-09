@@ -3,7 +3,7 @@
     shouldDeps: [
         {
             block: 'icon',
-            mods: { type: ['like', 'reply', 'retweet', 'delete'] }
+            mods: { type: ['location', 'reply'] }
         },
         'reply'
     ]

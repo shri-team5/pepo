@@ -39,7 +39,7 @@ const updateUserProfile = (id, request) => {
 };
 
 const getTweets = (params) => {
-    return instance.get('/tweets/v2/', {
+    return instance.get('/tweets/', {
         params: params
     });
 };

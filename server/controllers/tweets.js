@@ -56,7 +56,7 @@ const getTweet = (req, res) => {
 
 const post = (req, res) => {
 
-    const {text, parentTweet} = req.body;
+    const {text, parentTweet, location, address} = req.body;
 
     let form = new formdata();
 
@@ -64,6 +64,7 @@ const post = (req, res) => {
     form.append('type', 'text');
     form.append('userId', req.user._id);
     form.append('parentTweet', parentTweet);
+    form.append('location', location);
     req.file && form.append('image', fs.createReadStream(req.file.path));
 
     var request = http.request({
@@ -79,8 +80,6 @@ const post = (req, res) => {
     request.on('response', function (response) {
         res.redirect('/');
     });
-
-
 };
 
 const choose = (req, res) =>{
