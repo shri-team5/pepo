@@ -24,10 +24,10 @@ modules.define('subscribe', ['i-bem__dom', 'jquery', 'i18n'], function (provide,
             var user_id = this.domElem.data('user_id');
             if (this.hasMod('disabled')) return;
             if (this.hasMod('subscribed')) {
-                this._requestSubscriptions(user_id, 'unsubscribe')
+                this._requestSubscriptions(user_id, 'unsubscribe');
             }
             else {
-                this._requestSubscriptions(user_id, 'subscribe')
+                this._requestSubscriptions(user_id, 'subscribe');
             }
         },
 
