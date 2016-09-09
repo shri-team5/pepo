@@ -41,7 +41,7 @@ const getTweet = (req, res) => {
     const {id} = req.params;
     let params = {};
 
-    Server.fetchAsync([Api.getTweet(id, params), Api.getTweets(id, {tweet:id})])
+    Server.fetchAsync([Api.getTweet(id, params), Api.getTweets({tweet:id})])
         .then(
             responses => {
                 render(req, res, tweetPage(responses[0], responses[1]));
