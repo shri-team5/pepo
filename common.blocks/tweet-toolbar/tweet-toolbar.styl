@@ -1,23 +1,54 @@
 .tweet-toolbar {
-    width: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__actions {
     display: flex;
     justify-content: flex-end;
+    margin-right: 5px;
+  }
+  &__replies-link {
+    font-family: 'Open Sans', sans-serif;
+    color: #d95d92;
+    font-size: 13px;
+    text-decoration: none;
+  }
+  &__location {
+    display: none;
+    align-items: center;
+    margin-left: 15px;
+  }
 
-    &__replies-link{
-        font-family: 'Open Sans', sans-serif;
-        color: #d95d92;
-        font-size: 13px;
-        text-decoration: none;
-    }
+  &__location-link {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 11px;
+    color: #808080;
+    margin: 0 10px 0 3px;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-decoration: none
+    border-bottom: 1px dashed #808080;
+    line-height: 1.2;
+  }
+
+  &__location-icon {
+    height: 12px;
+    width: 12px;
+    display: inline-block;
+    vertical-align: middle;
+  }
 }
-
 
 .tweet-toolbar__like,
 .tweet-toolbar__reply,
 .tweet-toolbar__retweet,
 .tweet-toolbar__delete {
-    width: 18px;
-    height: 18px;
-    margin: 0 10px;
-    cursor: pointer;
+  width: 18px;
+  height: 18px;
+  margin: 0 10px;
+  cursor: pointer;
 }

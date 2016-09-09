@@ -4,6 +4,7 @@ block('feed').content()(function() {
         i18n = this.i18n;
 
     if (tweets.error) {
+        console.log(tweets.error);
         return i18n('feed', 'error');
     } else if(tweets.data.length == 0){
         return i18n('feed', 'empty');

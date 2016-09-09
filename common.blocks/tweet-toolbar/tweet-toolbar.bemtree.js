@@ -5,19 +5,45 @@ block('tweet-toolbar').content()(function() {
 
     var toolbar = [
         {
-            elem: 'replies-link',
-            attrs:{
-                href: '/tweets/'+ data._id
-            },
-            content: i18n('tweet-toolbar', 'replies')
+            elem:'left',
+            content:{
+                elem: 'location',
+                content: [
+                    {
+                        block: 'icon',
+                        mods: { type: 'location' },
+                        mix: { block: 'tweet-toolbar', elem: 'location-icon' }
+                    },
+                    {
+                        elem: 'location-link',
+                        content: data.location,
+                        attrs:{
+                            href:"https://yandex.ru/maps/?mode=whatshere&whatshere%5Bpoint%5D="+data.location+"&whatshere%5Bzoom%5D=13",
+                            target:"_blank"
+                        }
+                    }
+                ]
+            }
         },
         {
-            block: 'reply',
-            content: [
+            elem: 'actions',
+            content:[
                 {
-                    block: 'icon',
-                    mods: { type: 'reply' },
-                    mix: { block: 'tweet-toolbar', elem: 'reply' }
+                    elem: 'replies-link',
+                    attrs:{
+                        href: '/tweets/'+ data._id
+                    },
+                    content: i18n('tweet-toolbar', 'replies')
+                },
+                {
+                    block: 'reply',
+                    content: [
+                        {
+                            block: 'icon',
+                            mods: { type: 'reply' },
+                            mix: { block: 'tweet-toolbar', elem: 'reply' }
+                        }
+                    ]
                 }
             ]
         }

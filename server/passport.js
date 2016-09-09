@@ -36,7 +36,12 @@ module.exports = function (passport) {
         Auth(profile, done)
     }));
 };
-
+/**
+ *
+ * @param profile
+ * @param done
+ * @constructor
+ */
 function Auth(profile, done) {
 
 
