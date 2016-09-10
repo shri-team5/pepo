@@ -1,6 +1,3 @@
 block('burger').content()(function () {
-
-    return{
-        elem:'line'
-    }
+    return {elem: 'line'};
 });

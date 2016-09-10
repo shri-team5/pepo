@@ -24,5 +24,5 @@ block('aside').content()(function () {
                 }
             ]
         }
-    ]
-})
+    ];
+});

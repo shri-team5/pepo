@@ -88,13 +88,15 @@ modules.define('app', ['i-bem__dom', 'jquery', 'tweet-toolbar'], function (provi
             this.findBlockInside('main').toggleMod('loading');
 
             // Получаем твиты и аппендим к ленте
-            this._getMoreTweets(this._getCurrentOffset(),10, {[data.type]:data.value})
+            this._getMoreTweets(this._getCurrentOffset(),10, {[data.type]: data.value})
                 .then(function (tweets) {
                     BEMDOM.append(
                         this.findBlockInside('feed').domElem,
                         tweets
                     );
-                    setTimeout(()=>{this.findBlockInside('main').toggleMod('loading');},1000);
+                    setTimeout(() => {
+                        this.findBlockInside('main').toggleMod('loading');
+                    }, 1000);
                 }.bind(this))
                 .catch(function (err) {
                     console.log(err);

@@ -1,5 +1,4 @@
-block('counter').content()(function () {// eslint-disable-line no-undef
-
+block('counter').content()(function () {
     return [
         {
             elem: 'number',
@@ -9,6 +8,5 @@ block('counter').content()(function () {// eslint-disable-line no-undef
             elem: 'text',
             content: this.ctx.data.text
         }
-
-    ]
+    ];
 });
