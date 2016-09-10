@@ -4,18 +4,17 @@ modules.define('aside', ['i-bem__dom'], function (provide, BEMDOM) {
             onSetMod: {
                 js: {
                     inited: function () {
-                        BEMDOM.blocks['burger'].on('toggle-sidebar', this._toggleSidebar, this)
-
+                        BEMDOM.blocks['burger'].on('toggle-sidebar', this._toggleSidebar, this);
                     },
                     '': function () {
-                        BEMDOM.blocks['burger'].un('toggle-sidebar', this._toggleSidebar, this)
+                        BEMDOM.blocks['burger'].un('toggle-sidebar', this._toggleSidebar, this);
                     }
                 }
             },
+
             _toggleSidebar: function () {
                 this.toggleMod('visible');
             }
-
         })
-    )
+    );
 });

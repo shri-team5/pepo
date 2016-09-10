@@ -13,7 +13,11 @@
     "bem-xjst/bemtree": true
   },
   "extends": [
-      "eslint:recommended",
-      "pedant"
-  ]
+      /*"eslint:recommended",*/
+      "pedant",
+      "yandex"
+  ],
+  "globals": {
+      "modules": false
+  }
 }

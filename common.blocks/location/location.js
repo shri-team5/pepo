@@ -8,16 +8,16 @@ modules.define('location', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, 
             },
 
             _onLocationClick: function (e) {
+                var self = this;
+
                 e.preventDefault();
-                if (!navigator.geolocation){
+                if (!navigator.geolocation) {
                     alert('Геолокация не поддерживается вашим браузером');
                     return;
                 }
 
-                var self = this;
-
                 function success(position) {
-                    var latitude  = position.coords.latitude;
+                    var latitude = position.coords.latitude;
                     var longitude = position.coords.longitude;
 
                     // var img = new Image();
@@ -26,8 +26,7 @@ modules.define('location', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, 
                     //
                     // this.elem('map').html(img);
 
-
-                    self.elem('location').val(longitude + "," + latitude);
+                    self.elem('location').val(longitude + ',' + latitude);
                     $.ajax({
                         url: 'https://geocode-maps.yandex.ru/1.x/?geocode=' + longitude + ',' + latitude + '&format=json',
                         async: true,
@@ -50,8 +49,6 @@ modules.define('location', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, 
 
                 navigator.geolocation.getCurrentPosition(success, error);
             },
-
-
         })
-    )
+    );
 });

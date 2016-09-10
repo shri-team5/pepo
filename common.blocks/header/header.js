@@ -30,5 +30,5 @@ modules.define('header', ['i-bem__dom'], function (provide, BEMDOM) {
                 this.toggleMod(this.elem('newTweet'), 'visible');
             }
         })
-    )
+    );
 });
