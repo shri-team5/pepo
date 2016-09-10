@@ -1,4 +1,4 @@
-block('userinfo').content()(function () { // eslint-disable-line no-undef
+block('userinfo').content()(function () {
 
     const {profile, user} = this.data,
         i18n = this.i18n;

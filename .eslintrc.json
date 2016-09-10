@@ -2,10 +2,18 @@
   "rules": {
     "no-console": 1
   },
+  "plugins": [
+      "bem-xjst"
+  ],
   "env": {
     "es6": true,
     "browser": true,
-    "node": true
+    "node": true,
+    "bem-xjst/bemhtml": true,
+    "bem-xjst/bemtree": true
   },
-  "extends": "eslint:recommended"
+  "extends": [
+      "eslint:recommended",
+      "pedant"
+  ]
 }

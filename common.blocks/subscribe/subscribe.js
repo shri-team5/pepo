@@ -22,7 +22,7 @@ modules.define('subscribe', ['i-bem__dom', 'jquery', 'i18n'], function (provide,
 
         _toggleSubscribe: function () {
             var user_id = this.domElem.data('user_id');
-            if (this.hasMod('disabled')) return;
+            if (this.hasMod('disabled')) { return; }
             if (this.hasMod('subscribed')) {
                 this._requestSubscriptions(user_id, 'unsubscribe');
             }
