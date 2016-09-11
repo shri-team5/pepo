@@ -1,37 +1,42 @@
 block('navigation').content()(function () {// eslint-disable-line no-undef
 
-    return[
+    console.log(this.data);
+
+    return [
         {
-            elem:'item',
-            attrs:{
-                href:'/'
+            elem: 'item',
+            elemMods: {active: this.data.view === 'feed'},
+            attrs: {
+                href: '/'
             },
-            content:{
+            content: {
                 block: 'icon',
-                mods: { type: 'home' },
-                mix: {block:'navigation', elem:'icon'}
+                mods: {type: 'home'},
+                mix: {block: 'navigation', elem: 'icon'}
             }
         },
         {
-            elem:'item',
-            attrs:{
-                href:'/search'
+            elem: 'item',
+            elemMods: {active: this.data.view === 'search'},
+            attrs: {
+                href: '/search'
             },
-            content:{
+            content: {
                 block: 'icon',
-                mods: { type: 'search' },
-                mix: {block:'navigation', elem:'icon'}
+                mods: {type: 'search'},
+                mix: {block: 'navigation', elem: 'icon'}
             }
         },
         {
-            elem:'item',
-            attrs:{
-                href:'/profile'
+            elem: 'item',
+            elemMods: {active: this.data.view === 'profile'},
+            attrs: {
+                href: '/profile'
             },
-            content:{
+            content: {
                 block: 'icon',
-                mods: { type: 'profile' },
-                mix: {block:'navigation', elem:'icon'}
+                mods: {type: 'profile'},
+                mix: {block: 'navigation', elem: 'icon'}
             }
         }
         // {
