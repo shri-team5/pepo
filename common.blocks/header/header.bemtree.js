@@ -10,7 +10,11 @@ block('header').content()(function () {
                     content: [
                         {
                             elem: 'plus',
-                            content: '+'
+                            content: {
+                                block: 'icon',
+                                mix: [{block: 'header', elem: 'icon'}],
+                                mods: {type: 'plus'}
+                            }
                         }
                     ]
                 },
