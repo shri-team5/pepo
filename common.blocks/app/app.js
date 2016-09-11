@@ -4,12 +4,17 @@ modules.define('app', ['i-bem__dom', 'jquery', 'tweet-toolbar'], function (provi
         onSetMod: {
             js: {
                 inited: function () {
-                    ['header-new-tweet', 'header-back'].map(function (event) {
-                        this.findBlockInside('header').on(
-                            event,
-                            this._onHeaderNewTweetEvent,
-                            this);
-                    }, this);
+
+                    this.findBlockInside('create-tweet') &&
+                    this.findBlockInside('create-tweet').on(
+                        'show-new-tweet-from',
+                        this._onHeaderNewTweetEvent,
+                        this);
+
+                    this.findBlockInside('header').on(
+                        'header-back',
+                        this._onHeaderNewTweetEvent,
+                        this);
 
                     this.findBlockInside('header').on(
                         'header-submit',
@@ -22,10 +27,13 @@ modules.define('app', ['i-bem__dom', 'jquery', 'tweet-toolbar'], function (provi
                         this._onGetMoreTweets,
                         this);
 
+                    this.findBlockInside('new-tweet') &&
                     this.findBlockInside('new-tweet').on(
                         'allowSubmitForm',
                         this._tweetAllowSubmitForm,
                         this);
+
+                    this.findBlockInside('new-tweet') &&
                     this.findBlockInside('new-tweet').on(
                         'disallowSubmitForm',
                         this._tweetDisallowSubmitForm,
@@ -36,10 +44,10 @@ modules.define('app', ['i-bem__dom', 'jquery', 'tweet-toolbar'], function (provi
             }
         },
         _tweetAllowSubmitForm: function () {
-            this.findBlockInside('header').setMod('allowSubmit',true);
+            this.findBlockInside('header').setMod('allowSubmit', true);
         },
         _tweetDisallowSubmitForm: function () {
-            this.findBlockInside('header').setMod('allowSubmit',false);
+            this.findBlockInside('header').setMod('allowSubmit', false);
 
         },
         _onOpenReply: function (data) {
@@ -50,7 +58,12 @@ modules.define('app', ['i-bem__dom', 'jquery', 'tweet-toolbar'], function (provi
         },
 
         _onHeaderNewTweetEvent: function () {
-            ['new-tweet', 'main'].map(function (block) {
+            var header = this.findBlockInside('header');
+            header.toggleMod(header.elem('standard'), 'visible');
+            header.toggleMod(header.elem('newTweet'), 'visible');
+            this.findBlockInside('create-tweet').toggleMod('visible');
+
+            ['new-tweet', 'main'].forEach(function (block) {
                 this.findBlockInside(block).toggleMod('visible');
             }, this);
         },
@@ -88,7 +101,7 @@ modules.define('app', ['i-bem__dom', 'jquery', 'tweet-toolbar'], function (provi
             this.findBlockInside('main').toggleMod('loading');
 
             // Получаем твиты и аппендим к ленте
-            this._getMoreTweets(this._getCurrentOffset(),10, {[data.type]: data.value})
+            this._getMoreTweets(this._getCurrentOffset(), 10, {[data.type]: data.value})
                 .then(function (tweets) {
                     BEMDOM.append(
                         this.findBlockInside('feed').domElem,

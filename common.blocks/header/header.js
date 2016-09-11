@@ -3,7 +3,6 @@ modules.define('header', ['i-bem__dom'], function (provide, BEMDOM) {
         BEMDOM.decl(this.name, {
             onSetMod: {
                 js: function () {
-                    this.elem('plus').on('click', this._onNewTweetClick.bind(this));
                     this.elem('back').on('click', this._onBackClick.bind(this));
                     this.elem('submit').on('click', this._onSubmitClick.bind(this));
                     this.elem('history-back').on('click', function (e) {
@@ -19,16 +18,11 @@ modules.define('header', ['i-bem__dom'], function (provide, BEMDOM) {
 
             _onBackClick: function () {
                 this.emit('header-back');
-                this.toggleMod(this.elem('standard'), 'visible');
-                this.toggleMod(this.elem('newTweet'), 'visible');
-
-            },
-
-            _onNewTweetClick: function () {
-                this.emit('header-new-tweet');
-                this.toggleMod(this.elem('standard'), 'visible');
-                this.toggleMod(this.elem('newTweet'), 'visible');
+                // this.toggleMod(this.elem('standard'), 'visible');
+                // this.toggleMod(this.elem('newTweet'), 'visible');
             }
+
+
         })
     );
 });

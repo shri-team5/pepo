@@ -21,6 +21,21 @@ block('header').mod('type', 'replies').content()(function () {
                     ]
                 }
             ]
+        },
+        {
+            elem: 'column',
+            elemMods: {align: 'center'},
+            content: {
+                elem: 'name',
+                content: 'Pepo'
+            }
+        },
+        {
+            elem: 'column',
+            elemMods: {align: 'right'},
+            content: {
+
+            }
         }
     ];
 });
