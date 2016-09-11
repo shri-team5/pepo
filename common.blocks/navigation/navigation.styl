@@ -15,6 +15,7 @@
 
   &__item{
 
+    position: relative;
     margin: 0 10px
 
     font-size: 42px;
@@ -22,7 +23,20 @@
     line-height: 0.48;
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
-
+    
+    &_active{
+      &:after{
+        content: '';
+        display: block;
+        bottom: -9px;
+        position: absolute;
+        left: 50%;
+        margin-left: -17px;
+        height: 2px;
+        width: 34px;
+        background: #d85d91;
+      }
+    }
   }
   &__icon{
     height:22px;
