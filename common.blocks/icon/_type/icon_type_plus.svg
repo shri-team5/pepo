@@ -1,1 +1,52 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#fff" d="M23 10h-8.5c-.3 0-.5-.2-.5-.5V1c0-.6-.4-1-1-1h-2c-.6 0-1 .4-1 1v8.5c0 .3-.2.5-.5.5H1c-.6 0-1 .4-1 1v2c0 .6.4 1 1 1h8.5c.3 0 .5.2.5.5V23c0 .6.4 1 1 1h2c.6 0 1-.4 1-1v-8.5c0-.3.2-.5.5-.5H23c.6 0 1-.4 1-1v-2c0-.6-.4-1-1-1z"/></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 24 24"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r"
+   sodipodi:docname="icon_type_plus.svg">
+  <metadata
+     id="metadata10">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1600"
+     inkscape:window-height="844"
+     id="namedview6"
+     showgrid="false"
+     inkscape:zoom="16"
+     inkscape:cx="6.6194339"
+     inkscape:cy="14.533519"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <path
+     style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 11.013672 0.078125 L 11.013672 10.875 L 0.001953125 10.875 L 0.001953125 13.378906 L 11.013672 13.378906 L 11.013672 24.023438 L 13.392578 24.023438 L 13.392578 13.378906 L 23.947266 13.378906 L 23.947266 10.875 L 13.392578 10.875 L 13.392578 0.078125 L 11.013672 0.078125 z "
+     id="rect4140-3" />
+</svg>

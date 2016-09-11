@@ -1,8 +1,9 @@
 block('logo')(
     tag()('img'),
-    attrs()(function() {
+    attrs()(function () {
         return {
             src: '/logo.png',
             alt: 'logo'
-        }})
-)
+        };
+    })
+);

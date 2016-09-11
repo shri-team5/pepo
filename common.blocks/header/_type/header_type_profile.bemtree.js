@@ -8,10 +8,10 @@ block('header').mod('type', 'profile').content()(function () {
                     elem: 'standard',
                     elemMods: {visible: true},
                     content: [
-                        {
-                            elem: 'plus',
-                            content: '+'
-                        }
+                        // {
+                        //     elem: 'plus',
+                        //     content: '+'
+                        // }
                     ]
                 },
                 {
@@ -28,6 +28,14 @@ block('header').mod('type', 'profile').content()(function () {
                     ]
                 }
             ]
+        },
+        {
+            elem: 'column',
+            elemMods: {align: 'center'},
+            content: {
+                elem: 'name',
+                content: 'Pepo'
+            }
         },
         {
             elem: 'column',

@@ -1,6 +1,7 @@
 ({
     mustDeps: 'i18n',
     shouldDeps:[
-        'location'
+        'location',
+        'create-tweet'
     ]
 })

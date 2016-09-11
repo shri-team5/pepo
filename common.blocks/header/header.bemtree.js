@@ -8,14 +8,14 @@ block('header').content()(function () {
                     elem: 'standard',
                     elemMods: {visible: true},
                     content: [
-                        {
-                            elem: 'plus',
-                            content: {
-                                block: 'icon',
-                                mix: [{block: 'header', elem: 'icon'}],
-                                mods: {type: 'plus'}
-                            }
-                        }
+                        // {
+                        //     elem: 'plus',
+                        //     content: {
+                        //         block: 'icon',
+                        //         mix: [{block: 'header', elem: 'icon'}],
+                        //         mods: {type: 'plus'}
+                        //     }
+                        // }
                     ]
                 },
                 {
@@ -32,6 +32,14 @@ block('header').content()(function () {
                     ]
                 }
             ]
+        },
+        {
+            elem: 'column',
+            elemMods: {align: 'center'},
+            content: {
+                elem: 'name',
+                content: 'Pepo'
+            }
         },
         {
             elem: 'column',
