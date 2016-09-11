@@ -23,11 +23,12 @@ block('root').replace()(function() {
             { elem : 'css', url : '/icon_128.png' , attrs : { rel : 'icon' } },
             { elem : 'css', url : '/icon_200.png' , attrs : { rel : 'apple-touch-icon' } }
         ],
-        scripts: [
+        scripts: [ 
             {
                 elem: 'js',
                 url: '/index.' + i18n('root', 'lang') + '.min.js'
             }
+            
         ],
         head: [
             { elem: 'meta', attrs: { name: 'mobile-web-app-capable', content: 'yes' } },
