@@ -30,6 +30,13 @@ block('header').mod('type', 'settings').content()(function () {
                 elem: 'name',
                 content: 'Pepo'
             }
+        },
+        {
+            elem: 'column',
+            elemMods: {align: 'right'},
+            content: {
+
+            }
         }
     ];
 });

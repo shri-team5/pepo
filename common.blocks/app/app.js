@@ -27,10 +27,13 @@ modules.define('app', ['i-bem__dom', 'jquery', 'tweet-toolbar'], function (provi
                         this._onGetMoreTweets,
                         this);
 
+                    this.findBlockInside('new-tweet') &&
                     this.findBlockInside('new-tweet').on(
                         'allowSubmitForm',
                         this._tweetAllowSubmitForm,
                         this);
+
+                    this.findBlockInside('new-tweet') &&
                     this.findBlockInside('new-tweet').on(
                         'disallowSubmitForm',
                         this._tweetDisallowSubmitForm,

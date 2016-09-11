@@ -29,6 +29,13 @@ block('header').mod('type', 'replies').content()(function () {
                 elem: 'name',
                 content: 'Pepo'
             }
+        },
+        {
+            elem: 'column',
+            elemMods: {align: 'right'},
+            content: {
+
+            }
         }
     ];
 });
