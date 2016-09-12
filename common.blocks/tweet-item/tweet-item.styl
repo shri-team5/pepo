@@ -4,10 +4,12 @@
   align-items: flex-start;
   position: relative;
   padding: 10px;
+
   &__image {
     max-width: 100%;
     max-height: 420px;
   }
+
   &__userpic {
     margin: 5px 20px 5px 0px;
     /*border-right: 1px solid #cbcbcb;*/
@@ -17,10 +19,11 @@
     min-height: 45px;
     min-width: 45px;
   }
+
   &__username {
     margin: 0 0 0 0;
     height: 40px;
-    color: #d95d92;
+    color: $baseColorLighter;
     font-size: 13px;
     text-decoration: none;
     max-width: 135px;
@@ -29,6 +32,7 @@
     text-overflow: ellipsis;
     position: relative;
     padding-right: 15px;
+
     &:after {
       content: attr(title);
       font-family: 'Open Sans';
@@ -39,9 +43,11 @@
       top: 18px;
     }
   }
+
   &__content {
     width: 100%;
   }
+
   &__text {
     padding: 10px 0 10px 0;
     font-size: 13px;
@@ -49,24 +55,28 @@
     word-break: break-all;
     word-break: break-word;
   }
+
   &__head {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     //padding: 0 10px 0 0;
   }
+
   &__head-info {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    flex:1;
+    flex: 1;
     //padding: 0 10px 0 0;
   }
+
   &__created {
     font-size: 11px;
     color: gray;
     font-style: italic;
   }
+
   .tweet-item__reply {
     display: none;
     position: absolute;
@@ -74,8 +84,9 @@
     right: 0
     height: 1px;
     width: 1px;
-    border-right: 30px solid #d95d92;
+    border-right: 30px solid $baseColorLighter;
     border-bottom: 30px solid transparent;
+
     &:after {
       content: '→';
       position: absolute;

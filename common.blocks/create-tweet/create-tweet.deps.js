@@ -3,6 +3,6 @@
         {
             block: 'icon',
             mods: {type: ['plus']}
-        },
+        }
     ]
 })
