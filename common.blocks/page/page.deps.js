@@ -1,5 +1,5 @@
 ({
-    mustDeps: 'i18n',
+    mustDeps: ['i18n', 'variables'],
     shouldDeps: [
         {
             mods: {view: ['404', 'feed', 'profile', 'login', 'settings', 'tweet', 'registration', 'search']}

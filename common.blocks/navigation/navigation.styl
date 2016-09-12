@@ -1,5 +1,5 @@
 .navigation{
-  height:40px;
+  height: $navigationSize;
 
   position: absolute;
   bottom: 0;
@@ -7,7 +7,7 @@
   right: 0;
   z-index: 1;
   background: #fff;
-  border-top:2px solid #d55c90;
+  border-top: $navigationBorderSize solid #d55c90;
 
   display: flex;
   align-items: center;
@@ -19,11 +19,11 @@
     margin: 0 10px
 
     font-size: 42px;
-    color: #944a71;
+    color: $baseColor;
     line-height: 0.48;
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
-    
+
     &_active{
       &:after{
         content: '';
