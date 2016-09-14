@@ -5,9 +5,11 @@ provide(BEMDOM.decl(this.name,
         onSetMod: {
             js: {
                 inited: function () {
+                    var location = this.elem('location-link').html();
                     this.bindTo('reply', 'click', this._onReplyClick);
-                    let location = this.elem('location-link').html();
-                    if(location.length){this._loadAddress(location)}
+                    if (location.length) {
+                        this._loadAddress(location);
+                    }
                 }
             }
         },
