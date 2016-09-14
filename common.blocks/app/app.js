@@ -107,9 +107,9 @@ modules.define('app', ['i-bem__dom', 'jquery', 'tweet-toolbar'], function (provi
                         this.findBlockInside('feed').domElem,
                         tweets
                     );
-                    setTimeout(() => {
+                    setTimeout(function () {
                         this.findBlockInside('main').toggleMod('loading');
-                    }, 1000);
+                    }.bind(this), 1000);
                 }.bind(this))
                 .catch(function (err) {
                     console.log(err);
