@@ -3,10 +3,15 @@ block('tweet-item').content()(function () {
 
     return [
         {
-            block: 'userpic',
-            src: data.author.avatarPath,
-            alt: data.author.username,
-            mix: {block: 'tweet-item', elem: 'userpic'}
+            elem:'profile-link',
+            href: "/profile/" + data.author._id,
+            title: '@' + data.author.username,
+            content:{
+                block: 'userpic',
+                src: data.author.avatarPath,
+                alt: data.author.username,
+                mix: {block: 'tweet-item', elem: 'userpic'}
+            }
         },
         {
             elem: 'content',
