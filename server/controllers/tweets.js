@@ -96,13 +96,14 @@ const choose = (req, res) =>{
     feed && (params.feed = feed);
     user && (params.user = user);
     tweet && (params.tweet = tweet);
-    search && (params.searh = search);
+    search && (params.search = search);
     offset && (params.offset = offset);
 
 
     Server.fetch(Api.getTweets(params))
         .then(
             response => {
+                console.log('response---------------------: ' + response.data);
                 render(req, res, null, response.data.map(
                     item => ({block: 'tweet', data: item})
                 ));

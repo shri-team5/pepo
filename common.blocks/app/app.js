@@ -40,6 +40,13 @@ modules.define('app', ['i-bem__dom', 'jquery', 'tweet-toolbar'], function (provi
                         this);
 
                     Toolbar.on('openReply', this._onOpenReply, this);
+
+
+                    this.findBlockInside('search') &&
+                    this.findBlockInside('search').on(
+                        'searchTweets',
+                        this._onSearchTweets,
+                        this);
                 }
             }
         },
@@ -96,24 +103,61 @@ modules.define('app', ['i-bem__dom', 'jquery', 'tweet-toolbar'], function (provi
             return document.querySelector('.feed').childElementCount;
         },
 
-        _onGetMoreTweets: function (e, data) {
+        _getAndDisplayTweets: function (offset, count, query, displayMode) {
+
+            var mainBlock = this.findBlockInside('main');
+            var feedBlock = this.findBlockInside('feed');
             // Выставляем модификатор на блок, чтобы не триггерить его до окончания подгрузки
-            this.findBlockInside('main').toggleMod('loading');
+            mainBlock.toggleMod('loading');
 
             // Получаем твиты и аппендим к ленте
-            this._getMoreTweets(this._getCurrentOffset(), 10, {[data.type]: data.value})
+            this._getMoreTweets(offset, count, query)
                 .then(function (tweets) {
-                    BEMDOM.append(
-                        this.findBlockInside('feed').domElem,
+                    BEMDOM[displayMode](
+                        feedBlock.domElem,
                         tweets
                     );
                     setTimeout(function () {
-                        this.findBlockInside('main').toggleMod('loading');
+                        mainBlock.toggleMod('loading');
                     }.bind(this), 1000);
                 }.bind(this))
                 .catch(function (err) {
                     console.log(err);
                 });
+        },
+
+        /**
+         * Подгружает следующий набор твитов
+         * @private
+         */
+        _onGetMoreTweets: function () {
+            var feedBlock = this.findBlockInside('feed');
+
+            // Получаем твиты и аппендим к ленте
+            this._getAndDisplayTweets(
+                this._getCurrentOffset(),
+                10,
+                {[feedBlock.getMod('type')]: feedBlock.getMod('value')},
+                'append'
+            );
+
+        },
+
+        /**
+         * Ищет твиты
+         * @param {Event} e - информация о событии
+         * @param {Object} data - значение поиска
+         * @private
+         */
+        _onSearchTweets: function (e, data) {
+            var feedBlock = this.findBlockInside('feed');
+            feedBlock.setMod('value', data.value);
+
+            this._getAndDisplayTweets(
+                0, 10, {'search': data.value},
+                'update'
+            );
+
         }
     }));
 });

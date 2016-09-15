@@ -16,7 +16,7 @@ block('page').mod('view', 'feed').content()(function () {
                             mix: {block: 'page', elem: 'main'},
                             content: {
                                 block: 'feed',
-                                js: {
+                                mods : {
                                     type: 'feed',
                                     value: 'self'
                                 }

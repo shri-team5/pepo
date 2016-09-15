@@ -26,7 +26,7 @@ block('page').mod('view', 'tweet').content()(function () { // eslint-disable-lin
                                 },
                                 {
                                     block: 'feed',
-                                    js:{
+                                    mods : {
                                         type:'tweet',
                                         value: parentTweet.data._id
                                     }
