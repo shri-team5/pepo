@@ -16,7 +16,7 @@ modules.define('main', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) {
                             // Если всё ок, то эмитим БЭМ-событие
                             if ((offset >= feedHeight) && (!this.hasMod('loading'))) {
                                 // console.log('emit loading more tweets');
-                                this.emit('getMoreTweets',{type:feed.params.type, value: feed.params.value});
+                                this.emit('getMoreTweets');
                             }
                         });
                     }

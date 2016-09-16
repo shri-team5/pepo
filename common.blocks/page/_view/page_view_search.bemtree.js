@@ -5,6 +5,9 @@ block('page').mod('view', 'search').content()(function() {
             content: [
                 {
                     block: 'header',
+                    mods:{
+                        type:'search'
+                    },
                     mix: { block:'page', elem:'header' }
                 },
                 {
@@ -16,7 +19,10 @@ block('page').mod('view', 'search').content()(function() {
                             mix: { block:'page', elem:'main' },
                             content: {
                                 block: 'feed',
-                                js:{}
+                                mods : {
+                                    type:'search',
+                                    value: ''
+                                }
                             }
                         },
                         {

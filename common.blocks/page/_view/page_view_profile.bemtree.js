@@ -24,7 +24,7 @@ block('page').mod('view', 'profile').content()(function () {
                                 },
                                 {
                                     block: 'feed',
-                                    js:{
+                                    mods : {
                                         type:'user',
                                         value: this.data.profile.data._id
                                     }
