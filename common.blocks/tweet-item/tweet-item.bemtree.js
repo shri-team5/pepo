@@ -3,10 +3,10 @@ block('tweet-item').content()(function () {
 
     return [
         {
-            elem:'profile-link',
-            href: "/profile/" + data.author._id,
+            elem: 'profile-link',
+            href: '/profile/' + data.author._id,
             title: '@' + data.author.username,
-            content:{
+            content: {
                 block: 'userpic',
                 src: data.author.avatarPath,
                 alt: data.author.username,
@@ -22,7 +22,7 @@ block('tweet-item').content()(function () {
                         {
                             block: 'username',
                             content: data.author.fullName,
-                            href: "/profile/" + data.author._id,
+                            href: '/profile/' + data.author._id,
                             title: '@' + data.author.username,
                             mix: {block: 'tweet-item', elem: 'username'}
                         },
@@ -46,8 +46,7 @@ block('tweet-item').content()(function () {
                     elem: 'text',
                     content: data.text
                 },
-                data.image &&
-                {
+                data.image && {
                     elem: 'image',
                     attrs: {
                         src: data.image

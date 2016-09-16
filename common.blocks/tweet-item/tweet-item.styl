@@ -4,21 +4,23 @@
   align-items: flex-start;
   position: relative;
   padding: 10px;
+
   &__image {
     max-width: 100%;
     max-height: 320px;
   }
+
   &__userpic {
     margin: 5px 20px 5px 5px;
-    /*border-right: 1px solid #cbcbcb;*/
     border-radius: 50%;
     max-height: 45px;
     max-width: 45px;
     min-height: 45px;
     min-width: 45px;
   }
+
   &__username {
-    margin: 0 0 0 0;
+    margin: 0;
     height: 40px;
     color: $baseColorLighter;
     font-size: 13px;
@@ -29,6 +31,7 @@
     text-overflow: ellipsis;
     position: relative;
     padding-right: 15px;
+
     &:after {
       content: attr(title);
       font-family: 'Open Sans';
@@ -39,10 +42,12 @@
       top: 18px;
     }
   }
+
   &__content {
     width: 100%;
     padding: 3px 5px 0 0;
   }
+
   &__text {
     padding: 0 0 10px 0;
     font-size: 13px;
@@ -50,18 +55,20 @@
     word-break: break-all;
     word-break: break-word;
   }
+
   &__head {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    //padding: 0 10px 0 0;
   }
+
   &__created {
     font-size: 11px;
     color: gray;
     font-style: italic;
   }
-  .tweet-item__reply {
+
+  &__reply {
     display: none;
     position: absolute;
     top: 0
@@ -70,6 +77,7 @@
     width: 1px;
     border-right: 30px solid $baseColorLighter;
     border-bottom: 30px solid transparent;
+
     &:after {
       content: '→';
       position: absolute;
@@ -84,5 +92,9 @@
     .tweet-item__reply {
       display: block
     }
+  }
+
+  &__profile-link {
+      flex: 1 0 auto;
   }
 }
