@@ -53,8 +53,7 @@ modules.define('app', ['i-bem__dom', 'jquery', 'tweet-toolbar'], function (provi
         _onOpenReply: function (data) {
             var replyTo = data.target.params.tweetid;
             this.findBlockInside('new-tweet-reply').domElem.val(replyTo);
-            this.findBlockInside('header')._onNewTweetClick();
-            // console.log(this.findBlockInside('new-tweet-reply').domElem.val());
+            this.findBlockInside('create-tweet')._onNewTweetClick();
         },
 
         _onHeaderNewTweetEvent: function () {
