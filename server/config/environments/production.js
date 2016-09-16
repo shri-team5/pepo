@@ -1,6 +1,6 @@
 module.exports = {
     staticFolder: 'static',
-    defaultPort: 80,
+    defaultPort: 3000,
     cacheTTL: 100,
     sessionSecret: 'GHJKNBFGHJHKJGHHJJLKHJG',
 
