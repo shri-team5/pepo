@@ -41,7 +41,7 @@ const getTweet = (req, res) => {
     const {id} = req.params;
     let params = {};
 
-    Server.fetchAsync([Api.getTweet(id, params), Api.getTweets({tweet:id})])
+    Server.fetchAsync([Api.getTweet(id, params), Api.getTweets({tweet: id})])
         .then(
             responses => {
                 render(req, res, tweetPage(responses[0], responses[1]));
@@ -67,7 +67,7 @@ const post = (req, res) => {
     form.append('location', location);
     req.file && form.append('image', fs.createReadStream(req.file.path));
 
-    var request = http.request({
+    let request = http.request({
         method: 'post',
         host: config.backendHost,
         port: config.backendPort,
@@ -82,7 +82,7 @@ const post = (req, res) => {
     });
 };
 
-const choose = (req, res) =>{
+const choose = (req, res) => {
     const {offset, count, tweet, search} = req.query;
     let {feed, user} = req.query;
 
@@ -90,8 +90,12 @@ const choose = (req, res) =>{
         count: count ? count : config.tweets.initialCount
     };
 
-    if(feed == 'self'){feed = req.user._id}
-    if(user == 'self'){user = req.user._id}
+    if (feed === 'self') {
+        feed = req.user._id;
+    }
+    if (user === 'self') {
+        user = req.user._id;
+    }
 
     feed && (params.feed = feed);
     user && (params.user = user);
@@ -103,7 +107,6 @@ const choose = (req, res) =>{
     Server.fetch(Api.getTweets(params))
         .then(
             response => {
-                console.log('response---------------------: ' + response.data);
                 render(req, res, null, response.data.map(
                     item => ({block: 'tweet', data: item})
                 ));
@@ -112,7 +115,7 @@ const choose = (req, res) =>{
         .catch(e => {
             console.log('Got error: ' + e.message); // eslint-disable-line no-console
             // render(req, res, feedPage({error: e.message}));
-            res.send("Что-то пошло не так :-(");
+            res.send('Что-то пошло не так :-(');
         });
 
 };
