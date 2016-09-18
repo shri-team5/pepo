@@ -14,12 +14,13 @@ block('tweet-toolbar').content()(function () {
         {
             elem: 'actions',
             content: [
+                data.replies &&
                 {
                     elem: 'replies-link',
                     attrs: {
                         href: '/tweets/' + data._id
                     },
-                    content: i18n('tweet-toolbar', 'replies')
+                    content: data.replies
                 },
                 {
                     block: 'reply',
