@@ -1,8 +1,5 @@
 block('tweet-toolbar')(
     js()(true),
-    elem('location-link')(
-        tag()('a')
-    ),
     elem('replies-link')(
         tag()('a')
     )

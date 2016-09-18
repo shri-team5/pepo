@@ -3,8 +3,9 @@
     shouldDeps: [
         {
             block: 'icon',
-            mods: { type: ['location', 'reply'] }
+            mods: {type: ['location', 'reply']}
         },
-        'reply'
+        'reply',
+        'tweet-location'
     ]
 })
