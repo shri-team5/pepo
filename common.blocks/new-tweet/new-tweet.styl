@@ -18,6 +18,26 @@
 
   &__input {
     height: 120px;
+
+    &:after{
+      content: attr(name);
+      display: block;
+    }
+  }
+
+  &__input-wrap {
+    position: relative;
+    &:after{
+      content: attr(data-counter);
+      display: block;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      padding: 10px;
+      font-size: 18px;
+      font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+      color: #808080;
+    }
   }
 
   &__reply {
@@ -38,5 +58,8 @@
     position: fixed;
     bottom: 60px;
     right: 25px;
+  }
+  &__counter {
+
   }
 }

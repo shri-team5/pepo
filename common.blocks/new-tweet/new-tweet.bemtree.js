@@ -2,15 +2,18 @@ block('new-tweet').content()(function () {
     var i18n = this.i18n;
     return [
         {
-            block: 'textarea',
-            mix: [{block: 'new-tweet', elem: 'input'}],
-            name: 'text',
-            maxLength: 140,
-            mods: {theme: 'islands', size: 'xl', width: 'available'},
-            placeholder: i18n('new-tweet', 'text')
-        },
-        {
-            elem: 'counter'
+            elem: 'input-wrap',
+            attrs: {
+                'data-counter': 140
+            },
+            content: {
+                block: 'textarea',
+                mix: [{block: 'new-tweet', elem: 'input'}],
+                name: 'text',
+                maxLength: 140,
+                mods: {theme: 'islands', size: 'xl', width: 'available'},
+                placeholder: i18n('new-tweet', 'text')
+            }
         },
         {
             elem: 'actions',
@@ -43,7 +46,7 @@ block('new-tweet').content()(function () {
         },
         {
             block: 'create-tweet',
-            mods:{visible:true},
+            mods: {visible: true},
             mix: {block: 'new-tweet', elem: 'create-tweet'}
         }
     ];

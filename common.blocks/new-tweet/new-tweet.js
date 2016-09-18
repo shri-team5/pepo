@@ -6,13 +6,14 @@ modules.define('new-tweet', ['i-bem__dom'], function (provide, BEMDOM) {
                     inited: function () {
                         var self = this;
                         this.elem('input').on('keyup', function () {
-                            if(this.value.length > 0 && this.value.length <= 140){
+                            self.elem('input-wrap').attr('data-counter', 140 - this.value.length);
+                            if (this.value.length > 0 && this.value.length <= 140) {
                                 self.emit('allowSubmitForm');
-                            }else{
+                            } else {
                                 self.emit('disallowSubmitForm');
                             }
 
-                        })
+                        });
                     }
                 },
                 'visible': {
