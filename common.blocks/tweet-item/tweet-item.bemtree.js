@@ -1,6 +1,8 @@
 block('tweet-item').content()(function () {
     const data = this.ctx.data;
 
+    const emojione = require('emojione');
+
     return [
         {
             elem: 'profile-link',
@@ -44,7 +46,7 @@ block('tweet-item').content()(function () {
                 },
                 {
                     elem: 'text',
-                    content: data.text
+                    content: emojione.toImage(data.text.replace(/\n/g, '<br>'))
                 },
                 data.image && {
                     elem: 'image',
