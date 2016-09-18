@@ -5,24 +5,58 @@ block('header').mod('type', 'search').content()(function () {
             elemMods: {align: 'left'},
             content: [
                 {
-                    block: 'icon',
-                    mix: [{block: 'header', elem: 'icon'}],
-                    mods: {type: 'search-white'}
+                    elem: 'standard',
+                    elemMods: {visible: true},
+                    content: [
+                        {
+                            block: 'search'
+                        }
+                    ]
+                },
+                {
+                    elem: 'newTweet',
+                    content: [
+                        {
+                            elem: 'back',
+                            content: {
+                                block: 'icon',
+                                mix: [{block: 'header', elem: 'icon'}],
+                                mods: {type: 'back1'}
+                            }
+                        }
+                    ]
                 }
             ]
         },
         {
             elem: 'column',
             elemMods: {align: 'center'},
-            content: {
-                block: 'search'
-            }
+            content: {}
         },
         {
             elem: 'column',
             elemMods: {align: 'right'},
             content: [
-
+                {
+                    elem: 'standard',
+                    elemMods: {visible: true},
+                    content: [
+                        {}
+                    ]
+                },
+                {
+                    elem: 'newTweet',
+                    content: [
+                        {
+                            elem: 'submit',
+                            content: {
+                                block: 'icon',
+                                mix: [{block: 'header', elem: 'icon'}],
+                                mods: {type: 'send2'}
+                            }
+                        }
+                    ]
+                }
             ]
         }
     ];
