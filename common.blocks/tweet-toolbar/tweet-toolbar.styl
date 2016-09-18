@@ -4,6 +4,10 @@
   justify-content: space-between;
   align-items: center;
 
+  &__left {
+    max-width: 70%;
+  }
+
   &__actions {
     display: flex;
     justify-content: flex-end;
@@ -17,45 +21,14 @@
     text-decoration: none;
   }
 
-  &__location {
-    display: none;
-    margin-left: 10px;
-
-    width: 190px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    color: #808080;
+  &__like,
+  &__reply,
+  &__retweet,
+  &__delete {
+    width: 18px;
+    height: 18px;
+    margin: 0 10px;
+    cursor: pointer;
   }
 
-  &__location-link {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 11px;
-    color: #808080;
-    margin: 0 10px 0 3px;
-    max-width: 150px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    text-decoration: none
-    border-bottom: 1px dashed #808080;
-    line-height: 1.2;
-  }
-
-  &__location-icon {
-    height: 12px;
-    width: 12px;
-    display: inline-block;
-    vertical-align: middle;
-  }
-}
-
-.tweet-toolbar__like,
-.tweet-toolbar__reply,
-.tweet-toolbar__retweet,
-.tweet-toolbar__delete {
-  width: 18px;
-  height: 18px;
-  margin: 0 10px;
-  cursor: pointer;
 }
