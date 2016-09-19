@@ -2,17 +2,15 @@
     display: flex;
 
     width: 100%;
-    height: 100px;
-    padding: 10px;
-
     // background-color: orange;
-    font: 13px Arial, open-sans;
+    font: 13px 'Open Sans', Arial;
 
     box-sizing: border-box;
-
+    border: 1px solid #E1E8ED;
     &__image {
         width: 25%;
-
+        padding: 10px;
+        border-right: 1px solid #E1E8ED;
         img {
             width: auto;
             height: auto;
@@ -26,13 +24,11 @@
 
     &__text {
         width: 75%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        margin-left: 10px;
+        padding: 10px;
     }
 
     &__description {
         font-size: 11px;
+        padding-top:5px;
     }
 }
