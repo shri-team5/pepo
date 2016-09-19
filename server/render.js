@@ -15,6 +15,7 @@ var path = require('path'),
     cache = {};
 
 function render(req, res, data, context) {
+    console.dir(req.lang);
     var query = req.query,
         user = req.user,
         lang = req.lang || 'ru',

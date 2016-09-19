@@ -3,6 +3,7 @@
         'userpic',
         'username',
         'time',
-        'delimiter'
+        'delimiter',
+        'link-preview'
     ]
 })

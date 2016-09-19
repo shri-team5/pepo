@@ -16,6 +16,12 @@ block('new-tweet').content()(function () {
             }
         },
         {
+            elem: 'link-preview',
+            content: {
+                block: 'link-preview'
+            }
+        },
+        {
             elem: 'actions',
             content: [
                 {
