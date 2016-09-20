@@ -12,7 +12,8 @@ const get = (req, res) => {
             const linkPreview = {
                 image: results.data.ogImage && results.data.ogImage.url || '',
                 title: results.data.ogTitle || '',
-                description: results.data.ogDescription || ''
+                description: results.data.ogDescription || '',
+                url: link.startsWith('http') ? link : '//' + link
             };
             render(req, res, null, {
                 block: 'link-preview',

@@ -50,6 +50,14 @@ block('link-preview')(
                                 name: 'linkdesc',
                                 value: link.description || ''
                             }
+                        },
+                        {
+                            elem: 'link',
+                            attrs: {
+                                type: 'hidden',
+                                name: 'linkurl',
+                                value: link.url
+                            }
                         }
                     ]
                 }
