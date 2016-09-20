@@ -6,10 +6,10 @@ modules.define('new-tweet', ['i-bem__dom', 'jquery'], function (provide, BEMDOM,
                 inited: function () {
                     var self = this;
                     this.elem('input').on('keyup', function () {
+                        self.elem('input-wrap').attr('data-counter', 140 - this.value.length);
                         if (this.value.length === 0) {
                             self.delMod('haspreview');
                         }
-
                         if (this.value.length > 0 && this.value.length <= 140) {
                             // Если ещё не прицепили ссылку, проверям что
                             // вводит пользователь
