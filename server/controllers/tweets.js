@@ -56,7 +56,7 @@ const getTweet = (req, res) => {
 
 const post = (req, res) => {
 
-    const {text, parentTweet, location, address, linkimage, linktitle, linkdesc} = req.body;
+    const {text, parentTweet, location, linkimage, linktitle, linkdesc, linkurl} = req.body;
 
     let form = new FormData();
 
@@ -69,6 +69,7 @@ const post = (req, res) => {
         form.append('linkimage', linkimage);
         form.append('linktitle', linktitle);
         form.append('linkdesc', linkdesc);
+        form.append('linkurl', linkurl);
     }
     req.file && form.append('image', fs.createReadStream(req.file.path));
 

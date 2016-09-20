@@ -37,8 +37,9 @@ modules.define('new-tweet', ['i-bem__dom', 'jquery'], function (provide, BEMDOM,
         },
 
         _containsLink: function (text) {
-            var linkRegExp = /(https?:\/\/)?([\da-z.]+)\.([a-z\.]{2,6})([/\w\.-]*)*\/?/;
+            var linkRegExp = /(https?:\/\/)?([\da-z.-]+)\.([a-z\.]{2,6})([/\w\.-]*)*\/?/;
             var isItLink = text.match(linkRegExp);
+
             return isItLink ? isItLink[0] : false;
         },
 
