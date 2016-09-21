@@ -2,6 +2,7 @@ block('page').mod('view', 'search').content()(function() {
     return [
         {
             block: 'app',
+            js: this.data.user,
             content: [
                 {
                     block: 'header',

@@ -3,6 +3,7 @@ block('page').mod('view', 'profile').content()(function () {
     return [
         {
             block: 'app',
+            js: this.data.user,
             content: [
                 {
                     block: 'header',

@@ -1,9 +1,10 @@
-const search = (tweets) => {
+const search = (tweets, user) => {
 
     return {
         view: 'search',
         title: 'Search page',
         tweets: tweets,
+        user: user,
         meta: {
             description: 'Page description',
             og: {
