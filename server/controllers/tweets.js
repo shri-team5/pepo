@@ -27,7 +27,7 @@ const get = (req, res) => {
     Server.fetch(Api.getTweets(params))
         .then(
             response => {
-                render(req, res, feedPage(response));
+                render(req, res, feedPage(response, req.user));
             }
         )
         .catch(e => {

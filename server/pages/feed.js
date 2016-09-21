@@ -1,9 +1,10 @@
-const feed = (tweets) => {
+const feed = (tweets, user) => {
 
     return {
         view: 'feed',
         title: 'Main page',
         tweets: tweets,
+        user: user,
         meta: {
             description: 'Page description',
             og: {

@@ -1,6 +1,5 @@
 block('tweet-item').content()(function () {
-    const data = this.ctx.data;
-
+    const data = this.ctx.data; 
     const emojione = require('emojione');
 
     return [

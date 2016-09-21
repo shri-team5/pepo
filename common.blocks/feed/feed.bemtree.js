@@ -8,9 +8,15 @@ block('feed').content()(function () {
     } else if (tweets.data.length === 0) {
         return i18n('feed', 'empty');
     } else {
-        return tweets.data.map(item => ({
-            block: 'tweet',
-            data: item
-        }));
+        return [
+            {
+                elem: 'new-tweets',
+                content: 'Показать новые сообщения'
+            },
+            tweets.data.map(item => ({
+                block: 'tweet',
+                data: item
+            }))
+        ];
     }
 });

@@ -1,7 +1,5 @@
 block('navigation').content()(function () {// eslint-disable-line no-undef
 
-    console.log(this.data);
-
     return [
         {
             elem: 'item',

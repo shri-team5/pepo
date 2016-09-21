@@ -2,12 +2,12 @@ block('page').mod('view', 'profile').content()(function () {
 
     return [
         {
-            block:'app',
-            content:[
+            block: 'app',
+            content: [
                 {
                     block: 'header',
-                    mods:{
-                      type:'profile'
+                    mods: {
+                        type: 'profile'
                     },
                     mix: {block: 'page', elem: 'header'}
                 },
@@ -16,7 +16,7 @@ block('page').mod('view', 'profile').content()(function () {
                     content: [
                         {
                             block: 'main',
-                            mods : { visible: true },
+                            mods: {visible: true},
                             mix: {block: 'page', elem: 'main'},
                             content: [
                                 {
@@ -24,15 +24,15 @@ block('page').mod('view', 'profile').content()(function () {
                                 },
                                 {
                                     block: 'feed',
-                                    mods : {
-                                        type:'user',
+                                    mods: {
+                                        type: 'user',
                                         value: this.data.profile.data._id
                                     }
                                 }
                             ]
                         },
                         {
-                            block : 'new-tweet'
+                            block: 'new-tweet'
                         },
                         {
                             block: 'navigation'
