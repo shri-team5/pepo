@@ -3,7 +3,6 @@ module.exports = {
     defaultPort: 3000,
     cacheTTL: 100,
     sessionSecret: 'ASD',
-    socketPort: 8086,
 
     backendHost: '188.166.17.158',
     backendPort: 8080,

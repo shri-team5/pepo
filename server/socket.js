@@ -1,18 +1,17 @@
 const config = require('./config');
 const Render = require('./render');
 
-const start = () => {
-    const io = require('socket.io').listen(8085);
+const start = (server) => {
+    const io = require('socket.io').listen(server);
     const ioApi = require('socket.io-client');
-    const server = ioApi.connect('http://' + config.backendHost + ':' + config.socketPort);
+    const serverApi = ioApi.connect('http://' + config.backendHost + ':' + config.backendPort);
     let sockets = {};
 
-    server.on('message', function (msg) {
+    serverApi.on('message', function (msg) {
         if (msg.event === 'new-tweet') {
             const tweet = msg.data;
             for (let index of Object.keys(sockets)) {
                 let socket = sockets[index];
-                console.log(socket.feed);
                 if (socket.feed) {
                     if (
                         (socket.feed.user && socket.feed.user === tweet.author._id) ||

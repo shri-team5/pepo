@@ -5,7 +5,7 @@ modules.define('socket', ['io', 'events__channels'], function (provide, io, chan
         server: null,
         connect: function (address) {
             var self = this;
-            this.server = io.connect(address);
+            this.server = io.connect(address, {secure: true, port: 3000});
             this.server.on('message', function (msg) {
                 socketChannel.emit(msg.event, msg);
             });
