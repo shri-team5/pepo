@@ -3,7 +3,7 @@ module.exports = {
     defaultPort: 3000,
     cacheTTL: 100,
     sessionSecret: 'ASD',
-    socketPort: 8085,
+    socketPort: 8086,
 
     backendHost: 'localhost',
     backendPort: 4000,
@@ -16,8 +16,8 @@ module.exports = {
     langs: ['ru', 'en'],
 
     testUser: {
-        _id: '57cf1a604193f1c7201d44bb',
-        username: 'grimfri'
+        _id: '57df00178172f1fe014320de',
+        username: 'userTest'
     },
 
     auth: {
