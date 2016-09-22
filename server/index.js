@@ -72,8 +72,10 @@ app.get('*', function (req, res) {
 });
 
 
-const socket = require('./socket.js');
-socket();
+const server = require('http').createServer(app);
+
+const socket = require('./socket.js')(server);
+
 
 if (isDev) {
     app.get('/error/', function () {
@@ -83,7 +85,7 @@ if (isDev) {
     app.use(require('errorhandler')());
 }
 
-app.listen(port, function () {
+server.listen(port, function () {
     isSocket && fs.chmod(port, '0777');
     console.log('server is listening on', this.address().port);
 });

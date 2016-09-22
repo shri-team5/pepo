@@ -50,7 +50,7 @@ modules.define('app', ['i-bem__dom', 'jquery', 'tweet-toolbar', 'socket','events
                             this._onSearchTweets,
                             this);
 
-                        socket.connect('//' + window.location.hostname + ':8085');
+                        socket.connect('//' + window.location.hostname);
 
                         socketChannel.on('connected', function (e, data) {
                             socketChannel.emit('send',
