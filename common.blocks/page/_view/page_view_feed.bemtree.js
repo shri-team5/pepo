@@ -2,6 +2,7 @@ block('page').mod('view', 'feed').content()(function () {
     return [
         {
             block: 'app',
+            js: this.data.user,
             content: [
                 {
                     block: 'header',
@@ -16,7 +17,7 @@ block('page').mod('view', 'feed').content()(function () {
                             mix: {block: 'page', elem: 'main'},
                             content: {
                                 block: 'feed',
-                                mods : {
+                                mods: {
                                     type: 'feed',
                                     value: 'self'
                                 }

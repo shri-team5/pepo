@@ -71,6 +71,10 @@ app.get('*', function (req, res) {
     return render(req, res, {view: '404'});
 });
 
+
+const socket = require('./socket.js');
+socket();
+
 if (isDev) {
     app.get('/error/', function () {
         throw new Error('Uncaught exception from /error');

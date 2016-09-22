@@ -55,9 +55,9 @@ block('userinfo').content()(function () {
                         content: [
                             {
                                 block: 'counter',
-                                mods : { type : 'followers' },
+                                mods: {type: 'followers'},
                                 data: {
-                                    number: profile.data.subscribersNumber || 0,
+                                    number: profile.data.subscribers ? profile.data.subscribers.length : 0,
                                     text: i18n('userinfo', 'followers')
                                 },
                                 mix: {block: 'userinfo', elem: 'counter'}

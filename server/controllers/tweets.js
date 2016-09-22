@@ -25,9 +25,10 @@ const get = (req, res) => {
     offset && (params.offset = offset);
 
     Server.fetch(Api.getTweets(params))
+    Server.fetchAsync([Api.getTweets(params), Api.getUserProfile(req.user._id, params)])
         .then(
-            response => {
-                render(req, res, feedPage(response));
+            responses => {
+                render(req, res, feedPage(responses[0], responses[1]));
             }
         )
         .catch(e => {

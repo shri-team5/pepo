@@ -3,7 +3,7 @@ var path = require('path'),
     langs = config.langs,
     bundleName = 'index',
     pathToBundle = path.resolve('desktop.bundles', bundleName),
-    BEMTREE = langs.reduce(function(tmpls, lang) {
+    BEMTREE = langs.reduce(function (tmpls, lang) {
         tmpls[lang] = require(path.join(pathToBundle, bundleName + '.bemtree.' + lang + '.js')).BEMTREE;
         return tmpls;
     }, {}),
@@ -13,6 +13,32 @@ var path = require('path'),
     useCache = !isDev,
     cacheTTL = config.cacheTTL,
     cache = {};
+
+function getHtmlContent(context) {
+    let lang = 'ru';
+
+    let bemtreeCtx = {
+        block: 'root',
+        context: context,
+        data:{}
+    };
+
+    try {
+        var bemjson = BEMTREE[lang].apply(bemtreeCtx);
+    } catch (err) {
+        console.error('BEMHTML error', err.stack);
+        return {status: 0, error: err.stack};
+    }
+
+    try {
+        var html = BEMHTML.apply(bemjson);
+        return {status: 1, html: html};
+    } catch (err) {
+        console.error('BEMHTML error', err.stack);
+        return {status: 0, error: err.stack};
+    }
+
+}
 
 function render(req, res, data, context) {
     console.dir(req.lang);
@@ -39,7 +65,7 @@ function render(req, res, data, context) {
 
     try {
         var bemjson = BEMTREE[lang].apply(bemtreeCtx);
-    } catch(err) {
+    } catch (err) {
         console.error('BEMTREE error', err.stack);
         console.trace('server stack');
         return res.sendStatus(500);
@@ -49,7 +75,7 @@ function render(req, res, data, context) {
 
     try {
         var html = BEMHTML.apply(bemjson);
-    } catch(err) {
+    } catch (err) {
         console.error('BEMHTML error', err.stack);
         return res.sendStatus(500);
     }
@@ -68,5 +94,6 @@ function dropCache() {
 
 module.exports = {
     render: render,
+    getHtmlContent: getHtmlContent,
     dropCache: dropCache
 };
