@@ -38,8 +38,8 @@ const start = (server) => {
         socket.json.send({'event': 'connected', 'time': time});
 
         socket.on('register-user', (user)=> {
-            socket.user = user;
-            socket.user.subscribers = socket.user.subscribers ? socket.user.subscribers : [];
+            socket.user = user.data;
+            socket.user.subscribers = socket.user.subscribers.length ? socket.user.subscribers : [];
             sockets[socket.id] = socket;
         });
 
