@@ -1,5 +1,6 @@
 block('search').content()(function () {
 
+    var i18n = this.i18n;
     return [
         {
             block: 'icon',
@@ -11,6 +12,7 @@ block('search').content()(function () {
             mods: {theme: 'islands', size: 'l'},
             name: 'search',
             val: '',
+            placeholder : i18n('search', 'placeholder'),
             mix: {block: 'search', elem: 'input'}
         }
     ];
