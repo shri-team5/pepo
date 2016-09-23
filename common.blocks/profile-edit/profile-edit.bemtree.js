@@ -55,6 +55,18 @@ block('profile-edit').content()(function(){
                     }
                 },
                 {
+                    block: 'select',
+                    mix: {block: 'profile-edit', elem: 'language'},
+                    mods: {mode: 'radio', theme: 'islands', size: 'l'},
+                    name: 'lang',
+                    val: 1,
+                    options: [
+                        {val: 1, text: 'Русский'},
+                        {val: 2, text: 'Английский'},
+                        {val: 3, text: 'Украинский'}
+                    ]
+                },
+                {
                     elem: 'button',
                     content: {
                         block: 'button',

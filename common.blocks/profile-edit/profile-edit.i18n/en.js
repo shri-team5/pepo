@@ -5,6 +5,7 @@ module.exports = {
         fullName: 'Enter name ',
         login: 'Enter login ',
         description: 'Enter description ',
-        save: 'Save'
+        save: 'Save',
+        language: 'Language'
     }
 };

@@ -26,6 +26,14 @@
             mods: {
                 theme: 'islands'
             }
+        },
+        {
+            block: 'select',
+            mods: {
+                mode: 'radio',
+                theme: 'islands',
+                size: 'l'
+            }
         }
     ]
 })
