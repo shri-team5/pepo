@@ -9,8 +9,18 @@ const get = (req, res) => {
         console.log(`err: ${err}`);
         console.dir(results, {depth: null, colors: true});
         if (!err) {
+            let imageUrl = null;
+            if (results.data.ogImage) {
+                let arr = link.split('/');
+                let domain = arr[0] + '//' + arr[2];
+                imageUrl = results.data.ogImage.url.startsWith('http') ?
+                    results.data.ogImage.url :
+                    domain + results.data.ogImage.url;
+            } else {
+                imageUrl = '/no-image.png';
+            }
             const linkPreview = {
-                image: results.data.ogImage && results.data.ogImage.url || '',
+                image: imageUrl,
                 title: results.data.ogTitle || '',
                 description: results.data.ogDescription || '',
                 url: link.startsWith('http') ? link : '//' + link
