@@ -55,15 +55,24 @@ block('profile-edit').content()(function () {
                     }
                 },
                 {
-                    block: 'select',
-                    mix: {block: 'profile-edit', elem: 'language'},
-                    mods: {mode: 'radio', theme: 'islands', size: 'l'},
-                    name: 'lang',
-                    val: 1,
-                    options: [
-                        {val: 1, text: 'Русский'},
-                        {val: 2, text: 'Английский'},
-                        {val: 3, text: 'Украинский'}
+                    elem: 'language',
+                    content: [
+                        {
+                            elem: 'language_label',
+                            content: i18n('profile-edit', 'language')
+                        },
+                        {
+                            block: 'button',
+                            mods: {theme: 'islands', size: 'l', type: 'button'},
+                            text: 'English',
+                            mix: {block: 'profile-edit', elem: 'lang_button_en'}
+                        },
+                        {
+                            block: 'button',
+                            mods: {theme: 'islands', size: 'l', type: 'button'},
+                            text: 'Русский',
+                            mix: {block: 'profile-edit', elem: 'lang_button_ru'}
+                        }
                     ]
                 },
                 {
