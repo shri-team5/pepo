@@ -56,15 +56,16 @@ const linkPreviewRouter = require('./routers/linkpreview');
 // middleware import
 const isLoggedIn = require('./middleware').isLoggedIn;
 const isRegisteredIn = require('./middleware').isRegisteredIn;
+const setLanguage = require('./middleware').setLanguage;
 
 authRouter(app, passport);
-app.get('/', isLoggedIn, isRegisteredIn, tweetsRouter);
-app.use('/registration', isLoggedIn, registrationRouter);
-app.use('/tweets', isLoggedIn, isRegisteredIn, tweetsRouter);
-app.use('/search', isLoggedIn, isRegisteredIn, searchRouter);
-app.use('/profile', isLoggedIn, isRegisteredIn, profileRouter);
-app.use('/settings', isLoggedIn, isRegisteredIn, settingsRouter);
-app.use('/linkpreview', isLoggedIn, isRegisteredIn, linkPreviewRouter);
+app.get('/', setLanguage, isLoggedIn, isRegisteredIn, tweetsRouter);
+app.use('/registration', setLanguage, isLoggedIn, registrationRouter);
+app.use('/tweets', setLanguage, isLoggedIn, isRegisteredIn, tweetsRouter);
+app.use('/search', setLanguage, isLoggedIn, isRegisteredIn, searchRouter);
+app.use('/profile', setLanguage, isLoggedIn, isRegisteredIn, profileRouter);
+app.use('/settings', setLanguage, isLoggedIn, isRegisteredIn, settingsRouter);
+app.use('/linkpreview', setLanguage, isLoggedIn, isRegisteredIn, linkPreviewRouter);
 
 app.get('*', function (req, res) {
     res.status(404);

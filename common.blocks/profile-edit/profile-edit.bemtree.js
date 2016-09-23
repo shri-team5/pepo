@@ -1,4 +1,4 @@
-block('profile-edit').content()(function(){
+block('profile-edit').content()(function () {
 
     let settings = this.ctx.data.profile.data;
     const i18n = this.i18n;
@@ -77,5 +77,5 @@ block('profile-edit').content()(function(){
 
             ]
         }
-    ]
+    ];
 });

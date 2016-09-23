@@ -28,8 +28,18 @@ function isRegisteredIn(req, res, next) {
     res.redirect('/registration/');
 }
 
+function setLanguage(req, res, next) {
+    if (req.lang) {
+        return next();
+    }
+
+    // req.lang = 'en';
+    return next();
+}
+
 
 module.exports = {
     isLoggedIn,
-    isRegisteredIn
+    isRegisteredIn,
+    setLanguage
 };
