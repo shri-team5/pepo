@@ -1,5 +1,5 @@
 block('tweet-item').content()(function () {
-    const data = this.ctx.data; 
+    const data = this.ctx.data;
     const emojione = require('emojione');
 
     return [
@@ -46,7 +46,9 @@ block('tweet-item').content()(function () {
 
                 {
                     elem: 'text',
-                    content: emojione.toImage(data.text.replace(/\n/g, '<br>'))
+                    content: emojione
+                        .toImage(data.text.replace(/\n/g, '<br>'))
+                        .replace(/(#[а-яА-ЯёЁa-zA-z]+)/g, '<span class="tweet-item__hashtag">$1</span>')
                 },
 
                 data.image && {

@@ -14,6 +14,9 @@ const get = (req, res) => {
         count: config.tweets.initialCount
     };
 
+    req.query.search && (params['search'] = req.query.search);
+    req.query.tag && (params['search'] = '#'+req.query.tag);
+
     Server.fetch(Api.getTweets(params))
         .then(
             response => {

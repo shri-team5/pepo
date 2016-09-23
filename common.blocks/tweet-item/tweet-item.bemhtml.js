@@ -1,4 +1,5 @@
 block('tweet-item')(
+    js()(true),
     elem('name').tag()('p'),
     elem('username').tag()('a'),
     elem('profile-link')(
@@ -7,9 +8,9 @@ block('tweet-item')(
             return {
                 href: this.ctx.href,
                 title: this.ctx.title
-            }
+            };
         })
     ),
     elem('reply').tag()('a'),
     elem('image').tag()('img')
-)
+);
