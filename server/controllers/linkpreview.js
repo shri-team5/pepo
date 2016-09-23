@@ -9,16 +9,18 @@ const get = (req, res) => {
         console.log(`err: ${err}`);
         console.dir(results, {depth: null, colors: true});
         if (!err) {
-            let image_url = null;
-            if(results.data.ogImage){
-                let arr = link.split("/");
-                let domein = arr[0] + "//" + arr[2]
-                image_url = results.data.ogImage.url.startsWith('http') ? results.data.ogImage.url : domein + results.data.ogImage.url
-            }else{
-                image_url = '/no-image.png';
+            let imageUrl = null;
+            if (results.data.ogImage) {
+                let arr = link.split('/');
+                let domain = arr[0] + '//' + arr[2];
+                imageUrl = results.data.ogImage.url.startsWith('http') ?
+                    results.data.ogImage.url :
+                    domain + results.data.ogImage.url;
+            } else {
+                imageUrl = '/no-image.png';
             }
             const linkPreview = {
-                image: image_url,
+                image: imageUrl,
                 title: results.data.ogTitle || '',
                 description: results.data.ogDescription || '',
                 url: link.startsWith('http') ? link : '//' + link
