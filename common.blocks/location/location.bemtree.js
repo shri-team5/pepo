@@ -1,4 +1,5 @@
 block('location').content()(function () {
+    var i18n = this.i18n;
     return [
         {
             elem: 'location',
@@ -11,7 +12,7 @@ block('location').content()(function () {
             block: 'button',
             mix: {block: 'location', elem: 'button'},
             mods: {theme: 'islands', size: 'm', type: 'button'},
-            text: 'Местоположение'
+            text: i18n('location', 'location')
         },
         {
             elem: 'text'

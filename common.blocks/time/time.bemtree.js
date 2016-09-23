@@ -1,10 +1,9 @@
 block('time').content()(function () {
-
     var defaultFormat = 'DD-MM-YYYY hh:mm:ss';
 
     var moment = require('moment');
     if (!this.ctx.locale) {
-        moment.locale('ru');
+        moment.locale(this.i18n('app','lang'));
     } else {
         moment.locale(this.ctx.locale);
     }
