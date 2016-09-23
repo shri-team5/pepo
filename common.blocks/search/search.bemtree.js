@@ -1,5 +1,6 @@
 block('search').content()(function () {
 
+    var i18n = this.i18n;
     return [
         {
             block: 'icon',
