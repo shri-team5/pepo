@@ -1,11 +1,12 @@
-modules.define('app', ['i-bem__dom', 'jquery', 'tweet-toolbar', 'socket','events__channels'],
+modules.define('app', ['i-bem__dom', 'jquery', 'tweet-toolbar', 'socket', 'events__channels'],
     function (provide, BEMDOM, $, Toolbar, socket, channels) {
         provide(BEMDOM.decl(this.name, {
             onSetMod: {
                 js: {
                     inited: function () {
-                        var socketChannel = channels('socket-channel');
                         var self = this;
+                        var socketChannel = channels('socket-channel');
+                        var tagChannel = channels('tag-channel');
 
                         this.findBlockInside('create-tweet') &&
                         this.findBlockInside('create-tweet').on(
@@ -59,6 +60,10 @@ modules.define('app', ['i-bem__dom', 'jquery', 'tweet-toolbar', 'socket','events
                                     params: self.params
                                 }
                             );
+                        });
+
+                        tagChannel.on('filter-hashtag', function (e, data) {
+                            document.location.href = '/search/?tag=' + data.replace('#','');
                         });
                     }
                 }
@@ -127,7 +132,6 @@ modules.define('app', ['i-bem__dom', 'jquery', 'tweet-toolbar', 'socket','events
                 // Получаем твиты и аппендим к ленте
                 this._getMoreTweets(offset, count, query)
                     .then(function (tweets) {
-                        console.log(tweets);
                         BEMDOM[displayMode](
                             feedBlock.domElem,
                             tweets
@@ -166,7 +170,15 @@ modules.define('app', ['i-bem__dom', 'jquery', 'tweet-toolbar', 'socket','events
              */
             _onSearchTweets: function (e, data) {
                 var feedBlock = this.findBlockInside('feed');
+                var socketChannel = channels('socket-channel');
+
                 feedBlock.setMod('value', data.value);
+                socketChannel.emit('send',
+                    {
+                        event: 'register-feed',
+                        params: {search: data.value}
+                    }
+                );
 
                 this._getAndDisplayTweets(
                     0, 10, {'search': data.value},
