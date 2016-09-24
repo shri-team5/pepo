@@ -6,7 +6,7 @@ block('link-preview')(
 );
 
 block('link-preview').match(function () {
-    return !this.ctx.formlinks || true;
+    return !this.ctx.formlinks;
 })(
     tag()('a'),
     attrs()(function () {
