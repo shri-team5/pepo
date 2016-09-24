@@ -1,6 +1,23 @@
 const render = require('../render').render;
 const ogs = require('open-graph-scraper');
 
+
+const extractDomain = (url) => {
+    var domain;
+    //find & remove protocol (http, ftp, etc.) and get domain
+    if (url.indexOf("://") > -1) {
+        domain = url.split('/')[2];
+    }
+    else {
+        domain = url.split('/')[0];
+    }
+
+    //find & remove port number
+    domain = domain.split(':')[0];
+
+    return domain;
+}
+
 const get = (req, res) => {
 
     const link = req.query.link;
@@ -10,12 +27,14 @@ const get = (req, res) => {
         console.dir(results, {depth: null, colors: true});
         if (!err) {
             let imageUrl = null;
+            console.log(results.data);
             if (results.data.ogImage) {
-                let arr = link.split('/');
-                let domain = arr[0] + '//' + arr[2];
-                imageUrl = results.data.ogImage.url.startsWith('http') ?
-                    results.data.ogImage.url :
-                    domain + results.data.ogImage.url;
+                if (results.data.ogImage.url.startsWith('http') || results.data.ogImage.url.startsWith('//')) {
+                    imageUrl = results.data.ogImage.url;
+                } else {
+                    imageUrl = '//' + extractDomain(link) + results.data.ogImage.url;
+                }
+
             } else {
                 imageUrl = '/no-image.png';
             }
