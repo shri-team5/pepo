@@ -1,4 +1,4 @@
-block('profile-edit').content()(function(){
+block('profile-edit').content()(function () {
 
     let settings = this.ctx.data.profile.data;
     const i18n = this.i18n;
@@ -55,6 +55,27 @@ block('profile-edit').content()(function(){
                     }
                 },
                 {
+                    elem: 'language',
+                    content: [
+                        {
+                            elem: 'language_label',
+                            content: i18n('profile-edit', 'language')
+                        },
+                        {
+                            block: 'button',
+                            mods: {theme: 'islands', size: 'l', type: 'button'},
+                            text: 'English',
+                            mix: {block: 'profile-edit', elem: 'lang_button_en'}
+                        },
+                        {
+                            block: 'button',
+                            mods: {theme: 'islands', size: 'l', type: 'button'},
+                            text: 'Русский',
+                            mix: {block: 'profile-edit', elem: 'lang_button_ru'}
+                        }
+                    ]
+                },
+                {
                     elem: 'button',
                     content: {
                         block: 'button',
@@ -65,5 +86,5 @@ block('profile-edit').content()(function(){
 
             ]
         }
-    ]
+    ];
 });

@@ -5,6 +5,7 @@ module.exports = {
         fullName: 'Введите имя ',
         login: 'Введите логин ',
         description: 'Введите описание ',
-        save: 'Сохранить'
+        save: 'Сохранить',
+        language: 'Язык'
     }
 };

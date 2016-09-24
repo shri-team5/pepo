@@ -1,4 +1,5 @@
 block('profile-edit')(
+    js()(true),
     tag()('form'),
     attrs()(function () {
         return {
